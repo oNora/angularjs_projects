@@ -1,0 +1,55 @@
+/* app css stylesheet */
+
+body, table, tr, td, div, button, ul, li{
+  margin: 0;
+  padding: 0
+}
+ul, li {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+table{
+  border-collapse: collapse;
+}
+table td, table th{
+  width: 15px;
+  height: 15px; 
+  padding: 6px;
+  border:1px solid black;
+  text-align: center;
+}
+table td.coordinateCell,
+table th.coordinateCell{
+  border:none;
+}
+table td.gameCell{
+  cursor: pointer;
+}
+table td.hitCell{
+  background: green;
+}
+table td.hitShip{
+  background: red;
+}
+
+/*msg area*/
+#messageArea{
+	height: 30px;
+	padding: 10px
+}
+.menu{
+  width: 85px;
+  height: 20px;
+  margin-bottom: 20px;
+}
+.menu span{
+  display: block;
+}
+/*.menu ul{
+  display: none;
+}
+.menu.show ul{
+  display: block;
+}*/

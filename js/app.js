@@ -1,0 +1,1 @@
+var battleShips = angular.module('battleShips',[]);
