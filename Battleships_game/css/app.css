@@ -10,12 +10,16 @@ ul, li {
 a {
   text-decoration: none;
 }
+.wrap{
+  width: 410px;
+  margin: 0 auto;
+}
 table{
   border-collapse: collapse;
 }
 table td, table th{
-  width: 15px;
-  height: 15px; 
+  width: 20px;
+  height: 20px; 
   padding: 6px;
   border:1px solid black;
   text-align: center;
@@ -28,28 +32,47 @@ table td.gameCell{
   cursor: pointer;
 }
 table td.hitCell{
-  background: green;
+  background: #b0d0b0;
 }
 table td.hitShip{
-  background: red;
+  background: #ff6666;
 }
 
 /*msg area*/
+.msg{
+    background: #efefef;
+}
 #messageArea{
-	height: 30px;
-	padding: 10px
+  height: 45px;
+  margin-bottom: 15px;
+  padding: 10px;
+  line-height: 22px;
 }
 .menu{
   width: 85px;
-  height: 20px;
-  margin-bottom: 20px;
+  height: 85px;
+  margin-bottom: 5px;
+  text-align: center;
 }
 .menu span{
   display: block;
+  padding: 5px;
+  background: #4590f6;
+  color: #fff;
 }
-/*.menu ul{
-  display: none;
+.menu ul{
+  padding: 0 5px;
+  background: #45a1f6;
 }
-.menu.show ul{
+.menu ul li a{
+  color: #fff;
+}
+.menu ul li{
+  padding: 5px 0;
+}
+.menu ul li:first-child{
+  border-bottom:  1px solid #efefef;
+}
+/*.menu.show ul{
   display: block;
 }*/

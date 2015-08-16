@@ -48,6 +48,14 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
     var guesses = 0;
     $scope.fire = function(guessInput, keyEvent){
 
+        // hide all ship if they are shown
+        $scope.hideShips();
+
+        // hode menu if it is open
+        if($scope.showMenu == false){
+            $scope.toggle();
+        }
+
         if (keyEvent === undefined || keyEvent.which === 13 ){
             var location = fireModel(guessInput.toUpperCase());
 
@@ -81,7 +89,15 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
 	}
 
     $scope.clickFire = function(clickEvent){
+        // hide all ship if they are shown
+        $scope.hideShips();
 
+        // hode menu if it is open
+        if($scope.showMenu == false){
+            $scope.toggle();
+        }
+
+        // $scope.showMenu == false;
         var clickedRow = clickEvent.target.id.charAt(0);
         var clickedColumn = clickEvent.target.id.charAt(1);
         var clickedLetter =  boardConfig.alphabet[clickedRow];
@@ -147,6 +163,8 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
 
             };
         }
+
+        $scope.toggle();
 
     }
 
