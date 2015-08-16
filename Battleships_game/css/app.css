@@ -58,6 +58,7 @@ table td.hitShip{
   display: block;
   padding: 5px;
   background: #4590f6;
+  border-bottom:  1px solid #efefef;
   color: #fff;
 }
 .menu ul{
