@@ -48,9 +48,6 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
     var guesses = 0;
     $scope.fire = function(guessInput, keyEvent){
 
-        // hide all ship if they are shown
-        $scope.hideShips();
-
         // hode menu if it is open
         if($scope.showMenu == false){
             $scope.toggle();
@@ -77,21 +74,29 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
 
                 console.log("el {}", el);
 
+
                 if (hit){
                     angular.element(el).addClass('hitShip');
                     angular.element(el).text('x');
+
                 }else{
                     angular.element(el).addClass('hitCell');
                     angular.element(el).text('-');
                 }
+
+                var selectInput = document.getElementById('guessInput');
+                angular.element(selectInput).val('');
+
+                // hide all ship if they are shown
+                $scope.hideShips(angular.element(el).attr('id'));
             }
         }
 	}
 
     $scope.clickFire = function(clickEvent){
-        // hide all ship if they are shown
-        $scope.hideShips();
 
+        // hide all ship if they are shown
+        $scope.hideShips(clickEvent.target.id);
         // hode menu if it is open
         if($scope.showMenu == false){
             $scope.toggle();
@@ -105,6 +110,9 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
         var clickedGuess = clickedLetter + clickedColumn;
 
         var location = fireModel(clickedGuess);
+
+
+        console.log('click col:', clickEvent.target);
 
         if (location) {
 
@@ -125,6 +133,9 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
                 clickEvent.target.className = "hitCell";
             }
             // console.log("hit : {}", hit);
+            
+
+
         }
 
     }
@@ -168,9 +179,15 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
 
     }
 
-    $scope.hideShips = function (){
-        var el = document.querySelectorAll('.gameCell');
-        angular.element(el).text('.');
+    $scope.hideShips = function (clickTarget){
+
+        var el = document.getElementById(clickTarget)
+        console.log('clickTarget: ', angular.element(el).hasClass('hitShip'));
+
+        if(angular.element(el).hasClass('hitShip') == false){
+             angular.element(el).text('.');
+        }
+
     }
 
 });
