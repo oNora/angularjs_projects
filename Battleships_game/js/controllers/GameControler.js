@@ -3,8 +3,8 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
     $scope.boardSize = boardConfig.boardSize;
 
 
-	init();
- 	function init() {
+    init();
+    function init() {
         $scope.ShipModel = ShipModel.generateShipLocations();
     }
 
@@ -88,15 +88,15 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
                 angular.element(selectInput).val('');
 
                 // hide all ship if they are shown
-                $scope.hideShips(angular.element(el).attr('id'));
+                $scope.hideShips();
             }
         }
-	}
+    }
 
     $scope.clickFire = function(clickEvent){
 
         // hide all ship if they are shown
-        $scope.hideShips(clickEvent.target.id);
+        $scope.hideShips();
         // hode menu if it is open
         if($scope.showMenu == false){
             $scope.toggle();
@@ -179,14 +179,24 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
 
     }
 
-    $scope.hideShips = function (clickTarget){
+    $scope.hideShips = function (){
 
-        var el = document.getElementById(clickTarget)
-        console.log('clickTarget: ', angular.element(el).hasClass('hitShip'));
+        var el = document.querySelectorAll('td');
 
-        if(angular.element(el).hasClass('hitShip') == false){
-             angular.element(el).text('.');
-        }
+
+        angular.forEach(el, function(value, key) {
+            // console.log("value: ", value);
+            // console.log("key: ", key);
+
+
+            if( (angular.element(value).hasClass('hitShip') == false)
+                && angular.element(value).hasClass('gameCell') == true
+                && (angular.element(value).hasClass('hitCell') == false) ){
+                console.log("tuk");
+                angular.element(value).text('.');
+            }
+        });
+
 
     }
 
