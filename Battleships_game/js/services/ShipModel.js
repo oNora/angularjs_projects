@@ -1,8 +1,6 @@
 battleShips.service('ShipModel', function ShipModel(boardConfig, singleShip) {
 
-    var shipParams ,
-        shipNumbers = 3;
-
+    var shipNumbers = 3;
 
 
     var ShipModel = function() {
@@ -19,10 +17,12 @@ battleShips.service('ShipModel', function ShipModel(boardConfig, singleShip) {
 
     function collectAllShip(){
         var ships =[];
+        var shipParams ;
 
         for (var i = 0; i < shipNumbers; i++) {
             shipParams = singleShip.getInstance();
-            ships.push(shipParams.ship);
+            console.log('shipParams: ', shipParams);
+            ships.push(shipParams);
         };
 
         return ships;
@@ -68,6 +68,7 @@ battleShips.service('ShipModel', function ShipModel(boardConfig, singleShip) {
 
         return newShipLocations;
     };
+
 
     ShipModel.prototype.collision = function(locations) {
 

@@ -1,6 +1,5 @@
 battleShips.service('singleShip', function singleShip() {
 
-
     function generateParams () {
         var rand = Math.floor(Math.random() * (6 - 3) + 3);
         var locationShip = [];
@@ -19,15 +18,9 @@ battleShips.service('singleShip', function singleShip() {
     }
 
 
-    var SingleShip = function() {
-        this.ship = generateParams()
-    };
-
     return {
 
-        getInstance: function() {
-            return new SingleShip();
-        }
+        getInstance: generateParams
     }
 
 });
