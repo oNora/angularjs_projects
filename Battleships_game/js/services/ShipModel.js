@@ -1,27 +1,36 @@
-battleShips.factory('ShipModel', function ShipModel(boardConfig) {
-    var shipModel = function() {
-        this.boardSize = 10;
-        this.numShips = 3;
+battleShips.service('ShipModel', function ShipModel(boardConfig, singleShip) {
+
+    var shipParams ,
+        shipNumbers = 3;
+
+
+
+    var ShipModel = function() {
+        this.numShips = shipNumbers;
         this.shipsSunk = 0;
-        this.ships = [{
-            locations: [0, 0, 0],
-            hits: ["", "", ""]
-        }, {
-            locations: [0, 0, 0, 0, 0],
-            hits: ["", "", "", "", ""]
-        }, {
-            locations: [0, 0, 0],
-            hits: ["", "", ""]
-        }],
+        this.ships = collectAllShip(),
         this.shipLength = [
             this.ships[0].locations.length,
             this.ships[1].locations.length,
             this.ships[2].locations.length
-        ];
+        ]
     };
 
 
-    shipModel.prototype.generateShipLocations = function() {
+    function collectAllShip(){
+        var ships =[];
+
+        for (var i = 0; i < shipNumbers; i++) {
+            shipParams = singleShip.getInstance();
+            ships.push(shipParams.ship);
+        };
+
+        return ships;
+    }
+
+
+
+    ShipModel.prototype.generateShipLocations = function() {
         var locations;
         for (var i = 0; i < this.numShips; i++) {
             do {
@@ -37,15 +46,15 @@ battleShips.factory('ShipModel', function ShipModel(boardConfig) {
     };
 
 
-    shipModel.prototype.generateShip = function(shipLength) {
+    ShipModel.prototype.generateShip = function(shipLength) {
         var direction = Math.floor(Math.random() * 2);
         var row, col;
         if (direction === 1) { // horizontal
-            row = Math.floor(Math.random() * this.boardSize);
-            col = Math.floor(Math.random() * (this.boardSize - shipLength + 1));
+            row = Math.floor(Math.random() * boardConfig.boardSize);
+            col = Math.floor(Math.random() * (boardConfig.boardSize - shipLength + 1));
         } else { // vertical
-            row = Math.floor(Math.random() * (this.boardSize - shipLength + 1));
-            col = Math.floor(Math.random() * this.boardSize);
+            row = Math.floor(Math.random() * (boardConfig.boardSize - shipLength + 1));
+            col = Math.floor(Math.random() * boardConfig.boardSize);
         }
         var newShipLocations = [];
         for (var i = 0; i < shipLength; i++) {
@@ -60,7 +69,7 @@ battleShips.factory('ShipModel', function ShipModel(boardConfig) {
         return newShipLocations;
     };
 
-    shipModel.prototype.collision = function(locations) {
+    ShipModel.prototype.collision = function(locations) {
 
         for (var i = 0; i < this.numShips; i++) {
             var ship = this.ships[i];
@@ -76,7 +85,7 @@ battleShips.factory('ShipModel', function ShipModel(boardConfig) {
     };
 
 
-    shipModel.prototype.isSunk = function(ship , thisLenght) {
+    ShipModel.prototype.isSunk = function(ship , thisLenght) {
         for (var i = 0; i < thisLenght; i++) {
             if (ship.hits[i] !== "hit") {
                 return false;
@@ -86,5 +95,5 @@ battleShips.factory('ShipModel', function ShipModel(boardConfig) {
     };
 
 
-    return new shipModel();
+    return new ShipModel();
 });

@@ -1,7 +1,6 @@
-battleShips.controller('GameControler', function GameControler($scope, ShipModel, boardConfig, fireModel) {
+battleShips.controller('GameControler', function GameControler($scope, ShipModel, singleShip, boardConfig, fireModel, gameMsgAlert) {
     $scope.tableRow = boardConfig.alphabet;
     $scope.boardSize = boardConfig.boardSize;
-
 
     init();
     function init() {
@@ -54,7 +53,7 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
         }
 
         if (keyEvent === undefined || keyEvent.which === 13 ){
-            var location = fireModel(guessInput.toUpperCase());
+            var location = fireModel.fire(guessInput.toUpperCase());
 
             if (location) {
 
@@ -109,7 +108,7 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
 
         var clickedGuess = clickedLetter + clickedColumn;
 
-        var location = fireModel(clickedGuess);
+        var location = fireModel.fire(clickedGuess);
 
 
         console.log('click col:', clickEvent.target);

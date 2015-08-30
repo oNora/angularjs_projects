@@ -10,19 +10,5 @@ battleShips.factory('boardConfig', function gameConfig() {
 	    YOU_MISSED : "You missed...",
 		alphabet : ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
 		boardSize : 10,
-		view : {
-	        displayMessage: function(msg) {
-	            var messageArea = document.getElementById("messageArea");
-	            messageArea.innerHTML = msg;
-	        },
-	        displayHit: function(location) {
-	            var cell = document.getElementById(location);
-	            cell.setAttribute("class", "hit");
-	        },
-	        displayMiss: function(location) {
-	            var cell = document.getElementById(location);
-	            cell.setAttribute("class", "miss");
-	        }
-        }
 	};
 });
