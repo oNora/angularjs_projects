@@ -1,4 +1,4 @@
-battleShips.controller('GameControler', function GameControler($scope, ShipModel, singleShip, boardConfig, fireModel, gameMsgAlert) {
+battleShips.controller('GameControler', function GameControler($scope, ShipModel, singleShip, boardConfig, fireModel) {
     $scope.tableRow = boardConfig.alphabet;
     $scope.boardSize = boardConfig.boardSize;
 

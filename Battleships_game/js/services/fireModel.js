@@ -1,7 +1,13 @@
 battleShips.factory('fireModel', function fireModel(boardConfig) {
 
+    /**
+     * Accept coordinates of shoting and parse them to the real coordinate of board
+     * @param  {String} guess - coordinate of hit cell
+     * @example - H5, C6, etc
+     *
+     * @return {Number}       - id of hit cell
+     */
     function parseGuess(guess) {
-
         var alphabet = boardConfig.alphabet;
 
         if (guess === null || guess.length >= 4) {
@@ -22,7 +28,6 @@ battleShips.factory('fireModel', function fireModel(boardConfig) {
                 return row + column;
             }
         }
-        return null;
     };
 
     return {
