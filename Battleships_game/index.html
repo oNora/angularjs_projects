@@ -7,62 +7,52 @@
 </head>
 <body ng-app="battleShips">
 
+    <div ng-controller="GameControler" >
+        <div class="msg">
+            <div id="messageArea"  class="wrap">
+            Evenst messages: <br>
+                {{fireMsg}}
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="menu" >
+                <span ng-click="toggle()">menu</span>
+                <ul ng-hide="showMenu">
+                    <li>
+                        <a href="index.html" title="">new game</a>
+                    </li>
+                    <li>
+                        <a href="" title="" ng-click="showShips()">show ships</a>
+                    </li>
+                </ul>
+            </div>
+            <table  cellpadding="0" cellspacing="0" >
+                <tr>
+                    <th class="coordinateCell"></th>
+                    <th ng-repeat="n in [] | range:boardSize" class="coordinateCell">{{$index}}</th>
+                </tr>
+                <tr ng-repeat="x in [] | range:boardSize" class="{{$index+1}}">
+                    <td class="coordinateCell" >{{tableRow[x]}}</td>
+                    <td ng-repeat="n in [] | range:boardSize" id="{{$parent.$index}}{{$index}}" ng-click="clickFire($event)" class="gameCell">.</td>
+                </tr>
+            </table>
 
+            <br>
+            <br>
 
-<div ng-controller="GameControler" >
-	<div class="msg">
-		<div id="messageArea"  class="wrap">
-		Evenst messages: <br>
-			{{fireMsg}}
-		</div>
-	</div>
-	<div class="wrap">
-		<div class="menu" >
-			<span ng-click="toggle()" ng-blur="tryFunc()">menu</span>
-			<ul ng-hide="showMenu">
-				<li>
-					<a href="index.html" title="">new game</a>
-				</li>
-				<li>
-					<a href="" title="" ng-click="showShips()">show ships</a>
-				</li>
-			</ul>
-		</div>
-		<table  cellpadding="0" cellspacing="0" >
-			<tr>
-				<th class="coordinateCell"></th>
-				<th ng-repeat="n in [] | range:boardSize" class="coordinateCell">{{$index}}</th>
-			</tr>
-			<tr ng-repeat="x in [] | range:boardSize" class="{{$index+1}}">
-				<td class="coordinateCell" >{{tableRow[x]}}</td>
-				<td ng-repeat="n in [] | range:boardSize" id="{{$parent.$index}}{{$index}}" ng-click="clickFire($event)" class="gameCell">.</td>
-			</tr>
-		</table>
-
-		<br>
-		<br>
-
-	    <input type="text" id="guessInput" placeholder="c5" ng-model="guessInput" ng-keypress="fire(guessInput, $event)">
-	    <input type="button" id="fireButton" ng-click="fire(guessInput)"  value="Fire!!!">
+            <input type="text" id="guessInput" placeholder="c5" ng-model="guessInput" ng-keypress="fire(guessInput, $event)">
+            <input type="button" id="fireButton" ng-click="fire(guessInput)"  value="Fire!!!">
+        </div>
     </div>
-</div>
 
-
-<!-- this is for test -->
-
-
-<script src="lib/angular.js"></script>
-<!-- <script src="lib/angular/angular-resource.min.js"></script> -->
-<!-- <script src="lib/angular/angular-route.min.js"></script> -->
-<script src="js/app.js"></script>
-<script src="js/controllers/GameControler.js"></script>
-<script src="js/services/ShipModel.js"></script>
-<script src="js/services/singleShip.js"></script>
-<script src="js/services/boardConfig.js"></script>
-<script src="js/services/fireModel.js"></script>
-<script src="js/filters/range.js"></script>
-<!-- <script src="js/directives/enterHandler.js"></script> -->
-
+    <script src="lib/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/GameControler.js"></script>
+    <script src="js/services/ShipModel.js"></script>
+    <script src="js/services/singleShip.js"></script>
+    <script src="js/services/boardConfig.js"></script>
+    <script src="js/services/fireModel.js"></script>
+    <script src="js/filters/range.js"></script>
 
 </body>
 </html>

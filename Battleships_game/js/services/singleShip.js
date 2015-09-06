@@ -6,12 +6,11 @@ battleShips.service('singleShip', function singleShip() {
      * @return {Object}  -  parameters of single ship
      */
     function generateParams () {
-        var rand = Math.floor(Math.random() * (6 - 3) + 3);
-        var locationShip = [];
-        var hitShip = [];
+        var rand = Math.floor(Math.random() * (6 - 3) + 3),
+            locationShip = [],
+            hitShip = [];
 
         for (var i = 0; i < rand; i++) {
-            // console.log('for-a');
             locationShip.push(0);
             hitShip.push("");
         };
@@ -22,9 +21,7 @@ battleShips.service('singleShip', function singleShip() {
         }
     }
 
-
     return {
-
         getInstance: generateParams
     }
 

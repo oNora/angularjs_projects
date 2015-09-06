@@ -37,7 +37,6 @@ battleShips.service('ShipModel', function ShipModel(boardConfig, singleShip) {
 
         for (var i = 0; i < shipNumbers; i++) {
             shipParams = singleShip.getInstance();
-            console.log('shipParams: ', shipParams);
             ships.push(shipParams);
         };
 
@@ -53,14 +52,9 @@ battleShips.service('ShipModel', function ShipModel(boardConfig, singleShip) {
         for (var i = 0; i < this.numShips; i++) {
             do {
                 locations = this.generateShip(this.shipLength[i]);
-                console.log('local locations in do');
-                console.log(locations);
             } while (this.collision(locations));
             this.ships[i].locations = locations;
         }
-
-        console.log("Ships array: ");
-        console.log(this.ships);
     };
 
 

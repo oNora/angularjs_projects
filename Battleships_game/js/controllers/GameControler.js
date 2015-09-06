@@ -3,51 +3,65 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
     $scope.boardSize = boardConfig.boardSize;
 
     init();
+    /**
+     * Get instance of ShipModel - create ships on the board.
+     */
     function init() {
-        $scope.ShipModel = ShipModel.generateShipLocations();
+        ShipModel.generateShipLocations();
     }
 
+    /**
+     * Show messages to the player about the status of the hit.
+     * @param  {[Array]} params - array with variable length. It contains fire messages and when all ships are sunk contains messages and the number of all shots
+     */
     function fireMsg(params){
-        var msg = params[0];
-        var numberGuess = params[1] == undefined ? '' : params[1];
+        var msg = params[0],
+            numberGuess = params[1] == undefined ? '' : params[1];
         $scope.fireMsg = msg + numberGuess;
     }
 
+    /**
+     * Handle the hit on the board.
+     * @param  {String} guess - id of hit cell
+     * @return {Boolean}      - if  the cell is already hit or it is new hit of this cell
+     */
+    function locationFire (guess) {
+        for (var i = 0; i < ShipModel.numShips; i++) {
+            var ship = ShipModel.ships[i];
+            var index = ship.locations.indexOf(guess);
 
-    function fireN (guess) {
+            if (ship.hits[index] === "hit") {
+                fireMsg([boardConfig.ALREADY_HIT]);
+                return true;
+            } else if (index >= 0) {
+                ship.hits[index] = "hit";
+                fireMsg([boardConfig.HIT]);
 
-    for (var i = 0; i < ShipModel.numShips; i++) {
-        var ship = ShipModel.ships[i];
-        var index = ship.locations.indexOf(guess);
-
-        if (ship.hits[index] === "hit") {
-            fireMsg([boardConfig.ALREADY_HIT]);
-            return true;
-        } else if (index >= 0) {
-            ship.hits[index] = "hit";
-            fireMsg([boardConfig.HIT]);
-
-
-            // console.log("ShipModel.shipLength[i]: {0}", ShipModel.shipLength[i]);
-            // console.log("ship: {0}", ship);
-            if (ShipModel.isSunk(ship, ShipModel.shipLength[i])) {
-
-                fireMsg([boardConfig.YOU_SANK_ONE]);
-                ShipModel.shipsSunk++;
+                if (ShipModel.isSunk(ship, ShipModel.shipLength[i])) {
+                    fireMsg([boardConfig.YOU_SANK_ONE]);
+                    ShipModel.shipsSunk++;
+                }
+                return true;
             }
-            return true;
         }
-    }
-    fireMsg([guess]);
-    fireMsg([boardConfig.YOU_MISSED]);
-    return false;
+
+        fireMsg([boardConfig.YOU_MISSED]);
     };
 
 
+    /**
+     * @type {Number} - the number of shots on the board
+     */
     var guesses = 0;
+
+    /**
+     * Fire function for input field (keyboard)
+     * @param  {String} guessInput - coordinates of hit cell
+     * @param  {Object} keyEvent   - keyboard press event
+     */
     $scope.fire = function(guessInput, keyEvent){
 
-        // hode menu if it is open
+        // hide menu if it is open
         if($scope.showMenu == false){
             $scope.toggle();
         }
@@ -58,21 +72,16 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
             if (location) {
 
                 guesses++;
-                var hit = fireN(location);
+                var hit = locationFire(location);
 
                 if (hit && ShipModel.shipsSunk === ShipModel.numShips) {
-
                     fireMsg([boardConfig.YOU_SANK, guesses]);
-
                 }
 
-                var inputUpperCase = guessInput.toUpperCase();
-                var row = boardConfig.alphabet.indexOf(inputUpperCase.charAt(0));
-                var selector = row + inputUpperCase.charAt(1);
-                var el = document.getElementById(selector);
-
-                console.log("el {}", el);
-
+                var inputUpperCase = guessInput.toUpperCase(),
+                    row = boardConfig.alphabet.indexOf(inputUpperCase.charAt(0)),
+                    selector = row + inputUpperCase.charAt(1),
+                    el = document.getElementById(selector);
 
                 if (hit){
                     angular.element(el).addClass('hitShip');
@@ -86,42 +95,39 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
                 var selectInput = document.getElementById('guessInput');
                 angular.element(selectInput).val('');
 
-                // hide all ship if they are shown
+                // hide all ships if they are shown
                 $scope.hideShips();
             }
         }
     }
 
+    /**
+     * Fire function with direct hit on the board using mouse
+     * @param  {Object} clickEvent   - mouse click event
+     */
     $scope.clickFire = function(clickEvent){
-
         // hide all ship if they are shown
         $scope.hideShips();
-        // hode menu if it is open
+
+        // hide menu if it is open
         if($scope.showMenu == false){
             $scope.toggle();
         }
 
-        // $scope.showMenu == false;
-        var clickedRow = clickEvent.target.id.charAt(0);
-        var clickedColumn = clickEvent.target.id.charAt(1);
-        var clickedLetter =  boardConfig.alphabet[clickedRow];
+        var clickedRow = clickEvent.target.id.charAt(0),
+            clickedColumn = clickEvent.target.id.charAt(1),
+            clickedLetter =  boardConfig.alphabet[clickedRow],
+            clickedGuess = clickedLetter + clickedColumn,
+            location = fireModel.fire(clickedGuess);
 
-        var clickedGuess = clickedLetter + clickedColumn;
-
-        var location = fireModel.fire(clickedGuess);
-
-
-        console.log('click col:', clickEvent.target);
 
         if (location) {
 
             guesses++;
-            var hit = fireN(location);
+            var hit = locationFire(location);
 
             if (hit && ShipModel.shipsSunk === ShipModel.numShips) {
-
                 fireMsg([boardConfig.YOU_SANK, guesses]);
-
             }
 
             if (hit){
@@ -131,28 +137,26 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
                 clickEvent.target.innerText = "-";
                 clickEvent.target.className = "hitCell";
             }
-            // console.log("hit : {}", hit);
-            
-
 
         }
 
     }
 
-
+    /**
+     * @type {Boolean} - initial menu status
+     */
     $scope.showMenu = true;
+    /**
+     * toggle menu status - show and hide
+     */
     $scope.toggle = function() {
         $scope.showMenu = !$scope.showMenu;
     }
 
-   $scope.tryFunc = function () {
-       console.log("focus");
-   }
-
-
+   /**
+    * Show ships on the board and toggle menu status
+    */
     $scope.showShips = function (){
-        // console.log("ShipModel: ", ShipModel);
-        // console.log("ShipModel ships: ", ShipModel.ships[0].locations);
 
         var allShips = ShipModel.ships,
             singleShip,
@@ -162,8 +166,8 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
         var shipSelector;
         angular.element(el).text('');
 
-        for (singleShip in allShips){
-            console.log("allShips: ", allShips[singleShip].locations);
+        for (singleShip in allShips) {
+
             for (var i = 0; i < allShips[singleShip].locations.length; i++) {
                 allShips[singleShip].locations[i];
 
@@ -178,20 +182,19 @@ battleShips.controller('GameControler', function GameControler($scope, ShipModel
 
     }
 
+   /**
+    * Hide ships on the board and toggle menu status
+    */
     $scope.hideShips = function (){
 
         var el = document.querySelectorAll('td');
 
-
         angular.forEach(el, function(value, key) {
-            // console.log("value: ", value);
-            // console.log("key: ", key);
-
 
             if( (angular.element(value).hasClass('hitShip') == false)
                 && angular.element(value).hasClass('gameCell') == true
                 && (angular.element(value).hasClass('hitCell') == false) ){
-                console.log("tuk");
+
                 angular.element(value).text('.');
             }
         });
