@@ -3,38 +3,38 @@
     var app = angular.module('CookingBookApp');
 
     app.config(['$stateProvider', '$urlRouterProvider',
-    	function($stateProvider, $urlRouterProvider) {
+        function($stateProvider, $urlRouterProvider) {
 
-		    $urlRouterProvider.otherwise('/addRecipe');
+            $urlRouterProvider.otherwise('/addRecipe');
 
-		    $stateProvider
+            $stateProvider
 
-	        // search recepi
-	        .state('search', {
-	            url: '/search',
-	            templateUrl: 'views/search.html'
-	        })
+            // search recipe
+            .state('search', {
+                url: '/search',
+                templateUrl: 'views/search.html'
+            })
 
-	        // add new recepi
-	        .state('addRecipe', {
-	            url: '/addRecipe',
-	            templateUrl: 'views/addRecipe.html'
-	        })
+            // add new recipe
+            .state('addRecipe', {
+                url: '/addRecipe',
+                templateUrl: 'views/addRecipe.html'
+            })
 
-            // view a recepi
-	        .state('recepi', {
-	            url: '/recepi/:recepiID',
-	            templateUrl: 'views/recepi.html',
-	            controller: function($scope, $stateParams) {
-	            // get the id
-	                $scope.id = $stateParams.recepiID;
-	                console.log('$scope.id: ', $scope.id);
-	                // get the location
-	                $scope.location = $stateParams.partyLocation;
-	            }
-	        });
+            // view a recipe
+            .state('recipe', {
+                url: '/recipe/:recipeID',
+                templateUrl: 'views/recipe.html',
+                controller: function($scope, $stateParams) {
+                // get the id
+                    $scope.id = $stateParams.recipeID;
+                    console.log('$scope.id: ', $scope.id);
+                    // get the location
+                    $scope.location = $stateParams.partyLocation;
+                }
+            });
 
-		}
-	]);
+        }
+    ]);
 
 })();
