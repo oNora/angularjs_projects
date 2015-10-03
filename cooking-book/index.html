@@ -16,7 +16,7 @@
 
     <script src="cb-ng/app.module.js"></script>
     <script src="cb-ng/app.controller.js"></script>
-    <script src="cb-ng/app.router.js"></script>
+    <script src="cb-ng/app.routes.js"></script>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
             </nav>
 
             <div class="control-group">
-                <label class="control-label" for="projectManager">Project Manager(s)</label>
+                <p>Available recipes</p>
                 <div class="row controls" >
                     <ul>
                         <li class="{{$index+1}}" ng-repeat="recipe in recipeList">

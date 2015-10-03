@@ -9,19 +9,19 @@
 
 		    $stateProvider
 
-	        // HOME STATES AND NESTED VIEWS ========================================
+	        // search recepi
 	        .state('search', {
 	            url: '/search',
 	            templateUrl: 'views/search.html'
 	        })
 
-	        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
+	        // add new recepi
 	        .state('addRecipe', {
 	            url: '/addRecipe',
-	            // templateUrl: 'views/addRecipe.html'
-	            templateUrl: 'test-iu-view/list-form-view.html'
+	            templateUrl: 'views/addRecipe.html'
 	        })
 
+            // view a recepi
 	        .state('recepi', {
 	            url: '/recepi/:recepiID',
 	            templateUrl: 'views/recepi.html',
