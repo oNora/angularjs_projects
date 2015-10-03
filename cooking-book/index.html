@@ -1,0 +1,56 @@
+<html ng-app="CookingBookApp">
+<head>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+
+    <!-- // <script type="text/javascript" src="assets/library/angular.min.js"></script> -->
+    <script src="http://code.angularjs.org/1.4.7/angular.js"></script> <!-- for debugging -->
+    <script type="text/javascript" src="assets/library/angular-ui-router.min.js"></script>
+
+    <script src="cb-ng/app.module.js"></script>
+    <script src="cb-ng/app.controller.js"></script>
+    <script src="cb-ng/app.router.js"></script>
+</head>
+
+<body>
+
+    <!-- MAIN CONTENT -->
+    <div class="container clearfix" ng-controller="CookingBookController">
+        <div class="col">
+            <!-- NAVIGATION -->
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" ui-sref="#">AngularUI Router</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a ui-sref="search">Search</a></li>
+                    <li><a ui-sref="addRecipe">Add a new Recipe</a></li>
+                </ul>
+            </nav>
+
+            <div class="control-group">
+                <label class="control-label" for="projectManager">Project Manager(s)</label>
+                <div class="row controls" >
+                    <ul>
+                        <li class="{{$index+1}}" ng-repeat="recipe in recipeList">
+                            <a ui-sref="recepi({recepiID: $index+1})"> {{recipe.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+        <div ui-view class="col"></div>
+
+    </div>
+
+</body>
+</html>

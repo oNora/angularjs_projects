@@ -1,7 +1,9 @@
 Description
 ============
 
-###Simple game of battleships 
+###I. `Battleships_game`
+
+####Simple game of battleships
 Simple application to allow a single human player to play a one-sided game using **angularjs**
 
 Params:
@@ -17,7 +19,7 @@ Params:
   - show ships - backdoor cheat :)
 2. How to hit ships:
   - the game accept direct cklick on the board with mouse
-  - using input field and "Fire!!!" button <br /> 
+  - using input field and "Fire!!!" button <br />
   Enter coordinates (row, col), e.g. A5 <br />
   Accept input from the player with uppercase and lowercase letters
 3. Game messages location: <br />
@@ -27,3 +29,6 @@ Params:
   - - = miss  <br />
   - X = hit
 
+###II. `cooking-book`
+
+-**Note:**  *it's still in progress ...*
