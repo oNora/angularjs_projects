@@ -25,13 +25,13 @@
             .state('recipe', {
                 url: '/recipe/:recipeID',
                 templateUrl: 'views/recipe.html',
-                controller: function($scope, $stateParams) {
+                controller: (['$scope', '$stateParams',function($scope, $stateParams) {
                 // get the id
                     $scope.id = $stateParams.recipeID;
                     console.log('$scope.id: ', $scope.id);
                     // get the location
                     $scope.location = $stateParams.partyLocation;
-                }
+                }])
             });
 
         }
