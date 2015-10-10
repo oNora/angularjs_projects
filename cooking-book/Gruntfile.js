@@ -32,9 +32,7 @@ module.exports = function(grunt) {
             my_target: {
                 options: {
                     sourceMap: false,
-                    preserveComments: 'some',
-                    beautify : true,
-                    mangle   : true
+                    preserveComments: 'some'
                 },
                 files: {
                     'build/js/<%= pkg.name %>.min.js': ['build/js/<%= pkg.name %>.js']
