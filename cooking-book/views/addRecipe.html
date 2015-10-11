@@ -1,11 +1,11 @@
-<div id="right_wrapper">
+<div id="right_wrapper" ng-controller="CookingBookAddRecipeController">
     <h1 class="title_right">Add a new Recipe</h1>
 
         <label for="title_field">Write a title: </label>
-        <input type="text" id="title_field">
+        <input type="text"  ng-model="recipeList.name">
         <br>
         <label for="ingredients_field">White the ingredients, separated by ", ": </label>
-        <textarea rows="4" cols="50" id="ingredients_field"></textarea>
-        <input type="submit" value="Add">
+        <textarea rows="4" cols="50"  ng-model="recipeList.ingredients"></textarea>
+        <button type="button" ng-click="addRecipe()">&nbsp;&nbsp;Add&nbsp;&nbsp;</button>
 
 </div>

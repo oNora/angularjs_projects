@@ -12,7 +12,8 @@
             // search recipe
             .state('search', {
                 url: '/search',
-                templateUrl: 'views/search.html'
+                templateUrl: 'views/search.html',
+                controller: 'CookingBookSearch'
             })
 
             // add new recipe
@@ -25,13 +26,7 @@
             .state('recipe', {
                 url: '/recipe/:recipeID',
                 templateUrl: 'views/recipe.html',
-                controller: (['$scope', '$stateParams',function($scope, $stateParams) {
-                // get the id
-                    $scope.id = $stateParams.recipeID;
-                    console.log('$scope.id: ', $scope.id);
-                    // get the location
-                    $scope.location = $stateParams.partyLocation;
-                }])
+                controller: 'CookingBookRecipe'
             });
 
         }
