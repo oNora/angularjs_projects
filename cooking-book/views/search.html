@@ -1,13 +1,14 @@
 <div id="right_wrapper">
     <h1 class="title_right">Search for Recipes</h1>
 
-    <label for="search_field">White the ingredients, separated by ", ": </label>
+    <label for="search_field">Write the ingredients, separated by ", ": </label>
     <br>
     <input type="text" id="search_field" ng-model="ingredientsInput">
     <input type="submit" value="Search" ng-click="searchRecipe(ingredientsInput)">
 
     <br>
-    <span class="wrong">There are not available ingredients. First enter recipes.</span>
+    <p class="msg">{{searchMsg}}</p>
+    <span ng-repeat="ingredient in avelibleIngredients">{{ingredient}}, </span>
 
 
     <br>

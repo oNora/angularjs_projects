@@ -8,10 +8,12 @@
             $scope.recipeList.push({
                 id:          ( $scope.recipeList.length + 1 ),
                 name:          $scope.recipeList.name,
-                ingredients:   $scope.recipeList.ingredients
+                ingredients:   $scope.recipeList.ingredients,
+                instructions:   $scope.recipeList.instructions
             });
             $scope.recipeList.name = '';
             $scope.recipeList.ingredients = '';
+            $scope.recipeList.instructions = '';
 
             console.log("$scope.recipeList: ", $scope.recipeList);
         };
