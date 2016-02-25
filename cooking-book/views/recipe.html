@@ -1,5 +1,11 @@
 <div>
     <p>{{name}}</p>
-    <p>{{ingredients}}</p>
-    <p>{{instructions}}</p>
+    <ul ng-hide="ingredients.length == 0">
+	  <li  ng-repeat="ingredient in ingredients">
+	    <span>{{ingredient.amount}}</span>
+	    <span>{{ingredient.amountUnits}}</span>
+	    <span>{{ingredient.ingredientName}}</span>
+	  </li>
+	</ul>
+    <p>{{description}}</p>
 </div>

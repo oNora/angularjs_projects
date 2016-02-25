@@ -9,6 +9,8 @@
 
         $scope.foundList = [];
 
+
+        // vzima inputa ot poleto za tursene
         $scope.searchRecipe = function (ingredientsInput) {
 
             // reset list of found recipes
@@ -26,18 +28,18 @@
                     $scope.foundList.push($scope.recipeList[i]);
                 }
             };
-            console.log('$scope.foundList: ', $scope.foundList);
+            // console.log('$scope.foundList: ', $scope.foundList);
         }
 
 
+        // da iskara wsichki nalichni sustvki
         $scope.avelibleIngredients = (function () {
             var avelibleUniqIntegrates = [];
 
             for (var i=0; i < $scope.recipeList.length; i++) {
 
-                var arrayIngredients = $scope.recipeList[i].ingredients.split(', ');
+                var arrayIngredients = cookingBookSearchRecipeService.ingrediesList($scope.recipeList[i].ingredients);
                 var arrayIngredientsLen = arrayIngredients.length;
-                console.log(' avelible: ',  arrayIngredients);
 
                 for (var y = 0; y < arrayIngredientsLen; y++){
                         var valueIngredient = arrayIngredients[y];

@@ -2,14 +2,28 @@
     <h1 class="title_right">Add a new Recipe</h1>
 
         <label for="title_field">Write a title: </label>
-        <input type="text"  ng-model="recipeList.name">
+        <input type="text"  ng-model="recipeList.name" class="recipe-info">
         <br>
-        <label for="instructions_field">Write a instruction: </label>
-        <textarea rows="4" cols="50"  ng-model="recipeList.instructions"></textarea>
+        <label for="description_field">Write a description: </label>
+        <textarea rows="4" cols="50"  ng-model="recipeList.description" class="recipe-info"></textarea>
         <br>
-        <label for="ingredients_field">Write the ingredients, separated by ", ": </label>
-        <textarea rows="4" cols="50"  ng-model="recipeList.ingredients"></textarea>
+
+        <div class="control-group">
+            <label class="control-label" for="inge">Ingredients:</label>
+            <div class="controls">
+                <ul id="ingredients" >
+                    <li ng-repeat="ingre in ing">
+                        <input ng-model="ingre.amount" class="recipe-info">
+                        <input ng-model="ingre.amountUnits" class="recipe-info">
+                        <input ng-model="ingre.ingredientName" class="recipe-info">
+                        <button type="button" class="btn btn-mini" ng-click="removeIngredient($index)"><i class="icon-minus-sign"></i> Delete </button>
+                    </li>
+                     <button type="button" class="btn btn-mini" ng-click="addIngredient()"><i class="icon-plus-sign"></i> Add </button>
+                </ul>
+            </div>
+        </div>
+
         <br>
-        <button type="button" ng-click="addRecipe()">&nbsp;&nbsp;Add&nbsp;&nbsp;</button>
+        <button type="button" ng-click="saveRecipe()">&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
 
 </div>

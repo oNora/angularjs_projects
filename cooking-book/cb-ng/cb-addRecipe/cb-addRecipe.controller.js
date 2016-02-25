@@ -3,17 +3,20 @@
 
     app.controller("CookingBookAddRecipeController", [ "$scope",  function($scope){
 
-        // {1: "{"title":"saS","ingredients":"saSA"}", 2: "{"title":"saS","ingredients":"SAsaA"}
-        $scope.addRecipe = function () {
+        $scope.saveRecipe = function () {
+            console.log("$scope.ing: ", $scope.ing);
+
             $scope.recipeList.push({
                 id:          ( $scope.recipeList.length + 1 ),
                 name:          $scope.recipeList.name,
-                ingredients:   $scope.recipeList.ingredients,
-                instructions:   $scope.recipeList.instructions
+                ingredients:   $scope.ing,
+                description:  $scope.recipeList.description,
+
             });
             $scope.recipeList.name = '';
             $scope.recipeList.ingredients = '';
-            $scope.recipeList.instructions = '';
+            $scope.recipeList.description = '';
+            $scope.ing = [{}];
 
             console.log("$scope.recipeList: ", $scope.recipeList);
         };
@@ -21,6 +24,15 @@
         $scope.deletingList = function() {
 
         }
+
+        $scope.addIngredient = function() {
+            var ingredients = $scope.ing;
+            ingredients[ingredients.length] = {};
+        };
+
+        $scope.removeIngredient = function(index) {
+            $scope.recipeList.ingredients.splice(index, 1);
+        };
 
     }]);
 })();

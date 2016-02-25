@@ -6,21 +6,21 @@
         var $this = this,
             foundRecipesId = [];
 
+        // vrushta samo receptite s konkretnite se sydyrva pone edna ot posochenite sustavki
         $this.search = function(allIngredients, availableRecipe) {
-            // console.log('dasli raboti');
-            // console.log('ingredientValue: ', ingredientValue);
-            // console.log('availableRecipe: ', availableRecipe);
 
-            // reset list of found recipes for every single search
+            // reset list of found recipes
             if(foundRecipesId.length){
                 foundRecipesId = [];
             }
 
             function checkRecipe (enteryValue) {
-                // console.log('enteryValue: ', enteryValue);
                 for (var i = 0; i < availableRecipe.length; i++ ) {
-                    // console.log(availableRecipe[i].ingredients.indexOf(enteryValue));
-                    var statusIng = availableRecipe[i].ingredients.indexOf(enteryValue);
+
+                    var recipeIn = $this.ingrediesList(availableRecipe[i].ingredients);
+                    var r = recipeIn.join();
+                    var statusIng = r.indexOf(enteryValue);
+
                     if (statusIng > -1) {
                         var statusRecp = foundRecipesId.indexOf(availableRecipe[i].id);
                             // console.log('statusRecp: ', statusRecp);
@@ -30,18 +30,25 @@
                     }
                 };
 
-                // console.log('foundRecipesId: ', foundRecipesId);
             }
+
 
             for (var x = 0; x < allIngredients.length; x++) {
-                // console.log("allIn: ", allIngredients[x])
-
-                checkRecipe(allIngredients[x])
+                checkRecipe(allIngredients[x]);
             }
 
-            console.log('foundRecipesId: ', foundRecipesId);
-
             return foundRecipesId;
+
+        }
+
+        $this.ingrediesList = function(recipeIngre) {
+
+            var allRecipeIn = [];
+            for( var item in recipeIngre){
+                allRecipeIn.push(recipeIngre[item].ingredientName);
+            }
+
+            return allRecipeIn;
 
         }
 
