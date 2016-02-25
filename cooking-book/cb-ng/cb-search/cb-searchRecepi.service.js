@@ -11,6 +11,10 @@
             // console.log('ingredientValue: ', ingredientValue);
             // console.log('availableRecipe: ', availableRecipe);
 
+            // reset list of found recipes for every single search
+            if(foundRecipesId.length){
+                foundRecipesId = [];
+            }
 
             function checkRecipe (enteryValue) {
                 // console.log('enteryValue: ', enteryValue);
