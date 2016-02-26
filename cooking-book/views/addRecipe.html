@@ -1,29 +1,33 @@
-<div id="right_wrapper" ng-controller="CookingBookAddRecipeController">
-    <h1 class="title_right">Add a new Recipe</h1>
+<div id="right_wrapper">
+    <h1 class="title_right">{{templateTitle}}</h1>
 
+    <!-- TODO:: cool validation like  https://scotch.io/tutorials/angularjs-form-validation -->
+    <form name="recipeForm" ng-submit="saveRecipe(recipeForm.$valid)">
         <label for="title_field">Write a title: </label>
-        <input type="text"  ng-model="recipeList.name" class="recipe-info">
+        <!-- <input type="text"  ng-model="recipeList.name" class="recipe-info" required > -->
+        <input type="text"  ng-model="recipeNameField" class="recipe-info" required >
         <br>
         <label for="description_field">Write a description: </label>
-        <textarea rows="4" cols="50"  ng-model="recipeList.description" class="recipe-info"></textarea>
+        <!-- <textarea rows="4" cols="50"  ng-model="recipeList.description" class="recipe-info"></textarea> -->
+        <textarea rows="4" cols="50"  ng-model="recipeDescriptionField" class="recipe-info"></textarea>
         <br>
 
         <div class="control-group">
             <label class="control-label" for="inge">Ingredients:</label>
             <div class="controls">
                 <ul id="ingredients" >
-                    <li ng-repeat="ingre in ing">
+                    <li ng-repeat="ingre in ingredientsList">
                         <input ng-model="ingre.amount" class="recipe-info">
                         <input ng-model="ingre.amountUnits" class="recipe-info">
                         <input ng-model="ingre.ingredientName" class="recipe-info">
                         <button type="button" class="btn btn-mini" ng-click="removeIngredient($index)"><i class="icon-minus-sign"></i> Delete </button>
                     </li>
-                     <button type="button" class="btn btn-mini" ng-click="addIngredient()"><i class="icon-plus-sign"></i> Add </button>
+                    <button type="button" class="btn btn-mini" ng-click="addIngredient()"><i class="icon-plus-sign"></i> Add </button>
                 </ul>
             </div>
         </div>
 
         <br>
-        <button type="button" ng-click="saveRecipe()">&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
-
+        <input type="submit" value="&nbsp;&nbsp;Save&nbsp;&nbsp;">
+    </form>
 </div>

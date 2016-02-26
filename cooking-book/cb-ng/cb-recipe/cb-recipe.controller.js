@@ -8,8 +8,8 @@
         var curentRecipe = cookingBookRecipeService.findRecipe(currentRecipeId, $scope.recipeList);
         $scope.name = curentRecipe.name;
         $scope.ingredients = curentRecipe.ingredients;
-        $scope.instructions = curentRecipe.instructions;
-        console.log('curentRecipe: ', curentRecipe);
+        $scope.description = curentRecipe.description;
+        $scope.id = currentRecipeId;
 
     }]);
 })();

@@ -1,43 +1,69 @@
 (function  () {
     var app = angular.module("cookingBook.addRecipe");
 
-    app.controller("CookingBookAddRecipeController", [ "$scope",  function($scope){
+    app.controller("CookingBookAddRecipeController",
+        [ "$scope", '$stateParams', '$location', 'cookingBookRecipeService',
+        function($scope, $stateParams, $location, cookingBookRecipeService){
 
-        //reset ingredients object
-        $scope.ing = [{}];
+            // da se definira list predi da sepolzwa wse pak
+            $scope.ingredientsList = [ {} ];
 
-        $scope.saveRecipe = function () {
-            console.log("$scope.ing 2: ", $scope.ing);
+            var curentRecipe = cookingBookRecipeService.findRecipe($stateParams.recipeID, $scope.recipeList);
+            $scope.templateTitle = $stateParams.recipeID ? 'Edit recipe' : 'Add a new Recipe';
 
-            $scope.recipeList.push({
-                id:          ( $scope.recipeList.length + 1 ),
-                name:          $scope.recipeList.name,
-                ingredients:   $scope.ing,
-                description:  $scope.recipeList.description,
+            if($stateParams.recipeID){
 
-            });
+                $scope.recipeNameField = curentRecipe.name;
+                $scope.recipeDescriptionField = curentRecipe.description;
+                $scope.ingredientsList = curentRecipe.ingredients;
 
-             // reset every single field after saving recipe
-            $scope.recipeList.name = '';
-            $scope.recipeList.ingredients = '';
-            $scope.recipeList.description = '';
-            $scope.ing = [{}];
+            } else {
+                //reset ingredients object
+                $scope.ingredientsList = [ {} ];
+            }
 
-            console.log("$scope.recipeList: ", $scope.recipeList);
-        };
 
-        $scope.deletingList = function() {
+            $scope.saveRecipe = function (isValid) {
 
-        }
+                var recipeValues = {
+                    id:          null,
+                    name:        $scope.recipeNameField,
+                    ingredients: $scope.ingredientsList,
+                    description: $scope.recipeDescriptionField,
+                }
 
-        $scope.addIngredient = function() {
-            var ingredients = $scope.ing;
-            ingredients[ingredients.length] = {};
-        };
 
-        $scope.removeIngredient = function(index) {
-            $scope.ing.splice(index, 1);
-        };
+                if($stateParams.recipeID){
+                    recipeValues.id = curentRecipe.id;
+
+                    var recipeIndex = curentRecipe.id - 1;
+                    $scope.recipeList[recipeIndex] = recipeValues;
+
+                    $location.path('/addRecipe');
+                } else {
+                    recipeValues.id = ( $scope.recipeList.length + 1 );
+                    $scope.recipeList.push(recipeValues);
+                }
+
+                $scope.recipeNameField = null;
+                $scope.recipeDescriptionField = null;
+                $scope.ingredientsList = [ {} ];
+
+                console.log("$scope.recipeList: ", $scope.recipeList);
+            };
+
+            $scope.deletingList = function() {
+
+            }
+
+            $scope.addIngredient = function() {
+                var ingredients = $scope.ingredientsList;
+                ingredients[ingredients.length] = {};
+            };
+
+            $scope.removeIngredient = function(index) {
+                $scope.ingredientsList.splice(index, 1);
+            };
 
     }]);
 })();

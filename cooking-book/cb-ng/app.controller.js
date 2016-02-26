@@ -11,7 +11,5 @@
             {id: 4, name: "kiuvteta", description: "some description", ingredients: [{"ingredientName":"siren", "amount":"1", "amountUnits":"ks" }]}
         ]
 
-        // da se definira list predi da sepolzwa wse pak
-        $scope.ing = [ {} ];
     }]);
 })();
