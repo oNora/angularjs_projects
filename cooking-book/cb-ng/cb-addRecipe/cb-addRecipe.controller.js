@@ -3,8 +3,11 @@
 
     app.controller("CookingBookAddRecipeController", [ "$scope",  function($scope){
 
+        //reset ingredients object
+        $scope.ing = [{}];
+
         $scope.saveRecipe = function () {
-            console.log("$scope.ing: ", $scope.ing);
+            console.log("$scope.ing 2: ", $scope.ing);
 
             $scope.recipeList.push({
                 id:          ( $scope.recipeList.length + 1 ),
@@ -13,6 +16,8 @@
                 description:  $scope.recipeList.description,
 
             });
+
+             // reset every single field after saving recipe
             $scope.recipeList.name = '';
             $scope.recipeList.ingredients = '';
             $scope.recipeList.description = '';
@@ -31,7 +36,7 @@
         };
 
         $scope.removeIngredient = function(index) {
-            $scope.recipeList.ingredients.splice(index, 1);
+            $scope.ing.splice(index, 1);
         };
 
     }]);
