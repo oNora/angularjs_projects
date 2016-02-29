@@ -1,3 +1,4 @@
+<!-- <div id="right_wrapper" ng-controller="CookingBookAddRecipeController"> -->
 <div id="right_wrapper">
     <h1 class="title_right">{{templateTitle}}</h1>
 
@@ -20,14 +21,14 @@
                         <input ng-model="ingre.amount" class="recipe-info">
                         <input ng-model="ingre.amountUnits" class="recipe-info">
                         <input ng-model="ingre.ingredientName" class="recipe-info">
-                        <button type="button" class="btn btn-mini" ng-click="removeIngredient($index)"><i class="icon-minus-sign"></i> Delete </button>
+                        <button type="button" class="btn" ng-click="removeIngredient($index)"><i class="icon-clipboard-remove2"></i> Delete </button>
                     </li>
-                    <button type="button" class="btn btn-mini" ng-click="addIngredient()"><i class="icon-plus-sign"></i> Add </button>
+                    <button type="button" class="btn" ng-click="addIngredient()"><i class="icon-clipboard-add2"></i> Add </button>
                 </ul>
             </div>
         </div>
 
         <br>
-        <input type="submit" value="&nbsp;&nbsp;Save&nbsp;&nbsp;">
+        <p><input type="submit" value="Save" class="btn">
     </form>
 </div>

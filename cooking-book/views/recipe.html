@@ -1,13 +1,32 @@
 <div>
-    <p>{{name}}</p>
-    <ul ng-hide="ingredients.length == 0">
-	  <li  ng-repeat="ingredient in ingredients">
-	    <span>{{ingredient.amount}}</span>
-	    <span>{{ingredient.amountUnits}}</span>
-	    <span>{{ingredient.ingredientName}}</span>
-	  </li>
-	</ul>
-    <p>{{description}}</p>
-    <br>
-    <a ui-sref="editRecipe({recipeID: id})"> edit </a>
+    <h1>{{name}}</h1>
+
+    <div class="recepie-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>Amount units</th>
+                    <th>Ingredient name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ingredient allways has at least one property - $$hashKey -->
+                <tr ng-repeat="ingredient in ingredients" ng-hide="getLength(ingredient) == 1">
+                    <td>{{ingredient.amount}}</td>
+                    <td>{{ingredient.amountUnits}}</td>
+                    <td>{{ingredient.ingredientName}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Description: </h3>
+        <div class="description-wraper">
+            <p>{{description}}</p>
+        </div>
+
+        <div class="edit-btn-wrap">
+            <a ui-sref="editRecipe({recipeID: id})" class="btn"> <i class="icon-clipboard-edit2"></i> Edit </a>
+        </div>
+    </div>
 </div>

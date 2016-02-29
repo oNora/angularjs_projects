@@ -26,6 +26,10 @@ module.exports = function(grunt) {
             js: {
                 files: ['cb-ng/*.js', 'cb-ng/**/*.js'],
                 tasks: ['concat', 'uglify']
+            },
+            scss: {
+                files: ['assets/scss/*.scss'],
+                tasks: ['sass']
             }
         },
         uglify: {
@@ -38,15 +42,27 @@ module.exports = function(grunt) {
                     'build/js/<%= pkg.name %>.min.js': ['build/js/<%= pkg.name %>.js']
                 }
             }
+        },
+        sass: {
+            dist: {
+                options: {
+                  style: 'compact',
+                  "sourcemap=none": '',
+                  noCache: true
+                },
+                files: {
+                  'assets/css/app.css': 'assets/scss/app.scss'
+                }
+            }
         }
-
     });
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
-    grunt.registerTask('build', ['concat', 'uglify']);
-    grunt.registerTask('dev', ['build', 'watch']);
+    grunt.registerTask('build',   ['concat', 'uglify', 'sass']);
+    grunt.registerTask('dev',     ['build', 'watch']);
 
 };
