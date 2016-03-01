@@ -30,7 +30,7 @@
                     name:        $scope.recipeNameField,
                     ingredients: $scope.ingredientsList,
                     description: $scope.recipeDescriptionField,
-                }
+                };
 
 
                 if($stateParams.recipeID){
@@ -51,10 +51,6 @@
 
                 console.log("$scope.recipeList: ", $scope.recipeList);
             };
-
-            $scope.deletingList = function() {
-
-            }
 
             $scope.addIngredient = function() {
                 var ingredients = $scope.ingredientsList;

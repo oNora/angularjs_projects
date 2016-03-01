@@ -28,7 +28,7 @@
                                 foundRecipesId.push(availableRecipe[i].id);
                             }
                     }
-                };
+                }
 
             }
 
@@ -39,7 +39,7 @@
 
             return foundRecipesId;
 
-        }
+        };
 
         $this.ingrediesList = function(recipeIngre) {
 
@@ -50,7 +50,7 @@
 
             return allRecipeIn;
 
-        }
+        };
 
     }]);
 })();

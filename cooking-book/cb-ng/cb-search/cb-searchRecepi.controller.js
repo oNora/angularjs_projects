@@ -27,9 +27,9 @@
                 if(recipesId.indexOf($scope.recipeList[i].id) > -1 ){
                     $scope.foundList.push($scope.recipeList[i]);
                 }
-            };
+            }
             // console.log('$scope.foundList: ', $scope.foundList);
-        }
+        };
 
 
         // da iskara wsichki nalichni sustvki
@@ -48,7 +48,7 @@
                             avelibleUniqIntegrates.push(valueIngredient);
                         }
                 }
-            };
+            }
             console.log('avelibleUniqIntegrates: ', avelibleUniqIntegrates);
             return avelibleUniqIntegrates;
         })();

@@ -12,9 +12,8 @@
         $scope.id = currentRecipeId;
 
         $scope.getLength = function(obj) {
-            console.log(Object.keys(obj).length)
             return Object.keys(obj).length;
-        }
+        };
 
     }]);
 })();

@@ -8,9 +8,9 @@
         $this.findRecipe = function(recipeID, allRecipes) {
 
             var recipeIndex = recipeID - 1;
-            var getRecipe = allRecipes[recipeIndex]
+            var getRecipe = allRecipes[recipeIndex];
 
-            return  getRecipe ;
-        }
+            return  getRecipe;
+        };
     }]);
 })();
