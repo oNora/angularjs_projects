@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('../fonts/icomoon.eot?lmurid');
-    src:    url('../fonts/icomoon.eot?lmurid#iefix') format('embedded-opentype'),
-        url('../fonts/icomoon.ttf?lmurid') format('truetype'),
-        url('../fonts/icomoon.woff?lmurid') format('woff'),
-        url('../fonts/icomoon.svg?lmurid#icomoon') format('svg');
+    src:    url('../fonts/icomoon.eot?96sxbc');
+    src:    url('../fonts/icomoon.eot?96sxbc#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?96sxbc') format('truetype'),
+        url('../fonts/icomoon.woff?96sxbc') format('woff'),
+        url('../fonts/icomoon.svg?96sxbc#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,73 +24,22 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-heart:before {
-    content: "\e900";
-}
-.icon-clipboard-list:before {
-    content: "\e901";
-}
 .icon-clipboard-list2:before {
     content: "\e902";
-}
-.icon-clipboard-checked:before {
-    content: "\e903";
 }
 .icon-clipboard-checked2:before {
     content: "\e904";
 }
-.icon-clipboard-add:before {
-    content: "\e905";
-}
 .icon-clipboard-add2:before {
     content: "\e906";
-}
-.icon-clipboard-remove:before {
-    content: "\e907";
 }
 .icon-clipboard-remove2:before {
     content: "\e908";
 }
-.icon-trash-can:before {
-    content: "\e909";
-}
-.icon-trash-can2:before {
-    content: "\e90a";
-}
-.icon-clipboard-edit:before {
-    content: "\e90b";
-}
 .icon-clipboard-edit2:before {
     content: "\e90c";
 }
-.icon-document-search:before {
-    content: "\e90d";
-}
 .icon-document-search2:before {
     content: "\e90e";
-}
-.icon-folder-search:before {
-    content: "\e90f";
-}
-.icon-folder-search2:before {
-    content: "\e910";
-}
-.icon-pencil:before {
-    content: "\e911";
-}
-.icon-pencil2:before {
-    content: "\e912";
-}
-.icon-quill:before {
-    content: "\e913";
-}
-.icon-folder-plus:before {
-    content: "\e914";
-}
-.icon-search:before {
-    content: "\e915";
-}
-.icon-bin:before {
-    content: "\e916";
 }
 

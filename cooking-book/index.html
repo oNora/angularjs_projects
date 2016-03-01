@@ -28,15 +28,24 @@
             <!-- NAVIGATION -->
             <nav class="navbar">
                 <ul class="nav">
-                    <li ui-sref-active="active"><i class="icon-document-search2"></i><a ui-sref="search">Search</a></li>
-                    <li ui-sref-active="active"><i class="icon-clipboard-add2"></i><a ui-sref="addRecipe">Add a new Recipe</a></li>
+                    <li ui-sref-active="active">
+                        <i class="icon-document-search2"></i>
+                        <a ui-sref="search">Search</a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <i class="icon-clipboard-add2"></i>
+                        <a ui-sref="addRecipe">Add a new Recipe</a>
+                    </li>
                 </ul>
             </nav>
 
             <div class="list-wrap">
                 <ul>
-                    <li><i class="icon-clipboard-list2"></i> <p>Available recipes</p></li>
-                    <li ng-repeat="recipe in recipeList"  ui-sref-active="active">
+                    <li>
+                        <i class="icon-clipboard-list2"></i>
+                        <p>Available recipes</p>
+                    </li>
+                    <li ng-repeat="recipe in recipeList" ui-sref-active="active">
                         <a ui-sref="recipe({recipeID: $index+1})"> {{recipe.name}}</a>
                     </li>
                 </ul>
