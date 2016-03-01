@@ -1,26 +1,27 @@
-<!-- <div id="right_wrapper" ng-controller="CookingBookAddRecipeController"> -->
 <div id="right_wrapper">
     <h1 class="title_right">{{templateTitle}}</h1>
 
     <!-- TODO:: cool validation like  https://scotch.io/tutorials/angularjs-form-validation -->
     <form name="recipeForm" ng-submit="saveRecipe(recipeForm.$valid)">
         <label for="title_field">Write a title: </label>
-        <!-- <input type="text"  ng-model="recipeList.name" class="recipe-info" required > -->
         <input type="text"  ng-model="recipeNameField" class="recipe-info" required >
-        <br>
-        <label for="description_field">Write a description: </label>
-        <!-- <textarea rows="4" cols="50"  ng-model="recipeList.description" class="recipe-info"></textarea> -->
-        <textarea rows="4" cols="50"  ng-model="recipeDescriptionField" class="recipe-info"></textarea>
-        <br>
 
-        <div class="control-group">
-            <label class="control-label" for="inge">Ingredients:</label>
+        <label for="description_field">Write a description: </label>
+        <textarea rows="4" cols="50"  ng-model="recipeDescriptionField" class="recipe-info"></textarea>
+
+        <div class="ingredients-inpits">
+            <p>Add ingredients</p>
             <div class="controls">
-                <ul id="ingredients" >
+                <ul >
+                    <li>
+                        <label class="input-title amount" for="amount">Amount:</label>
+                        <label class="input-title amountUnits" for="amountUnits">Amount units:</label>
+                        <label class="input-title ingredientName" for="ingredientName">ingredient name:</label>
+                    </li>
                     <li ng-repeat="ingre in ingredientsList">
-                        <input ng-model="ingre.amount" class="recipe-info">
-                        <input ng-model="ingre.amountUnits" class="recipe-info">
-                        <input ng-model="ingre.ingredientName" class="recipe-info">
+                        <input name="amount"  type="text" id="amount" ng-model="ingre.amount" class="recipe-info">
+                        <input name="amountUnits"  type="text" id="amountUnits"ng-model="ingre.amountUnits" class="recipe-info">
+                        <input name="ingredientName"  type="text" id="ingredientName" ng-model="ingre.ingredientName" class="recipe-info">
                         <button type="button" class="btn" ng-click="removeIngredient($index)"><i class="icon-clipboard-remove2"></i> Delete </button>
                     </li>
                     <button type="button" class="btn" ng-click="addIngredient()"><i class="icon-clipboard-add2"></i> Add </button>
@@ -28,7 +29,10 @@
             </div>
         </div>
 
-        <br>
-        <p><input type="submit" value="Save" class="btn">
+        <div class="btn-wrap">
+            <button type="submit" class="btn">
+                <i class="icon-clipboard-checked2"></i> Save
+            </button>
+        </div>
     </form>
 </div>

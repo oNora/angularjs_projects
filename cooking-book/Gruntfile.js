@@ -51,7 +51,7 @@ module.exports = function(grunt) {
                   noCache: true
                 },
                 files: {
-                  'assets/css/app.css': 'assets/scss/app.scss'
+                  'build/css/app.css': 'assets/scss/app.scss'
                 }
             }
         }

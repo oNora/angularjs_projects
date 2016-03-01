@@ -1,23 +1,31 @@
 <div id="right_wrapper">
     <h1 class="title_right">Search for Recipes</h1>
 
-    <label for="search_field">Write the ingredients, separated by ", ": </label>
-    <br>
-    <input type="text" id="search_field" ng-model="ingredientsInput">
-    <input type="submit" value="Search" ng-click="searchRecipe(ingredientsInput)">
+    <div class="serch-form">
+        <form ng-submit="searchRecipe(ingredientsInput)">
 
-    <br>
-    <p class="msg">{{searchMsg}}</p>
-    <span ng-repeat="ingredient in avelibleIngredients">{{ingredient}}, </span>
+            <label for="search_field">Write the ingredients, separated by ", ": </label>
+            <input type="text" id="search_field" ng-model="ingredientsInput">
+            <!-- <input type="submit" value="Search" ng-click="searchRecipe(ingredientsInput)"> -->
+            <button type="submit" class="btn">
+                <i class="icon-clipboard-checked2"></i> Search
+            </button>
+        </form>
 
+        <p class="msg">{{searchMsg}}</p>
+        <div class="gray-wraper" ng-hide="recipeList.length == 0">
+            <span ng-repeat="ingredient in avelibleIngredients">{{ingredient}}, </span>
+        </div>
 
-    <br>
-    <p>found recipes</p>
-    <div class="row controls" >
-        <ul>
-            <li ng-repeat="recipe in foundList">
-                <a ui-sref="recipe({recipeID: recipe.id})"> {{recipe.name}}</a>
-            </li>
-        </ul>
+        <div class="list-wrap" ng-hide="foundList.length == 0">
+            <ul>
+                <li>
+                    <i class="icon-clipboard-list2"></i><p>Found recipes</p>
+                </li>
+                <li ng-repeat="recipe in foundList">
+                    <a ui-sref="recipe({recipeID: recipe.id})"> {{recipe.name}}</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

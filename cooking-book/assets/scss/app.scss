@@ -3,59 +3,119 @@ $green-color: #1abc9c;
 $dark-blur-color: #34495e;
 $gray-color: #bdc3c7;
 
-/* === resets and command styles START === */
+/* === resets and command styles === */
 html, body, div, nav, input, textarea, p, h1, h2, h3, h4, ul, li, table, tr, th, td{
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 li{
-	list-style-type: none;
+    list-style-type: none;
 }
 
 a {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 img{
-	outline: none;
+    outline: none;
 }
 
 body{
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 16px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 16px;
 }
 
 i {
-	display: inline-block;
-	font-size: 28px;
+    display: inline-block;
+    font-size: 28px;
 }
 
 h1{
-	margin-bottom: 55px;;
-	padding: 5px;
-	background: $dark-blur-color;
-	border-radius: 2px;
-	color: #fff;
-	font-weight: normal;
+    margin-bottom: 55px;;
+    padding: 5px;
+    background: $dark-blur-color;
+    border-radius: 2px;
+    color: #fff;
+    font-weight: normal;
 
-	&::first-letter {
-    	text-transform: capitalize;
-	}
+    &::first-letter {
+        text-transform: capitalize;
+    }
 }
 
 h3{
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .clearfix:after{
-	display: table;
-	clear: both;
-	content: "";
+    display: table;
+    clear: both;
+    content: "";
 }
 
-/* === resets and command styles END === */
+.btn-wrap{
+    text-align: right;
+}
 
+.btn{
+    display: inline-block;
+    width: 100px;
+    padding: 5px 10px;
+    background: $green-color;
+    border: 0;
+    border-radius: 2px;
+    box-sizing: border-box;
+    color: #fff;
+    line-height: 30px;
+    text-align: left;
+    cursor: pointer;
+
+    i{
+        float: left;
+        margin-right: 4px;
+    }
+
+    &:hover{
+        background: #34495e;
+        color:$green-color;
+    }
+}
+
+label{
+    display: block;
+    margin: 15px 0 5px;
+    padding: 5px 0;
+    line-height: 30px;
+}
+input[type=text], textarea{
+    width: 100%;
+    padding: 8px 12px;
+    border: 2px solid $gray-color;
+    border-radius: 2px;
+    box-shadow: none;
+    font-family: Lato,Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.467;
+    color: #000;
+    -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
+    transition: border .25s linear,color .25s linear,background-color .25s linear;
+
+    &:focus{
+        border-color: #1abc9c;
+        outline: 0;
+        box-shadow: none;
+    }
+}
+
+.gray-wraper{
+    margin-bottom: 20px;
+    padding: 10px;
+    background: lighten($gray-color, 18%);
+    border-radius: 2px;
+}
+
+/* === container and columns styles === */
 .container{
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -67,159 +127,199 @@ h3{
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     justify-content: space-between;
-	width: 950px;
-	margin: 0 auto;
+    width: 900px;
+    margin: 0 auto;
 }
 
 .col{
-	width: 650px;
+    width: 650px;
 
-	&:first-of-type{
-		width: 200px;
-	}
+    &:first-of-type{
+        width: 200px;
+    }
 }
 li{
-	a{
-		display: block;
-		color: #fff;
-	}
 
-	i{
-		float: left;
-		margin: 0 5px 0 0;
-	}
+    a{
+        display: block;
+        color: #fff;
+    }
+
+    i{
+        float: left;
+        margin: 0 5px 0 0;
+    }
 }
 nav li{
-	margin-bottom: 5px;
+    margin-bottom: 5px;
     padding: 5px;
-	background: $green-color;
-	border-radius: 2px;
+    background: $green-color;
+    border-radius: 2px;
     line-height: 30px;
-	color: #fff;
+    color: #fff;
+
+    &.active{
+        background: #34495e;
+        color:$green-color;
+
+        a{
+            color:$green-color;
+        }
+    }
 }
 
 .list-wrap {
-	margin-top: 20px;
+    margin-top: 20px;
 
-	p{
-		border-radius: 2px 2px 0 0;
-	    color: #fff;
-	    line-height: 30px;
-	}
+    p{
+        border-radius: 2px 2px 0 0;
+        color: #fff;
+        line-height: 30px;
+    }
 
-	ul{
-	    border-radius: 3px;
-		background: darken( $dark-blur-color, 5% );
-	}
+    ul{
+        border-radius: 3px;
+        background: darken( $dark-blur-color, 5% );
+    }
 
-	li{
-		margin-bottom: 2px;
-		padding: 0 15px;
-		background: $dark-blur-color;
-		color:#fff;
+    li{
+        margin-bottom: 2px;
+        padding: 0 15px;
+        background: $dark-blur-color;
+        color:#fff;
 
-		&:first-of-type{
-			margin-bottom: 0;
-			padding: 5px;
-			border-radius: 2px 2px 0 0 ;
- 			background: $green-color;
-		}
+        &:first-of-type{
+            margin-bottom: 0;
+            padding: 5px;
+            border-radius: 2px 2px 0 0 ;
+            background: $green-color;
+        }
 
-		&:last-of-type{
-			margin-bottom: 0;
-			border-radius: 0 0 2px 2px;
-		}
+        &:last-of-type{
+            margin-bottom: 0;
+            border-radius: 0 0 2px 2px;
+        }
 
-		&.active{
-	    	background: 0 0;
-		}
+        &.active{
+            background: 0 0;
+        }
 
 
-		a{
-			padding: 10px 0;
+        a{
+            padding: 10px 0;
 
-			&:before{
-		    	margin-right: 12px;
-				content: '\2022';
-			}
-		}
-	}
+            &:before{
+                margin-right: 12px;
+                content: '\2022';
+            }
+        }
+    }
 
-	li.active a{
-		color: $green-color;
-	}
+    li.active a{
+        color: $green-color;
+    }
 
 }
 
+
+/* === recipes view styles === */
 table{
 
-	width: 100%;
-	margin-bottom: 30px;
-	border-collapse: collapse;
-	border-radius: 2px;
-
-	thead{
-		color: #fff;
-		font-weight: normal;
-	}
-
-	th, td{
-		padding: 5px 0;
-		border-right: 1px solid #fff;
-		background: $green-color;
-		line-height: 30px;
-	    font-weight: normal;
-
-		&:first-of-type{
-			border-radius: 2px 0 0 0;
-		}
-
-		&:last-of-type{
-			border-right: 0;
-			border-radius: 0 2px 0 0;
-		}
-	}
-
-	tr{
-		background: lighten($gray-color, 18%);
-		border-right: 0;
-
-		&:nth-child(odd){
-			background: lighten($gray-color, 15%);
-		}
-
-		td{
-			padding: 5px 10px;
-			background: none;
-			border-right: 0;
-		}
-	}
-}
-
-.description-wraper{
-	margin-bottom: 20px;
-	padding: 10px;
-	background: lighten($gray-color, 18%);
-	border-radius: 2px;
-}
-
-.edit-btn-wrap{
-	text-align: right;
-}
-
-.btn{
-    display: inline-block;
-    width: 75px;
-    padding: 5px 10px;
-    background: #1abc9c;
-    border: 0;
+    width: 100%;
+    margin-bottom: 30px;
+    border-collapse: collapse;
     border-radius: 2px;
-    color: #fff;
-    line-height: 30px;
-    text-align: left;
 
-	i{
-		float: left;
-		margin-right: 4px;
-	}
+    thead{
+        color: #fff;
+        font-weight: normal;
+    }
+
+    th, td{
+        padding: 5px 0;
+        border-right: 1px solid #fff;
+        background: $green-color;
+        line-height: 30px;
+        font-weight: normal;
+
+        &:first-of-type{
+            border-radius: 2px 0 0 0;
+        }
+
+        &:last-of-type{
+            border-right: 0;
+            border-radius: 0 2px 0 0;
+        }
+    }
+
+    tr{
+        background: lighten($gray-color, 18%);
+        border-right: 0;
+
+        &:nth-child(odd){
+            background: lighten($gray-color, 15%);
+        }
+
+        td{
+            padding: 5px 10px;
+            background: none;
+            border-right: 0;
+        }
+    }
+}
+
+/* === add recipes view styles === */
+.ingredients-inpits{
+
+    input[name=amount], input[name=amountUnits]{
+        width: 15%;
+    }
+
+    input[name=ingredientName]{
+        width: 52%;
+    }
+
+    li{
+        margin-bottom: 10px;
+
+        &:first-child{
+            margin-bottom:2px;
+        }
+    }
+
+    .input-title{
+        display: inline-block;
+        margin:0;
+        padding: 0;
+        line-height: 15px;
+
+        &.amount{
+            width: 15%;
+        }
+
+        &.amountUnits{
+            width: 16%;
+        }
+    }
+
+    p{
+        margin: 20px 0 10;
+    }
+}
+
+/* === search view styles === */
+
+.serch-form{
+
+    input[type=text]{
+        width: 83%;
+    }
+
+    p{
+        padding: 5px 0 10px;
+    }
+
+    .list-wrap p{
+        padding: 0;
+    }
 }
