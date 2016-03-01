@@ -19,15 +19,15 @@
             // add new recipe
             .state('addRecipe', {
                 url: '/addRecipe',
-                templateUrl: 'views/addRecipe.html',
-                controller: 'CookingBookAddRecipeController'
+                templateUrl: 'views/formRecipe.html',
+                controller: 'CookingBookFormRecipeController'
             })
 
             // edit recipe
             .state('editRecipe', {
                 url: '/editRecipe/:recipeID',
-                templateUrl: 'views/addRecipe.html',
-                controller: 'CookingBookAddRecipeController'
+                templateUrl: 'views/formRecipe.html',
+                controller: 'CookingBookFormRecipeController'
             })
 
             // view a recipe

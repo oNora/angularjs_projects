@@ -1,7 +1,7 @@
 (function  () {
-    var app = angular.module("cookingBook.addRecipe");
+    var app = angular.module("cookingBook.formRecipe");
 
-    app.controller("CookingBookAddRecipeController",
+    app.controller("CookingBookFormRecipeController",
         [ "$scope", '$stateParams', '$location', 'cookingBookRecipeService',
         function($scope, $stateParams, $location, cookingBookRecipeService){
 

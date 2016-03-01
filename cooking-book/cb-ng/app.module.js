@@ -2,7 +2,7 @@
 
     angular.module('CookingBookApp', [
         'ui.router',
-        'cookingBook.addRecipe',
+        'cookingBook.formRecipe',
         'cookingBook.recipe',
         'cookingBook.search'
     ]);
