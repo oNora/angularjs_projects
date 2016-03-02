@@ -6,9 +6,15 @@
         var $this = this;
 
         $this.findRecipe = function(recipeID, allRecipes) {
+            var getRecipe;
 
-            var recipeIndex = recipeID - 1;
-            var getRecipe = allRecipes[recipeIndex];
+            for (var i = 0; i < allRecipes.length; i++) {
+
+                if(allRecipes[i].id == recipeID){
+                    getRecipe = allRecipes[i];
+                    break;
+                }
+            }
 
             return  getRecipe;
         };

@@ -46,7 +46,7 @@
                         <p>Available recipes</p>
                     </li>
                     <li ng-repeat="recipe in recipeList" ui-sref-active="active">
-                        <a ui-sref="recipe({recipeID: $index+1})"> {{recipe.name}}</a>
+                        <a ui-sref="recipe({recipeID: recipe.id})"> {{recipe.name}}</a>
                     </li>
                 </ul>
 

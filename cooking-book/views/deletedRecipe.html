@@ -1,0 +1,13 @@
+<div>
+    <h1>Deleting</h1>
+
+
+    <div ng-hide="confirmDeleting == 1" class="deletedRecipe">
+		<p>Are you sure u wont to delete this recipe: {{recipeName}} </p>
+    	<div>
+    		<button type="button" class="btn" ng-click="removeRecipe(curentID)">Yes </button>
+    		<a ui-sref="recipe({recipeID: curentID})" class="btn">No </a>
+		</div>
+    </div>
+    <p >{{confirmMsg}}</p>
+</div>

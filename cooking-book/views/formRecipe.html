@@ -2,9 +2,9 @@
     <h1 class="title_right">{{templateTitle}}</h1>
 
     <!-- TODO:: cool validation like  https://scotch.io/tutorials/angularjs-form-validation -->
-    <form name="recipeForm" ng-submit="saveRecipe(recipeForm.$valid)">
+    <form name="recipeForm" ng-submit="saveRecipe()">
         <label for="title_field">Write a title: </label>
-        <input type="text"  ng-model="recipeNameField" class="recipe-info" required >
+        <input type="text"  ng-model="recipeName" class="recipe-info" required >
 
         <label for="description_field">Write a description: </label>
         <textarea rows="4" cols="50"  ng-model="recipeDescriptionField" class="recipe-info"></textarea>

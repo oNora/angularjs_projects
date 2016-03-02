@@ -8,12 +8,15 @@
             // da se definira list predi da sepolzwa wse pak
             $scope.ingredientsList = [ {} ];
 
+            $scope.confirmDeleting = 0;
+
             var curentRecipe = cookingBookRecipeService.findRecipe($stateParams.recipeID, $scope.recipeList);
             $scope.templateTitle = $stateParams.recipeID ? 'Edit recipe' : 'Add a new Recipe';
 
             if($stateParams.recipeID){
 
-                $scope.recipeNameField = curentRecipe.name;
+                $scope.curentID = curentRecipe.id ;
+                $scope.recipeName = curentRecipe.name;
                 $scope.recipeDescriptionField = curentRecipe.description;
                 $scope.ingredientsList = curentRecipe.ingredients;
 
@@ -23,11 +26,11 @@
             }
 
 
-            $scope.saveRecipe = function (isValid) {
+            $scope.saveRecipe = function () {
 
                 var recipeValues = {
                     id:          null,
-                    name:        $scope.recipeNameField,
+                    name:        $scope.recipeName,
                     ingredients: $scope.ingredientsList,
                     description: $scope.recipeDescriptionField,
                 };
@@ -41,15 +44,14 @@
 
                     $location.path('/addRecipe');
                 } else {
-                    recipeValues.id = ( $scope.recipeList.length + 1 );
+                    recipeValues.id = $scope.recipeList[$scope.recipeList.length -1].id + 1;
                     $scope.recipeList.push(recipeValues);
+
                 }
 
-                $scope.recipeNameField = null;
+                $scope.recipeName = null;
                 $scope.recipeDescriptionField = null;
                 $scope.ingredientsList = [ {} ];
-
-                console.log("$scope.recipeList: ", $scope.recipeList);
             };
 
             $scope.addIngredient = function() {
@@ -59,6 +61,14 @@
 
             $scope.removeIngredient = function(index) {
                 $scope.ingredientsList.splice(index, 1);
+            };
+
+            $scope.removeRecipe = function(recipeID) {
+                var recipeIndex = recipeID -1;
+
+                $scope.recipeList.splice(recipeIndex, 1);
+                $scope.confirmDeleting = 1;
+                $scope.confirmMsg = "the recipe has been deleted";
             };
 
     }]);

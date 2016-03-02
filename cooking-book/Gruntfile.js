@@ -60,7 +60,9 @@ module.exports = function(grunt) {
                 curly: true,
                 eqeqeq: false,
                 eqnull: true,
-                browser: true
+                browser: true,
+                funcscope: false,
+                unused:true
                 // globals: {
                 //     jQuery: true
                 // }
@@ -78,6 +80,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', ['jshint:beforeconcat', 'concat', 'jshint:afterconcat', 'uglify', 'sass']);
     grunt.registerTask('dev',   ['build', 'watch']);
-    grunt.registerTask('js',    ['jshint']);
+    grunt.registerTask('js',    ['jshint:beforeconcat']);
 
 };

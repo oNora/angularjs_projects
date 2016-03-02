@@ -35,6 +35,12 @@
                 url: '/recipe/:recipeID',
                 templateUrl: 'views/recipe.html',
                 controller: 'CookingBookRecipe'
+            })
+            // view a recipe
+            .state('deleteRecipe', {
+                url: '/delete/:recipeID',
+                templateUrl: 'views/deletedRecipe.html',
+                controller: 'CookingBookFormRecipeController'
             });
 
         }

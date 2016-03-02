@@ -323,3 +323,21 @@ table{
         padding: 0;
     }
 }
+
+/* === deletedRecipe view styles === */
+.deletedRecipe{
+
+    .btn{
+        font-size: 16px;
+        text-align: center;
+    }
+
+    > div{
+        padding-top: 5px;
+    }
+
+    p{
+        padding-top: 5px;
+        line-height: 30px;
+    }
+}
