@@ -1,15 +1,24 @@
 (function  () {
     var app = angular.module("CookingBookApp");
 
-    app.controller("CookingBookController", [ "$scope",  function($scope){
+    app.controller("CookingBookController", [ "$scope", 'localStorageService',  function($scope, localStorageService){
 
-        // pyrwvo definiralen na lista - tetowo e pylen posle kato dolnot
-        $scope.recipeList = [
-            {id: 1, name: "musaka", description: "some description", ingredients: [{"ingredientName":"kaima", "amount":"1", "amountUnits":"ks" }, {"ingredientName":"kartofi", "amount":"1", "amountUnits":"ks" }]},
-            {id: 2, name: "princesa", description: "some description", ingredients: [{"ingredientName":"hlqb", "amount":"1", "amountUnits":"ks" },{"ingredientName":"kaima", "amount":"1", "amountUnits":"ks" }]},
-            {id: 3, name: "kashkavalka", description: "some description", ingredients: [{"ingredientName":"hlqb", "amount":"1", "amountUnits":"ks" },{"ingredientName":"kashkaval", "amount":"1", "amountUnits":"ks" }]},
-            {id: 4, name: "kiuvteta", description: "some description", ingredients: [{"ingredientName":"siren", "amount":"1", "amountUnits":"ks" }]}
+        // initial data
+        var initData = [
+            {id: 1, name: "Galette", description: "some description", ingredients: [{"ingredientName":"unsalted butter", "amount":"100", "amountUnits":"g" }, {"ingredientName":"suggar", "amount":"100", "amountUnits":"g"}]},
+            {id: 2, name: "Cheddar Chicken", description: "Preheat oven to 350 degrees F (175 degrees C).", ingredients: [{"ingredientName":"crushed cornflakes cereal", "amount":"1", "amountUnits":"cup" },{"ingredientName":"grated Parmesan cheese", "amount":"3/4", "amountUnits":"cup" }]},
+            {id: 3, name: "Cheesecake", description: "Preheat oven to 350 degrees F (175 degrees C).", ingredients: [{"ingredientName":"eggs", "amount":"2", "amountUnits":"" },{"ingredientName":"suggar", "amount":"1/2", "amountUnits":"cup" }]},
+            {id: 4, name: "Cupcake", description: "Combine sour cream and sugar; mix well. Stir in coconut. Fold in whipped topping. Spread top and sides of two 9-inch cake layers.", ingredients: [{"ingredientName":"cream", "amount":"2", "amountUnits":"cups" }]}
         ];
 
+        var storages = localStorageService.get( "recipeList");
+
+        if(storages == null) {
+            $scope.recipeList = initData;
+            localStorageService.set( "recipeList", initData);
+        }
+        else {
+            $scope.recipeList = storages;
+        }
     }]);
 })();

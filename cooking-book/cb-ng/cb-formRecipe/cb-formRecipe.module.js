@@ -1,5 +1,7 @@
 (function  () {
 
-    angular.module('cookingBook.formRecipe', []);
+    angular.module('cookingBook.formRecipe', [
+        'LocalStorageModule'
+    ]);
 
 })();

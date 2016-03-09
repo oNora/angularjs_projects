@@ -2,8 +2,8 @@
     var app = angular.module("cookingBook.formRecipe");
 
     app.controller("CookingBookFormRecipeController",
-        [ "$scope", '$stateParams', '$location', 'cookingBookRecipeService',
-        function($scope, $stateParams, $location, cookingBookRecipeService){
+        [ "$scope", '$stateParams', '$location', 'cookingBookRecipeService', 'localStorageService',
+        function($scope, $stateParams, $location, cookingBookRecipeService, localStorageService){
 
             // da se definira list predi da sepolzwa wse pak
             $scope.ingredientsList = [ {} ];
@@ -46,8 +46,9 @@
                 } else {
                     recipeValues.id = $scope.recipeList[$scope.recipeList.length -1].id + 1;
                     $scope.recipeList.push(recipeValues);
-
                 }
+
+                localStorageService.set( "recipeList", $scope.recipeList);
 
                 $scope.recipeName = null;
                 $scope.recipeDescriptionField = null;
@@ -69,6 +70,8 @@
                 $scope.recipeList.splice(recipeIndex, 1);
                 $scope.confirmDeleting = 1;
                 $scope.confirmMsg = "the recipe has been deleted";
+
+                localStorageService.set( "recipeList", $scope.recipeList);
             };
 
     }]);
