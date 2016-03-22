@@ -1,15 +1,14 @@
 <div id="right_wrapper">
     <h1 class="title_right">{{templateTitle}}</h1>
 
-    <!-- TODO:: cool validation like  https://scotch.io/tutorials/angularjs-form-validation -->
-    <form name="recipeForm" ng-submit="saveRecipe()">
+    <form name="recipeForm" ng-submit="saveRecipe()" ng-show="isFormView">
         <label for="title_field">Write a title: </label>
-        <input type="text"  ng-model="recipeName" class="recipe-info" required >
+        <input type="text"  ng-model="recipeName" class="recipe-info" required id="title_field" >
 
         <label for="description_field">Write a description: </label>
-        <textarea rows="4" cols="50"  ng-model="recipeDescriptionField" class="recipe-info"></textarea>
+        <textarea rows="4" cols="50"  ng-model="recipeDescriptionField" class="recipe-info" id="description_field"></textarea>
 
-        <div class="ingredients-inpits">
+        <div class="ingredients-inputs">
             <p>Add ingredients</p>
             <div class="controls">
                 <ul >
@@ -37,4 +36,20 @@
             </button>
         </div>
     </form>
+
+    <div ng-show="isDeleteView">
+        <div ng-hide="confirmDeleting == 1" class="deletedRecipe">
+            <p>Are you sure u wont to delete this recipe: {{recipeName}} </p>
+            <div>
+                <button type="button" class="btn" ng-click="removeRecipe(currentID)">Yes </button>
+                <a ui-sref="recipe({recipeID: currentID})" class="btn">No </a>
+            </div>
+        </div>
+        <p >{{confirmMsg}}</p>
+    </div>
+
+    <div ng-show="isWarningView">
+        <p>The recipe was already deleted</p>
+    </div>
+
 </div>

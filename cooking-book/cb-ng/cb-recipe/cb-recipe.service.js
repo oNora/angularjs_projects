@@ -1,4 +1,7 @@
 (function  () {
+
+    'use strict';
+
     var app = angular.module("cookingBook.recipe");
 
     app.service("cookingBookRecipeService", [function() {

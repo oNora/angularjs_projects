@@ -1,22 +1,25 @@
 <div id="right_wrapper">
-    <h1 class="title_right">Search for Recipes</h1>
 
-    <div class="serch-form">
+    <h1 class="title_right">Search for recipe by ingredients</h1>
+
+    <div class="search-form">
+
         <form ng-submit="searchRecipe(ingredientsInput)">
 
             <label for="search_field">Write the ingredients, separated by ", ": </label>
-            <input type="text" id="search_field" ng-model="ingredientsInput">
+            <input type="text" id="search_field" ng-model="ingredientsInput" required>
             <button type="submit" class="btn">
                 <i class="icon-document-search2"></i> Search
             </button>
         </form>
 
         <p class="msg">{{searchMsg}}</p>
-        <div class="gray-wraper" ng-hide="recipeList.length == 0">
-            <span ng-repeat="ingredient in avelibleIngredients">{{ingredient}}, </span>
+
+        <div class="gray-wrapper" ng-hide="isRecipeListEmpty">
+            <span ng-repeat="ingredient in availableUniqueIntegrates">{{ingredient}}, </span>
         </div>
 
-        <div class="list-wrap" ng-hide="foundList.length == 0">
+        <div class="list-wrap" ng-hide="isFoundListEmpty">
             <ul>
                 <li>
                     <i class="icon-clipboard-list2"></i><p>Found recipes</p>

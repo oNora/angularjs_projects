@@ -1,9 +1,11 @@
 (function() {
 
+    'use strict';
+
     var app = angular.module('CookingBookApp');
 
-    app.config(['$stateProvider', '$urlRouterProvider',
-        function($stateProvider, $urlRouterProvider) {
+    app.config(['$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider',
+        function($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
 
             $urlRouterProvider.otherwise('/addRecipe');
 
@@ -36,20 +38,16 @@
                 templateUrl: 'views/recipe.html',
                 controller: 'CookingBookRecipe'
             })
+
             // view a recipe
             .state('deleteRecipe', {
                 url: '/delete/:recipeID',
-                templateUrl: 'views/deletedRecipe.html',
+                templateUrl: 'views/formRecipe.html',
                 controller: 'CookingBookFormRecipeController'
             });
 
+            localStorageServiceProvider.setPrefix('CookingBookApp');
         }
     ]);
-
-    app.config(['localStorageServiceProvider',
-        function(localStorageServiceProvider) {
-            localStorageServiceProvider.setPrefix('CookingBookApp');
-    }]);
-
 
 })();

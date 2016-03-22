@@ -1,58 +1,38 @@
 (function  () {
+
+    'use strict';
+
     var app = angular.module("cookingBook.search");
 
-    app.controller("CookingBookSearch", ['$scope', 'cookingBookSearchRecipeService', function($scope, cookingBookSearchRecipeService){
+    app.controller("CookingBookSearch",
+        ['$scope', 'cookingBookSearchRecipeService',
+        function($scope, cookingBookSearchRecipeService){
 
-        $scope.searchMsg = $scope.recipeList.length > 0 ? 'Choose from available  ingredients:': 'There are not available ingredients. First enter recipes.';
+        // TODO: oprawi imeto na survisa  cookingBookSearchRecipeService na cookingBookSearchService, kakto i na dajlovete da e taka
 
-        var recipesId ;
+        // reference to search service:
+         var searchService = cookingBookSearchRecipeService;
 
+        $scope.searchMsg = $scope.recipeList.length > 0 ? 'Choose from available  ingredients:' : 'There are not available ingredients. First enter recipes.';
         $scope.foundList = [];
+        $scope.isRecipeListEmpty = $scope.recipeList.length === 0;
+        $scope.isFoundListEmpty = $scope.foundList.length === 0;
 
-
-        // vzima inputa ot poleto za tursene
         $scope.searchRecipe = function (ingredientsInput) {
 
             // reset list of found recipes
-            if($scope.foundList.length){
+            if($scope.foundList.length > 0){
                 $scope.foundList = [];
             }
-            var input = ingredientsInput.split(', ');
 
-            recipesId = cookingBookSearchRecipeService.search(input, $scope.recipeList);
-            // console.log('recipesId controller: ', recipesId);
+            searchService.search(ingredientsInput, $scope.recipeList);
 
-            for (var i=0; i < $scope.recipeList.length; i++) {
-
-                if(recipesId.indexOf($scope.recipeList[i].id) > -1 ){
-                    $scope.foundList.push($scope.recipeList[i]);
-                }
-            }
-            // console.log('$scope.foundList: ', $scope.foundList);
+            $scope.foundList = searchService.returnFoundRecipes($scope.recipeList);
+            $scope.isFoundListEmpty = $scope.foundList.length === 0;
         };
 
-
         // da iskara wsichki nalichni sustvki
-        $scope.avelibleIngredients = (function () {
-            var avelibleUniqIntegrates = [];
+        $scope.availableUniqueIntegrates = searchService.availableUniqueIntegrates($scope.recipeList);
 
-            for (var i=0; i < $scope.recipeList.length; i++) {
-
-                var arrayIngredients = cookingBookSearchRecipeService.ingrediesList($scope.recipeList[i].ingredients);
-                var arrayIngredientsLen = arrayIngredients.length;
-
-                for (var y = 0; y < arrayIngredientsLen; y++){
-                        var valueIngredient = arrayIngredients[y];
-                        var statusIng = avelibleUniqIntegrates.indexOf(valueIngredient);
-                        if (statusIng == -1) {
-                            avelibleUniqIntegrates.push(valueIngredient);
-                        }
-                }
-            }
-            console.log('avelibleUniqIntegrates: ', avelibleUniqIntegrates);
-            return avelibleUniqIntegrates;
-        })();
-
-        // $scope.avelibleIngredients();1
     }]);
 })();

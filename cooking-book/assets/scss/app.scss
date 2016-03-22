@@ -108,7 +108,7 @@ input[type=text], textarea{
     }
 }
 
-.gray-wraper{
+.gray-wrapper {
     margin-bottom: 20px;
     padding: 10px;
     background: lighten($gray-color, 18%);
@@ -150,6 +150,7 @@ li{
         margin: 0 5px 0 0;
     }
 }
+
 nav li{
     margin-bottom: 5px;
     padding: 5px;
@@ -269,7 +270,7 @@ table{
 }
 
 /* === add recipes view styles === */
-.ingredients-inpits{
+.ingredients-inputs {
 
     input[name=amount], input[name=amountUnits]{
         width: 15%;
@@ -303,13 +304,13 @@ table{
     }
 
     p{
-        margin: 20px 0 10;
+        margin: 20px 0 10px;
     }
 }
 
 /* === search view styles === */
 
-.serch-form{
+.search-form {
 
     input[type=text]{
         width: 83%;

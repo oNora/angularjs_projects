@@ -1,30 +1,48 @@
 (function  () {
+
+    'use strict';
+
     var app = angular.module("cookingBook.formRecipe");
-
     app.controller("CookingBookFormRecipeController",
-        [ "$scope", '$stateParams', '$location', 'cookingBookRecipeService', 'localStorageService',
-        function($scope, $stateParams, $location, cookingBookRecipeService, localStorageService){
+        [ "$scope", '$stateParams', '$location', 'cookingBooFormRecipeService', 'cookingBookRecipeService', 'localStorageService',
+        function($scope, $stateParams, $location, cookingBooFormRecipeService, cookingBookRecipeService, localStorageService){
 
-            // da se definira list predi da sepolzwa wse pak
-            $scope.ingredientsList = [ {} ];
+            initView();
+            function initView() {
+                // da se definira list predi da sepolzwa wse pak
+                $scope.ingredientsList = [{}];
+                $scope.confirmDeleting = 0;
+                $scope.isWarningView = false;
+                $scope.isDeleteView = false;
+                $scope.isFormView = false;
 
-            $scope.confirmDeleting = 0;
+                var viewUrl = $location.path().split('/');
+                if (viewUrl[1] == 'delete') {
+                    $scope.isDeleteView = true;
+                    $scope.templateTitle = "Deleting";
+                }
+                else {
+                    $scope.isFormView = true;
+                    $scope.templateTitle = $stateParams.recipeID ? 'Edit recipe' : 'Add a new Recipe';
+                }
 
-            var curentRecipe = cookingBookRecipeService.findRecipe($stateParams.recipeID, $scope.recipeList);
-            $scope.templateTitle = $stateParams.recipeID ? 'Edit recipe' : 'Add a new Recipe';
-
-            if($stateParams.recipeID){
-
-                $scope.curentID = curentRecipe.id ;
-                $scope.recipeName = curentRecipe.name;
-                $scope.recipeDescriptionField = curentRecipe.description;
-                $scope.ingredientsList = curentRecipe.ingredients;
-
-            } else {
-                //reset ingredients object
-                $scope.ingredientsList = [ {} ];
+                var currentRecipe = cookingBookRecipeService.findRecipe($stateParams.recipeID, $scope.recipeList);
+                //ако се опита да се зареди url на изтрита рецепта да не се зарежа view с грешки
+                if(currentRecipe === undefined && viewUrl[1] == 'delete' ){
+                    $scope.templateTitle = 'Warning';
+                    $scope.isWarningView = true;
+                    $scope.isDeleteView = false;
+                }
+                else if ($stateParams.recipeID) {
+                    $scope.currentID = currentRecipe.id;
+                    $scope.recipeName = currentRecipe.name;
+                    $scope.recipeDescriptionField = currentRecipe.description;
+                    $scope.ingredientsList = currentRecipe.ingredients;
+                } else {
+                    //reset ingredients object
+                    $scope.ingredientsList = [{}];
+                }
             }
-
 
             $scope.saveRecipe = function () {
 
@@ -32,22 +50,17 @@
                     id:          null,
                     name:        $scope.recipeName,
                     ingredients: $scope.ingredientsList,
-                    description: $scope.recipeDescriptionField,
+                    description: $scope.recipeDescriptionField
                 };
 
+                var savedValue = cookingBooFormRecipeService.saveRecipe(recipeValues, $scope.recipeList, $stateParams.recipeID );
 
-                if($stateParams.recipeID){
-                    recipeValues.id = curentRecipe.id;
-
-                    var recipeIndex = curentRecipe.id - 1;
-                    $scope.recipeList[recipeIndex] = recipeValues;
-
+                if(savedValue.recipeIndex === null){
+                    $scope.recipeList.push(savedValue.recipeValues);
+                }else{
+                    $scope.recipeList[savedValue.recipeIndex] = savedValue.recipeValues;
                     $location.path('/addRecipe');
-                } else {
-                    recipeValues.id = $scope.recipeList[$scope.recipeList.length -1].id + 1;
-                    $scope.recipeList.push(recipeValues);
                 }
-
                 localStorageService.set( "recipeList", $scope.recipeList);
 
                 $scope.recipeName = null;
@@ -65,7 +78,8 @@
             };
 
             $scope.removeRecipe = function(recipeID) {
-                var recipeIndex = recipeID -1;
+
+                var recipeIndex = cookingBooFormRecipeService.returnRecipeIndex($scope.recipeList, recipeID);
 
                 $scope.recipeList.splice(recipeIndex, 1);
                 $scope.confirmDeleting = 1;

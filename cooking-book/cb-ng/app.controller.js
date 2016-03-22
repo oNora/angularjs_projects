@@ -1,21 +1,16 @@
 (function  () {
     var app = angular.module("CookingBookApp");
 
-    app.controller("CookingBookController", [ "$scope", 'localStorageService',  function($scope, localStorageService){
+    app.controller("CookingBookController",
+                [ "$scope", 'localStorageService', 'cookingBooAppService',
+                function($scope, localStorageService, cookingBooAppService){
 
-        // initial data
-        var initData = [
-            {id: 1, name: "Galette", description: "some description", ingredients: [{"ingredientName":"unsalted butter", "amount":"100", "amountUnits":"g" }, {"ingredientName":"suggar", "amount":"100", "amountUnits":"g"}]},
-            {id: 2, name: "Cheddar Chicken", description: "Preheat oven to 350 degrees F (175 degrees C).", ingredients: [{"ingredientName":"crushed cornflakes cereal", "amount":"1", "amountUnits":"cup" },{"ingredientName":"grated Parmesan cheese", "amount":"3/4", "amountUnits":"cup" }]},
-            {id: 3, name: "Cheesecake", description: "Preheat oven to 350 degrees F (175 degrees C).", ingredients: [{"ingredientName":"eggs", "amount":"2", "amountUnits":"" },{"ingredientName":"suggar", "amount":"1/2", "amountUnits":"cup" }]},
-            {id: 4, name: "Cupcake", description: "Combine sour cream and sugar; mix well. Stir in coconut. Fold in whipped topping. Spread top and sides of two 9-inch cake layers.", ingredients: [{"ingredientName":"cream", "amount":"2", "amountUnits":"cups" }]}
-        ];
-
+        var getInitData = cookingBooAppService.init();
         var storages = localStorageService.get( "recipeList");
 
-        if(storages == null) {
-            $scope.recipeList = initData;
-            localStorageService.set( "recipeList", initData);
+        if(storages === null) {
+            $scope.recipeList = getInitData;
+            localStorageService.set( "recipeList", getInitData);
         }
         else {
             $scope.recipeList = storages;

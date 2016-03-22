@@ -1,7 +1,7 @@
 <div>
     <h1>{{name}}</h1>
 
-    <div class="recepie-content">
+    <div class="recipe-content">
         <table>
             <thead>
                 <tr>
@@ -11,7 +11,7 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- ingredient allways has at least one property - $$hashKey -->
+                <!-- ingredient always has at least one property - $$hashKey -->
                 <tr ng-repeat="ingredient in ingredients" ng-hide="getLength(ingredient) == 1">
                     <td>{{ingredient.amount}}</td>
                     <td>{{ingredient.amountUnits}}</td>
@@ -21,7 +21,8 @@
         </table>
 
         <h3>Description: </h3>
-        <div class="gray-wraper">
+
+        <div class="gray-wrapper">
             <p>{{description}}</p>
         </div>
 

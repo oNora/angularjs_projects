@@ -1,24 +1,14 @@
 <html ng-app="CookingBookApp">
 <head>
 
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Simple demo for SPA book of recipes">
+    <meta name="author" content="oNora">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/fotns.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
     <link rel="stylesheet" type="text/css" href="build/css/app.css">
-
-    <!-- // <script type="text/javascript" src="assets/library/angular.min.js"></script> -->
-    <script src="http://code.angularjs.org/1.4.7/angular.js"></script> <!-- for debugging -->
-    <script type="text/javascript" src="assets/library/angular-ui-router.min.js"></script>
-    <script type="text/javascript" src="assets/library/angular-local-storage.js"></script>
-
-
-    <script src="build/js/cooking-book.min.js"></script>
-    <!-- // <script src="build/js/cooking-book.js"></script> -->
 </head>
 
 <body>
@@ -27,7 +17,7 @@
     <div class="container clearfix" ng-controller="CookingBookController">
         <div class="col">
             <!-- NAVIGATION -->
-            <nav class="navbar">
+            <nav>
                 <ul class="nav">
                     <li ui-sref-active="active">
                         <i class="icon-document-search2"></i>
@@ -54,10 +44,18 @@
             </div>
         </div>
 
-        <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+        <!-- INJECT THE CONTENT HERE ============================== -->
         <div ui-view class="col"></div>
 
     </div>
+
+    <!-- // <script type="text/javascript" src="assets/library/angular.min.js"></script> -->
+    <script src="http://code.angularjs.org/1.4.7/angular.js"></script> <!-- for debugging (TODO: delete it) -->
+    <script type="text/javascript" src="assets/library/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="assets/library/angular-local-storage.js"></script>
+
+    <script src="build/js/cooking-book.min.js"></script>
+    <!-- // <script src="build/js/cooking-book.js"></script> -->
 
 </body>
 </html>
