@@ -2,7 +2,7 @@
 
     'use strict';
 
-    angular.module('cookingBook.recipe', [
+    angular.module('cookingBook.singleView', [
         'ui.router'
     ]);
 

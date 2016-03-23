@@ -2,9 +2,9 @@
 
     'use strict';
 
-    var app = angular.module("cookingBook.recipe");
+    var app = angular.module("cookingBook.singleView");
 
-    app.service("cookingBookRecipeService", [function() {
+    app.service("cbSingleViewService", [function() {
 
         var $this = this;
 

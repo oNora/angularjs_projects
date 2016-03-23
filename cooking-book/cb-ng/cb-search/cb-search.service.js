@@ -4,7 +4,7 @@
 
     var app = angular.module("cookingBook.search");
 
-    app.service("cookingBookSearchRecipeService", [function() {
+    app.service("cbSearchService", [function() {
 
         var $this = this,
             foundRecipesId = []; // списък с рецепти, вкоито има поне една от търсените съставки

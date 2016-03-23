@@ -1,7 +1,7 @@
 <div id="right_wrapper">
     <h1 class="title_right">{{templateTitle}}</h1>
 
-    <form name="recipeForm" ng-submit="saveRecipe()" ng-show="isFormView">
+    <form name="recipeForm" ng-submit="saveRecipe()">
         <label for="title_field">Write a title: </label>
         <input type="text"  ng-model="recipeName" class="recipe-info" required id="title_field" >
 
@@ -36,20 +36,4 @@
             </button>
         </div>
     </form>
-
-    <div ng-show="isDeleteView">
-        <div ng-hide="confirmDeleting == 1" class="deletedRecipe">
-            <p>Are you sure u wont to delete this recipe: {{recipeName}} </p>
-            <div>
-                <button type="button" class="btn" ng-click="removeRecipe(currentID)">Yes </button>
-                <a ui-sref="recipe({recipeID: currentID})" class="btn">No </a>
-            </div>
-        </div>
-        <p >{{confirmMsg}}</p>
-    </div>
-
-    <div ng-show="isWarningView">
-        <p>The recipe was already deleted</p>
-    </div>
-
 </div>

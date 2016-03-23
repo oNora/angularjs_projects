@@ -1,0 +1,14 @@
+<div id="right_wrapper">
+    <h1 class="title_right">{{templateTitle}}</h1>
+    <div>
+        <div ng-hide="confirmDeleting == 1" class="deletedRecipe">
+            <p>Are you sure u wont to delete this recipe: {{recipeName}} </p>
+            <div>
+                <button type="button" class="btn" ng-click="removeRecipe(currentID)">Yes </button>
+                <a ui-sref="singleView({recipeID: currentID})" class="btn">No </a>
+            </div>
+        </div>
+        <p >{{confirmMsg}}</p>
+    </div>
+
+</div>

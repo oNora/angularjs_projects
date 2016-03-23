@@ -37,7 +37,7 @@
                         <p>Available recipes</p>
                     </li>
                     <li ng-repeat="recipe in recipeList" ui-sref-active="active">
-                        <a ui-sref="recipe({recipeID: recipe.id})"> {{recipe.name}}</a>
+                        <a ui-sref="singleView({recipeID: recipe.id})"> {{recipe.name}}</a>
                     </li>
                 </ul>
 
@@ -54,7 +54,7 @@
     <script type="text/javascript" src="assets/library/angular-ui-router.min.js"></script>
     <script type="text/javascript" src="assets/library/angular-local-storage.js"></script>
 
-    <script src="build/js/cooking-book.min.js"></script>
+    <script src="build/js/cooking-book.js"></script>
     <!-- // <script src="build/js/cooking-book.js"></script> -->
 
 </body>

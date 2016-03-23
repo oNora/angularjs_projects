@@ -4,41 +4,35 @@
 
     var app = angular.module("cookingBook.formRecipe");
     app.controller("CookingBookFormRecipeController",
-        [ "$scope", '$stateParams', '$location', 'cookingBooFormRecipeService', 'cookingBookRecipeService', 'localStorageService',
-        function($scope, $stateParams, $location, cookingBooFormRecipeService, cookingBookRecipeService, localStorageService){
+        [ "$scope", '$stateParams', '$location', 'cookingBooFormRecipeService', 'cbSingleViewService', 'localStorageService',
+        function($scope, $stateParams, $location, cookingBooFormRecipeService, cbSingleViewService, localStorageService){
 
             initView();
             function initView() {
                 // da se definira list predi da sepolzwa wse pak
                 $scope.ingredientsList = [{}];
                 $scope.confirmDeleting = 0;
-                $scope.isWarningView = false;
-                $scope.isDeleteView = false;
-                $scope.isFormView = false;
 
                 var viewUrl = $location.path().split('/');
-                if (viewUrl[1] == 'delete') {
-                    $scope.isDeleteView = true;
+                var currentRecipe = cbSingleViewService.findRecipe($stateParams.recipeID, $scope.recipeList);
+
+                //ако се опита да се зареди url на изтрита рецепта да не се зарежа view с грешки
+                if(currentRecipe === undefined && viewUrl[1] != 'addRecipe' ){
+                    $location.path('/404');
+                }else if (viewUrl[1] == 'delete') {
                     $scope.templateTitle = "Deleting";
                 }
                 else {
-                    $scope.isFormView = true;
-                    $scope.templateTitle = $stateParams.recipeID ? 'Edit recipe' : 'Add a new Recipe';
+                    $scope.templateTitle = $stateParams.recipeID ? 'Edit Recipe' : 'Add a new Recipe';
                 }
 
-                var currentRecipe = cookingBookRecipeService.findRecipe($stateParams.recipeID, $scope.recipeList);
-                //ако се опита да се зареди url на изтрита рецепта да не се зарежа view с грешки
-                if(currentRecipe === undefined && viewUrl[1] == 'delete' ){
-                    $scope.templateTitle = 'Warning';
-                    $scope.isWarningView = true;
-                    $scope.isDeleteView = false;
-                }
-                else if ($stateParams.recipeID) {
+                 if ($stateParams.recipeID && currentRecipe !== undefined) {
                     $scope.currentID = currentRecipe.id;
                     $scope.recipeName = currentRecipe.name;
                     $scope.recipeDescriptionField = currentRecipe.description;
                     $scope.ingredientsList = currentRecipe.ingredients;
                 } else {
+                     console.log('else 2 $stateParams.recipeID', $stateParams.recipeID);
                     //reset ingredients object
                     $scope.ingredientsList = [{}];
                 }
@@ -83,7 +77,7 @@
 
                 $scope.recipeList.splice(recipeIndex, 1);
                 $scope.confirmDeleting = 1;
-                $scope.confirmMsg = "the recipe has been deleted";
+                $scope.confirmMsg = 'The recipe has been deleted';
 
                 localStorageService.set( "recipeList", $scope.recipeList);
             };

@@ -4,7 +4,7 @@
 
     angular.module('cookingBook.formRecipe', [
         'LocalStorageModule',
-        'cookingBook.recipe'
+        'cookingBook.singleView'
     ]);
 
 })();

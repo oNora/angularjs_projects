@@ -25,7 +25,7 @@ module.exports = function(grunt) {
         watch: {
             js: {
                 files: ['cb-ng/*.js', 'cb-ng/**/*.js'],
-                tasks: ['jshint:beforeconcat', 'concat', 'uglify']
+                tasks: ['jshint:beforeconcat', 'concat']
             },
             scss: {
                 files: ['assets/scss/*.scss'],
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
                     preserveComments: 'some'
                 },
                 files: {
-                    'build/js/<%= pkg.name %>.min.js': ['build/js/<%= pkg.name %>.js']
+                    'build/js/<%= pkg.name %>.js': ['build/js/<%= pkg.name %>.js']
                 }
             }
         },

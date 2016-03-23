@@ -25,7 +25,7 @@
                     <i class="icon-clipboard-list2"></i><p>Found recipes</p>
                 </li>
                 <li ng-repeat="recipe in foundList">
-                    <a ui-sref="recipe({recipeID: recipe.id})"> {{recipe.name}}</a>
+                    <a ui-sref="singleView({recipeID: recipe.id})"> {{recipe.name}}</a>
                 </li>
             </ul>
         </div>

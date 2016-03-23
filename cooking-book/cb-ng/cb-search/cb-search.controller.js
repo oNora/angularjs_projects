@@ -5,13 +5,13 @@
     var app = angular.module("cookingBook.search");
 
     app.controller("CookingBookSearch",
-        ['$scope', 'cookingBookSearchRecipeService',
-        function($scope, cookingBookSearchRecipeService){
+        ['$scope', 'cbSearchService',
+        function($scope, cbSearchService){
 
-        // TODO: oprawi imeto na survisa  cookingBookSearchRecipeService na cookingBookSearchService, kakto i na dajlovete da e taka
+        // TODO: oprawi imeto na survisa  cbSearchService na cookingBookSearchService, kakto i na dajlovete da e taka
 
         // reference to search service:
-         var searchService = cookingBookSearchRecipeService;
+         var searchService = cbSearchService;
 
         $scope.searchMsg = $scope.recipeList.length > 0 ? 'Choose from available  ingredients:' : 'There are not available ingredients. First enter recipes.';
         $scope.foundList = [];

@@ -6,7 +6,7 @@
         'ui.router',
         'LocalStorageModule',
         'cookingBook.formRecipe',
-        'cookingBook.recipe',
+        'cookingBook.singleView',
         'cookingBook.search'
     ]);
 
