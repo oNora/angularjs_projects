@@ -2,7 +2,7 @@
 
     'use strict';
 
-    angular.module('cookingBook.formRecipe', [
+    angular.module('cookingBook.recipe', [
         'LocalStorageModule',
         'cookingBook.singleView'
     ]);

@@ -2,10 +2,10 @@
 
     'use strict';
 
-    var app = angular.module("cookingBook.formRecipe");
-    app.controller("CookingBookFormRecipeController",
-        [ "$scope", '$stateParams', '$location', 'cookingBooFormRecipeService', 'cbSingleViewService', 'localStorageService',
-        function($scope, $stateParams, $location, cookingBooFormRecipeService, cbSingleViewService, localStorageService){
+    var app = angular.module("cookingBook.recipe");
+    app.controller("CookingBookRecipeController",
+        [ "$scope", '$stateParams', '$location', 'cbRecipeService', 'cbSingleViewService', 'localStorageService',
+        function($scope, $stateParams, $location, cbRecipeService, cbSingleViewService, localStorageService){
 
             initView();
             function initView() {
@@ -47,7 +47,7 @@
                     description: $scope.recipeDescriptionField
                 };
 
-                var savedValue = cookingBooFormRecipeService.saveRecipe(recipeValues, $scope.recipeList, $stateParams.recipeID );
+                var savedValue = cbRecipeService.saveRecipe(recipeValues, $scope.recipeList, $stateParams.recipeID );
 
                 if(savedValue.recipeIndex === null){
                     $scope.recipeList.push(savedValue.recipeValues);
@@ -73,7 +73,7 @@
 
             $scope.removeRecipe = function(recipeID) {
 
-                var recipeIndex = cookingBooFormRecipeService.returnRecipeIndex($scope.recipeList, recipeID);
+                var recipeIndex = cbRecipeService.returnRecipeIndex($scope.recipeList, recipeID);
 
                 $scope.recipeList.splice(recipeIndex, 1);
                 $scope.confirmDeleting = 1;

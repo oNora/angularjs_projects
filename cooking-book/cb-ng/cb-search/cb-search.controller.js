@@ -4,7 +4,7 @@
 
     var app = angular.module("cookingBook.search");
 
-    app.controller("CookingBookSearch",
+    app.controller("CookingBookSearchController",
         ['$scope', 'cbSearchService',
         function($scope, cbSearchService){
 

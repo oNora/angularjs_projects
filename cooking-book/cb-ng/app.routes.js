@@ -15,35 +15,35 @@
                     .state('search', {
                         url: '/search',
                         templateUrl: 'views/search.html',
-                        controller: 'CookingBookSearch'
+                        controller: 'CookingBookSearchController'
                     })
 
                     // add new recipe
                     .state('addRecipe', {
                         url: '/addRecipe',
                         templateUrl: 'views/recipe/saveRecipe.html',
-                        controller: 'CookingBookFormRecipeController'
+                        controller: 'CookingBookRecipeController'
                     })
 
                     // edit recipe
                     .state('editRecipe', {
                         url: '/editRecipe/:recipeID',
                         templateUrl: 'views/recipe/saveRecipe.html',
-                        controller: 'CookingBookFormRecipeController'
+                        controller: 'CookingBookRecipeController'
                     })
 
                     // view a recipe
                     .state('singleView', {
                         url: '/singleView/:recipeID',
                         templateUrl: 'views/singleView.html',
-                        controller: 'CookingBookRecipe'
+                        controller: 'CookingBookSingleViewController'
                     })
 
                     // view a recipe
                     .state('deleteRecipe', {
                         url: '/delete/:recipeID',
                         templateUrl: 'views/recipe/deleteRecipe.html',
-                        controller: 'CookingBookFormRecipeController'
+                        controller: 'CookingBookRecipeController'
                     })
 
                     .state('404', {

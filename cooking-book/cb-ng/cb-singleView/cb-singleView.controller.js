@@ -3,7 +3,7 @@
 
     var app = angular.module("cookingBook.singleView");
 
-    app.controller("CookingBookRecipe",
+    app.controller("CookingBookSingleViewController",
         ['$scope', '$stateParams', 'cbSingleViewService', '$location',
         function($scope, $stateParams, cbSingleViewService, $location){
         // get the id
