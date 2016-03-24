@@ -8,7 +8,7 @@ module.exports = function(grunt) {
                 process: function(src, filepath) {
                     return '/*! Source: ' + filepath + ' */' + '\n' +
                         src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
-                },
+                }
             },
             dist: {
                 src: [
@@ -20,12 +20,30 @@ module.exports = function(grunt) {
                     'cb-ng/*.js', 'cb-ng/**/*.js'
                 ],
                 dest: 'build/js/<%= pkg.name %>.js'
+            },
+            thirdparty: {
+                src: [
+                    //include libraries
+                    'bower_components/angular/angular.js',
+                    'bower_components/angular-ui-router/release/angular-ui-router.js',
+                    'bower_components/angular-local-storage/dist/angular-local-storage.js'
+                ],
+                dest: 'build/js/thirdparty.js'
+            },
+            thirdpartyMin: {
+                src: [
+                    //include libraries
+                    'bower_components/angular/angular.min.js',
+                    'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+                    'bower_components/angular-local-storage/dist/angular-local-storage.js'
+                ],
+                dest: 'build/js/thirdparty.min.js'
             }
         },
         watch: {
             js: {
                 files: ['cb-ng/*.js', 'cb-ng/**/*.js'],
-                tasks: ['jshint:beforeconcat', 'concat']
+                tasks: ['jshint:beforeconcat', 'concat:dist']
             },
             scss: {
                 files: ['assets/scss/*.scss'],
@@ -39,7 +57,7 @@ module.exports = function(grunt) {
                     preserveComments: 'some'
                 },
                 files: {
-                    'build/js/<%= pkg.name %>.js': ['build/js/<%= pkg.name %>.js']
+                    'build/js/<%= pkg.name %>.min.js': ['build/js/<%= pkg.name %>.js']
                 }
             }
         },
