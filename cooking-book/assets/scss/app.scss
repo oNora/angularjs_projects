@@ -115,6 +115,56 @@ input[type=text], textarea{
     border-radius: 2px;
 }
 
+/* === header === */
+header{
+    margin-bottom: 20px;
+    padding: 10px 0;
+    background: lighten($gray-color, 18%);
+
+    div{
+        width: 900px;
+        margin: 0 auto;
+    }
+
+    p{
+        width: 80%;
+        font-size: 2em;
+        font-weight: bold;
+        //text-align: center;
+    }
+
+    button{
+        padding: 9px 10px;
+        margin: 8px 15px;
+        background-color: transparent;
+        background-image: none;
+        border: 1px solid $gray-color;
+        border-radius: 4px;
+        cursor: pointer;
+
+        .icon-bar {
+            display: block;
+            width: 22px;
+            height: 2px;
+            margin-top: 5px;
+            border-radius: 1px;
+            background-color: $gray-color;
+
+            &:first-child{
+                margin-top: 0;
+            }
+        }
+    }
+}
+@media (min-width: 900px) {
+
+    header button {
+        display: none;
+    }
+
+}
+
+
 /* === container and columns styles === */
 .container{
     display: -webkit-flex;
@@ -127,15 +177,16 @@ input[type=text], textarea{
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 900px;
+    //width: 900px;
+    width: 100%;
     margin: 0 auto;
 }
 
 .col{
-    width: 650px;
+    width: 100%;
 
     &:first-of-type{
-        width: 200px;
+        display: none;
     }
 }
 li{
@@ -221,7 +272,22 @@ nav li{
     }
 
 }
+@media (min-width: 900px) {
 
+    .container{
+        width: 900px;
+    }
+
+    .col{
+        width: 650px;
+
+        &:first-of-type{
+            display: block;
+            width: 200px;
+        }
+    }
+
+}
 
 /* === recipes view styles === */
 table{
