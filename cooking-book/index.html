@@ -7,46 +7,63 @@
     <meta name="description" content="Simple demo for SPA book of recipes">
     <meta name="author" content="oNora">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="assets/fonts/fonts.css">
     <link rel="stylesheet" type="text/css" href="build/css/app.css">
 </head>
 
-<body>
+<body >
 
-    <!-- MAIN CONTENT -->
-    <div class="container clearfix" ng-controller="CookingBookController">
-        <div class="col">
-            <!-- NAVIGATION -->
-            <nav>
-                <ul class="nav">
-                    <li ui-sref-active="active">
-                        <i class="icon-document-search2"></i>
-                        <a ui-sref="search">Search</a>
-                    </li>
-                    <li ui-sref-active="active">
-                        <i class="icon-clipboard-add2"></i>
-                        <a ui-sref="addRecipe">Add a new Recipe</a>
-                    </li>
-                </ul>
-            </nav>
+    <div ng-controller="CookingBookController" class="{{showMobileMenu}}">
 
-            <div class="list-wrap">
-                <ul>
-                    <li>
-                        <i class="icon-clipboard-list2"></i>
-                        <p>Available recipes</p>
-                    </li>
-                    <li ng-repeat="recipe in recipeList" ui-sref-active="active">
-                        <a ui-sref="singleView({recipeID: recipe.id})"> {{recipe.name}}</a>
-                    </li>
-                </ul>
-
+        <header >
+            <div class="main-wrap">
+                <button type="button" class="" ng-click="toggle()">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <p> Cooking Book APP </p>
             </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <div class="container main-wrap clearfix" >
+            <div class="col" >
+                <!-- NAVIGATION -->
+                <div class="left-col-nav">
+                    <nav>
+                        <ul class="nav">
+                            <li ui-sref-active="active">
+                                <i class="icon-document-search2"></i>
+                                <a ui-sref="search">Search</a>
+                            </li>
+                            <li ui-sref-active="active">
+                                <i class="icon-clipboard-add2"></i>
+                                <a ui-sref="addRecipe">Add a new Recipe</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="list-wrap">
+                        <ul>
+                            <li>
+                                <i class="icon-clipboard-list2"></i>
+                                <p>Available recipes</p>
+                            </li>
+                            <li ng-repeat="recipe in recipeList" ui-sref-active="active">
+                                <a ui-sref="singleView({recipeID: recipe.id})"> {{recipe.name}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INJECT THE CONTENT HERE ============================== -->
+            <div class="col">
+                <div ui-view class="view"></div>
+            </div>
+
         </div>
-
-        <!-- INJECT THE CONTENT HERE ============================== -->
-        <div ui-view class="col"></div>
-
     </div>
 
     <!-- dev need -->

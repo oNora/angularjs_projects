@@ -15,5 +15,15 @@
         else {
             $scope.recipeList = storages;
         }
+
+        // $scope.showMobileMenu = true;
+        var isMobileMenu = false;
+        $scope.showMobileMenu = 'hideMobile';
+        $scope.toggle = function() {
+            isMobileMenu = !isMobileMenu;
+            $scope.showMobileMenu = isMobileMenu ? 'showMobile' : 'hideMobile';
+        };
+
+
     }]);
 })();

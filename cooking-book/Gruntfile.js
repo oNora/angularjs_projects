@@ -26,7 +26,8 @@ module.exports = function(grunt) {
                     //include libraries
                     'bower_components/angular/angular.js',
                     'bower_components/angular-ui-router/release/angular-ui-router.js',
-                    'bower_components/angular-local-storage/dist/angular-local-storage.js'
+                    'bower_components/angular-local-storage/dist/angular-local-storage.js',
+                    'bower_components/angular-animate/angular-animate.js'
                 ],
                 dest: 'build/js/thirdparty.js'
             },
@@ -35,7 +36,8 @@ module.exports = function(grunt) {
                     //include libraries
                     'bower_components/angular/angular.min.js',
                     'bower_components/angular-ui-router/release/angular-ui-router.min.js',
-                    'bower_components/angular-local-storage/dist/angular-local-storage.js'
+                    'bower_components/angular-local-storage/dist/angular-local-storage.js',
+                    'bower_components/angular-animate/angular-animate.js'
                 ],
                 dest: 'build/js/thirdparty.min.js'
             }
@@ -46,7 +48,7 @@ module.exports = function(grunt) {
                 tasks: ['jshint:beforeconcat', 'concat:dist']
             },
             scss: {
-                files: ['assets/scss/*.scss'],
+                files: ['scss/*.scss'],
                 tasks: ['sass']
             }
         },
@@ -69,7 +71,7 @@ module.exports = function(grunt) {
                   noCache: true
                 },
                 files: {
-                  'build/css/app.css': 'assets/scss/app.scss'
+                  'build/css/app.css': 'scss/app.scss'
                 }
             }
         },
