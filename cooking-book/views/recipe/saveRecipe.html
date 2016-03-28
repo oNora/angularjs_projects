@@ -12,15 +12,10 @@
             <p>Add ingredients</p>
             <div class="controls">
                 <ul >
-                    <li>
-                        <label class="input-title amount" for="amount">Amount:</label>
-                        <label class="input-title amountUnits" for="amountUnits">Amount units:</label>
-                        <label class="input-title ingredientName" for="ingredientName">ingredient name:</label>
-                    </li>
                     <li ng-repeat="ingre in ingredientsList">
-                        <input name="amount"  type="text" id="amount" ng-model="ingre.amount" class="recipe-info">
-                        <input name="amountUnits"  type="text" id="amountUnits"ng-model="ingre.amountUnits" class="recipe-info">
-                        <input name="ingredientName"  type="text" id="ingredientName" ng-model="ingre.ingredientName" class="recipe-info">
+                            <input name="amount"  type="text" id="amount" ng-model="ingre.amount" class="recipe-info" placeholder="Amount"/>
+                            <input name="amountUnits"  type="text" id="amountUnits"ng-model="ingre.amountUnits" class="recipe-info" placeholder="Amount units"/>
+                            <input name="ingredientName"  type="text" id="ingredientName" ng-model="ingre.ingredientName" class="recipe-info" placeholder="Ingredient name"/>
                         <button type="button" class="btn" ng-click="removeIngredient($index)"><i class="icon-clipboard-remove2"></i> Delete </button>
                     </li>
                     <button type="button" class="btn" ng-click="addIngredient()">

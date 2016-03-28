@@ -24,6 +24,7 @@ img{
 body{
     font-family: Tahoma, Geneva, sans-serif;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 i {
@@ -55,13 +56,15 @@ h3{
 }
 
 .btn-wrap{
+    margin-top: 30px;
     text-align: right;
 }
 
 .btn{
-    display: inline-block;
-    width: 100px;
-    padding: 5px 10px;
+    display: block;
+    width: 160px;
+    margin: 5px auto;
+    padding: 5px 40px;
     background: $green-color;
     border: 0;
     border-radius: 2px;
@@ -82,6 +85,19 @@ h3{
     }
 }
 
+@media (min-width: 600px) {
+    .btn-wrap{
+        margin-top: 0;
+    }
+
+    .btn{
+        display: inline-block;
+        width: 100px;
+        padding: 5px 10px;
+        margin: auto;
+    }
+}
+
 label{
     display: block;
     margin: 15px 0 5px;
@@ -90,7 +106,7 @@ label{
 }
 input[type=text], textarea{
     width: 100%;
-    padding: 8px 12px;
+    padding: 8px 5px;
     border: 2px solid $gray-color;
     border-radius: 2px;
     box-shadow: none;
@@ -203,15 +219,15 @@ header{
 }
 
 .container{
-    width: 100%;
+    width: 96%;
     margin: 0 auto;
+    padding: 0 2%;
     transition: width .5s ease;
 }
 
 .col{
     position: relative;
     width: 100%;
-    height: 85vh;
     transition: width .9s ease;
 
     &:first-of-type{
@@ -243,7 +259,7 @@ li{
 
 /* === toggle left side on small devices  === */
 .showMobile{
-    overflow-x: hidden;
+
     .container{
         width: 900px;
     }
@@ -256,10 +272,6 @@ li{
             transition: width .9s ease;
         }
     }
-}
-
-.hideMobile{
-    overflow-x: hidden;
 }
 
 .left-col-nav{
@@ -406,12 +418,11 @@ table{
 /* === add recipes view styles === */
 .ingredients-inputs {
 
-    input[name=amount], input[name=amountUnits]{
-        width: 15%;
-    }
-
+    input[name=amount],
+    input[name=amountUnits],
     input[name=ingredientName]{
-        width: 52%;
+        width: 100%;
+        margin: 5px 0;
     }
 
     li{
@@ -439,6 +450,21 @@ table{
 
     p{
         margin: 20px 0 10px;
+    }
+}
+
+@media (min-width: 600px) {
+
+    .ingredients-inputs {
+
+        input[name=amount],
+        input[name=amountUnits]{
+            width: 15.33%;
+        }
+
+        input[name=ingredientName] {
+            width: 51%;
+        }
     }
 }
 
