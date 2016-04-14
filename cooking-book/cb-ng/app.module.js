@@ -2,7 +2,7 @@
 
     'use strict';
 
-    angular.module('CookingBookApp', [
+    angular.module('cookingBook', [
         'ui.router',
         'LocalStorageModule',
         'ngAnimate',

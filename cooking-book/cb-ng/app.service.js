@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var app = angular.module("CookingBookApp");
+    var app = angular.module("cookingBook");
 
     app.service("cookingBooAppService", [function () {
 

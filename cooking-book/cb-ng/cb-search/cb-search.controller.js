@@ -8,8 +8,6 @@
         ['$scope', 'cbSearchService',
         function($scope, cbSearchService){
 
-        // TODO: oprawi imeto na survisa  cbSearchService na cookingBookSearchService, kakto i na dajlovete da e taka
-
         // reference to search service:
          var searchService = cbSearchService;
 

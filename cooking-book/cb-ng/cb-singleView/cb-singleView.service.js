@@ -8,18 +8,19 @@
 
         var $this = this;
 
+        $this.receiptFound = null;
+
         $this.findRecipe = function(recipeID, allRecipes) {
-            var getRecipe;
 
-            for (var i = 0; i < allRecipes.length; i++) {
-
-                if(allRecipes[i].id == recipeID){
-                    getRecipe = allRecipes[i];
+            for (var i = 0; i <  allRecipes.length; i++) {
+                if( allRecipes[i].id ==  recipeID){
+                    $this.receiptFound =  allRecipes[i];
                     break;
                 }
             }
 
-            return  getRecipe;
+            return $this.receiptFound;
         };
+
     }]);
 })();

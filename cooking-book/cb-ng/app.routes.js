@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var app = angular.module('CookingBookApp');
+    var app = angular.module('cookingBook');
 
     app.config(['$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider',
             function($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
@@ -51,7 +51,7 @@
                         templateUrl: "views/404.html"
                     });
 
-                localStorageServiceProvider.setPrefix('CookingBookApp');
+                localStorageServiceProvider.setPrefix('cookingBook');
             }
         ]);
 

@@ -15,9 +15,9 @@
 
                 var viewUrl = $location.path().split('/');
                 var currentRecipe = cbSingleViewService.findRecipe($stateParams.recipeID, $scope.recipeList);
-
+                
                 //ако се опита да се зареди url на изтрита рецепта да не се зарежа view с грешки
-                if(currentRecipe === undefined && viewUrl[1] != 'addRecipe' ){
+                if(currentRecipe === null && viewUrl[1] != 'addRecipe' ){
                     $location.path('/404');
                 }else if (viewUrl[1] == 'delete') {
                     $scope.templateTitle = "Deleting";
@@ -26,13 +26,12 @@
                     $scope.templateTitle = $stateParams.recipeID ? 'Edit Recipe' : 'Add a new Recipe';
                 }
 
-                 if ($stateParams.recipeID && currentRecipe !== undefined) {
+                 if ($stateParams.recipeID && currentRecipe !== null) {
                     $scope.currentID = currentRecipe.id;
                     $scope.recipeName = currentRecipe.name;
                     $scope.recipeDescriptionField = currentRecipe.description;
                     $scope.ingredientsList = currentRecipe.ingredients;
                 } else {
-                     console.log('else 2 $stateParams.recipeID', $stateParams.recipeID);
                     //reset ingredients object
                     $scope.ingredientsList = [{}];
                 }

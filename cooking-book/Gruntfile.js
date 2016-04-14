@@ -17,7 +17,9 @@ module.exports = function(grunt) {
                     //then the routes
                     'cb-ng/*.routes.js', 'cb-ng/**/*.routes.js',
                     //now everything else
-                    'cb-ng/*.js', 'cb-ng/**/*.js'
+                    'cb-ng/*.js', 'cb-ng/**/*.js',
+                    //exclude test files
+                    '!cb-ng/*.spec.js', '!cb-ng/**/*.spec.js'
                 ],
                 dest: 'build/js/<%= pkg.name %>.js'
             },
@@ -44,7 +46,7 @@ module.exports = function(grunt) {
         },
         watch: {
             js: {
-                files: ['cb-ng/*.js', 'cb-ng/**/*.js'],
+                files: ['cb-ng/*.js', 'cb-ng/**/*.js', '!cb-ng/*.spec.js', '!cb-ng/**/*.spec.js'],
                 tasks: ['jshint:beforeconcat', 'concat:dist']
             },
             scss: {
@@ -87,7 +89,7 @@ module.exports = function(grunt) {
                 //     jQuery: true
                 // }
             },
-            beforeconcat: ['cb-ng/*.js', 'cb-ng/**/*.js'],
+            beforeconcat: ['cb-ng/*.js', 'cb-ng/**/*.js', '!cb-ng/*.spec.js', '!cb-ng/**/*.spec.js'],
             afterconcat:  ['build/js/<%= pkg.name %>.js']
         }
     });
