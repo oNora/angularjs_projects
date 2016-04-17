@@ -13,10 +13,14 @@
         $this.findRecipe = function(recipeID, allRecipes) {
 
             for (var i = 0; i <  allRecipes.length; i++) {
+
                 if( allRecipes[i].id ==  recipeID){
                     $this.receiptFound =  allRecipes[i];
                     break;
                 }
+
+                $this.receiptFound = null;
+
             }
 
             return $this.receiptFound;
