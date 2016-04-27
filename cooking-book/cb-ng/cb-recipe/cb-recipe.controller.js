@@ -26,7 +26,7 @@
                     $scope.templateTitle = $stateParams.recipeID ? 'Edit Recipe' : 'Add a new Recipe';
                 }
 
-                 if ($stateParams.recipeID && currentRecipe !== null) {
+                if ($stateParams.recipeID && currentRecipe !== null) {
                     $scope.currentID = currentRecipe.id;
                     $scope.recipeName = currentRecipe.name;
                     $scope.recipeDescriptionField = currentRecipe.description;

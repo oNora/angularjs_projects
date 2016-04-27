@@ -9,10 +9,11 @@
         var $this = this,
             foundRecipesId = []; // списък с рецепти, вкоито има поне една от търсените съставки
 
+
         function checkRecipe (entryValue, allRecipes) {
 
             for (var i = 0; i < allRecipes.length; i++ ) {
-                var recipeIn = ingredientsList(allRecipes[i].ingredients);
+                var recipeIn = $this.ingredientsList(allRecipes[i].ingredients);
 
                 if (recipeIn.indexOf(entryValue) > -1) {
                     if (foundRecipesId.indexOf(allRecipes[i].id) == -1) {
@@ -54,33 +55,33 @@
             return all;
         };
 
-        function ingredientsList(recipeIntegrates) {
-
+        $this.ingredientsList = function(recipeIntegrates) {
             var allRecipeIn = [];
             for( var item in (recipeIntegrates)){
                 allRecipeIn.push((recipeIntegrates)[item].ingredientName);
             }
-
             return allRecipeIn;
 
-        }
+        };
 
         $this.availableUniqueIntegrates = function (allRecipesList) {
 
-            var availableUniqueIntegrates = [];
+            // var availableUniqueIntegrates = [];
+            $this.allUniqueIntegrates = [];
 
             for (var i=0; i < allRecipesList.length; i++) {
 
-                var arrayIngredients = ingredientsList(allRecipesList[i].ingredients);
+               // var arrayIngredients = ingredientsList(allRecipesList[i].ingredients);
+                var arrayIngredients = $this.ingredientsList(allRecipesList[i].ingredients);
 
                 for (var y = 0; y < arrayIngredients.length; y++){
-                    if (availableUniqueIntegrates.indexOf(arrayIngredients[y]) == -1) {
-                        availableUniqueIntegrates.push(arrayIngredients[y]);
+                    if ($this.allUniqueIntegrates.indexOf(arrayIngredients[y]) == -1) {
+                        $this.allUniqueIntegrates.push(arrayIngredients[y]);
                     }
                 }
             }
 
-            return availableUniqueIntegrates;
+            return $this.allUniqueIntegrates;
         };
 
     }]);
