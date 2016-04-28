@@ -11,11 +11,8 @@
             var currentRecipeId = $stateParams.recipeID;
             var currentRecipe = cbSingleViewService.findRecipe(currentRecipeId, $scope.recipeList);
 
-            //console.log('currentRecipe: ', currentRecipe);
-
             if(currentRecipe === null ) {
                 $location.path('/404');
-                console.log('samo if');
             }else{
                 $scope.name = currentRecipe.name;
                 $scope.ingredients = currentRecipe.ingredients;
@@ -25,7 +22,6 @@
                 $scope.getLength = function(obj) {
                     return Object.keys(obj).length;
                 };
-                console.log('samo else');
             }
 
     }]);

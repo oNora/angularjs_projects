@@ -73,6 +73,21 @@ describe('Controller: CookingBookSingleViewController', function() {
             });
 
         });
+
+        describe('Get getLength call', function() {
+
+            it('Should have call getLength', function () {
+                var testIngredientsObj = mockCurrentRecipe.ingredients[0];
+
+                spyOn($scope, 'getLength').and.callThrough();
+                $scope.getLength(testIngredientsObj);
+
+                expect($scope.getLength).toHaveBeenCalled();
+                expect($scope.getLength).toHaveBeenCalledWith(testIngredientsObj);
+
+            });
+
+        });
     });
 
     describe('currentRecipe is empty', function(){
