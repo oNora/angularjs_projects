@@ -30,9 +30,7 @@
             var input = allIngredients.split(',');
 
             // reset list of found recipes
-            if($this.foundRecipesId.length  > 0){
-                $this.foundRecipesId = [];
-            }
+            $this.foundRecipesId = [];
 
             for (var x = 0; x < input.length; x++) {
                 var currentInput = input[x].trim();

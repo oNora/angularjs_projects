@@ -77,11 +77,9 @@ describe('Service: cbSearchService', function() {
 
             expect(cbSearchService.foundRecipesId).toBeDefined();
             expect(cbSearchService.foundRecipesId instanceof Array).toBeTruthy();
-
-            //call again to check the if statement
-            cbSearchService.search(allIngredients, mockAllRecipesList);
             expect(cbSearchService.foundRecipesId).not.toEqual([]);
             expect(typeof cbSearchService.foundRecipesId[0]).toBe('number');
+
         });
 
     });
