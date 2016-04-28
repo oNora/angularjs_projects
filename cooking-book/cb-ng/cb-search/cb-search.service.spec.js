@@ -7,7 +7,7 @@ describe('Service: cbSearchService', function() {
     var cbSearchService,
         $rootScope,
         mockAllRecipesList,
-        mockIngredienObj
+        mockIngredienObj;
 
     // Initialize factory
     beforeEach(inject(function(_cbSearchService_, _$rootScope_) {
@@ -26,11 +26,113 @@ describe('Service: cbSearchService', function() {
         expect(cbSearchService).not.toEqual(null);
     });
 
+    it('Should have foundRecipesId and to be EMPTY', function () {
+        expect(cbSearchService.foundRecipesId).toBeDefined();
+        expect(cbSearchService.foundRecipesId instanceof Array).toBeTruthy();
+        expect(cbSearchService.foundRecipesId).toEqual([]);
+    });
+
+    describe('Get checkRecipe call', function() {
+        var entryValue = 'suggar';
+
+        it('Should have a checkRecipe', function () {
+            expect(cbSearchService.checkRecipe).toBeDefined();
+            expect(typeof cbSearchService.checkRecipe).toBe('function');
+        });
+
+        it('Should have call checkRecipe and check related functions', function(){
+            spyOn(cbSearchService, 'checkRecipe').and.callThrough();
+            spyOn(cbSearchService, 'ingredientsList').and.callThrough();
+            cbSearchService.checkRecipe(entryValue, mockAllRecipesList);
+
+            expect(cbSearchService.checkRecipe).toHaveBeenCalled();
+            expect(cbSearchService.checkRecipe).toHaveBeenCalledWith(entryValue, mockAllRecipesList);
+
+            expect(cbSearchService.ingredientsList).toHaveBeenCalled();
+
+            expect(cbSearchService.foundRecipesId).toBeDefined();
+            expect(cbSearchService.foundRecipesId instanceof Array).toBeTruthy();
+            expect(cbSearchService.foundRecipesId).not.toEqual([]);
+            expect(typeof cbSearchService.foundRecipesId[0]).toBe('number');
+
+        });
+
+    });
+
+    describe('Get search call', function() {
+        var allIngredients = 'suggar';
+
+        it('Should have a search', function () {
+            expect(cbSearchService.checkRecipe).toBeDefined();
+            expect(typeof cbSearchService.checkRecipe).toBe('function');
+        });
+
+        it('Should have call search and check related functions', function(){
+
+            spyOn(cbSearchService, 'search').and.callThrough();
+            cbSearchService.search(allIngredients, mockAllRecipesList);
+
+            expect(cbSearchService.search).toHaveBeenCalled();
+            expect(cbSearchService.search).toHaveBeenCalledWith(allIngredients, mockAllRecipesList);
+
+            expect(cbSearchService.foundRecipesId).toBeDefined();
+            expect(cbSearchService.foundRecipesId instanceof Array).toBeTruthy();
+
+            //call again to check the if statement
+            cbSearchService.search(allIngredients, mockAllRecipesList);
+            expect(cbSearchService.foundRecipesId).not.toEqual([]);
+            expect(typeof cbSearchService.foundRecipesId[0]).toBe('number');
+        });
+
+    });
+
+    describe('Get returnFoundRecipes call', function() {
+        beforeEach(function() {
+            cbSearchService.foundRecipesId = [1, 3];
+        });
+
+        it('Should have a returnFoundRecipes', function () {
+            expect(cbSearchService.returnFoundRecipes).toBeDefined();
+            expect(typeof cbSearchService.returnFoundRecipes).toBe('function');
+        });
+
+        it('Should have call returnFoundRecipes', function(){
+            spyOn(cbSearchService, 'returnFoundRecipes').and.callThrough();
+            cbSearchService.returnFoundRecipes(mockAllRecipesList);
+
+            expect(cbSearchService.returnFoundRecipes).toHaveBeenCalled();
+            expect(cbSearchService.returnFoundRecipes).toHaveBeenCalledWith(mockAllRecipesList);
+
+            expect(cbSearchService.allFoundRecipes).toBeDefined();
+            expect(cbSearchService.allFoundRecipes instanceof Array).toBeTruthy();
+            expect(typeof cbSearchService.allFoundRecipes[0]).toBe('object');
+            expect(cbSearchService.allFoundRecipes[0].id).toBeDefined();
+            expect(cbSearchService.allFoundRecipes[0].name).toBeDefined();
+            expect(cbSearchService.allFoundRecipes[0].ingredients).toBeDefined();
+
+        });
+
+    });
+
+
     describe('Get ingredientsList call', function() {
 
         it('Should have a ingredientsList', function () {
             expect(cbSearchService.ingredientsList).toBeDefined();
             expect(typeof cbSearchService.ingredientsList).toBe('function');
+        });
+
+        it('Should have call ingredientsList', function(){
+            spyOn(cbSearchService, 'ingredientsList').and.callThrough();
+            cbSearchService.ingredientsList(mockIngredienObj);
+
+            expect(cbSearchService.ingredientsList).toHaveBeenCalled();
+            expect(cbSearchService.ingredientsList).toHaveBeenCalledWith(mockIngredienObj);
+
+            expect(cbSearchService.allRecipeIn).toBeDefined();
+            expect(cbSearchService.allRecipeIn instanceof Array).toBeTruthy();
+            expect(typeof cbSearchService.allRecipeIn[0]).toBe('string');
+
         });
 
     });
@@ -53,7 +155,10 @@ describe('Service: cbSearchService', function() {
             expect(cbSearchService.ingredientsList).toHaveBeenCalled();
             expect(cbSearchService.ingredientsList).toHaveBeenCalledWith(mockIngredienObj);
 
-            expect(typeof cbSearchService.allUniqueIntegrates).toBe('object');
+            expect(cbSearchService.allUniqueIntegrates).toBeDefined();
+            expect(cbSearchService.allUniqueIntegrates instanceof Array).toBeTruthy();
+            expect(typeof cbSearchService.allUniqueIntegrates[0]).toBe('string');
+
         });
 
     });

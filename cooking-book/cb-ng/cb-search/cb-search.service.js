@@ -6,61 +6,63 @@
 
     app.service("cbSearchService", [function() {
 
-        var $this = this,
-            foundRecipesId = []; // списък с рецепти, вкоито има поне една от търсените съставки
+        var $this = this;
+
+        $this.foundRecipesId = []; // списък с рецепти, вкоито има поне една от търсените съставки
 
 
-        function checkRecipe (entryValue, allRecipes) {
+        $this.checkRecipe = function (entryValue, allRecipes) {
 
             for (var i = 0; i < allRecipes.length; i++ ) {
                 var recipeIn = $this.ingredientsList(allRecipes[i].ingredients);
 
                 if (recipeIn.indexOf(entryValue) > -1) {
-                    if (foundRecipesId.indexOf(allRecipes[i].id) == -1) {
-                        foundRecipesId.push(allRecipes[i].id);
+                    if ($this.foundRecipesId.indexOf(allRecipes[i].id) == -1) {
+                        $this.foundRecipesId.push(allRecipes[i].id);
                     }
                 }
             }
 
-        }
+        };
 
         $this.search = function(allIngredients, availableRecipes) {
 
             var input = allIngredients.split(',');
 
             // reset list of found recipes
-            if(foundRecipesId.length  > 0){
-                foundRecipesId = [];
+            if($this.foundRecipesId.length  > 0){
+                $this.foundRecipesId = [];
             }
 
             for (var x = 0; x < input.length; x++) {
                 var currentInput = input[x].trim();
 
-                checkRecipe(currentInput, availableRecipes);
+                $this.checkRecipe(currentInput, availableRecipes);
             }
 
         };
 
         $this.returnFoundRecipes = function(recipeList) {
-
-            var all = [];
+            // var all = [];
+            $this.allFoundRecipes = [];
 
             for (var i = 0; i < recipeList.length; i++) {
 
-                if (foundRecipesId.indexOf(recipeList[i].id) > -1) {
-                    all.push(recipeList[i]);
+                if ($this.foundRecipesId.indexOf(recipeList[i].id) > -1) {
+                    $this.allFoundRecipes.push(recipeList[i]);
                 }
             }
 
-            return all;
+            return $this.allFoundRecipes;
         };
 
         $this.ingredientsList = function(recipeIntegrates) {
-            var allRecipeIn = [];
+            this.allRecipeIn = [];
             for( var item in (recipeIntegrates)){
-                allRecipeIn.push((recipeIntegrates)[item].ingredientName);
+                this.allRecipeIn.push((recipeIntegrates)[item].ingredientName);
             }
-            return allRecipeIn;
+
+            return this.allRecipeIn;
 
         };
 
