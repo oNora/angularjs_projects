@@ -7,15 +7,14 @@
         [ "$scope", '$stateParams', '$location', 'cbRecipeService', 'cbSingleViewService', 'localStorageService',
         function($scope, $stateParams, $location, cbRecipeService, cbSingleViewService, localStorageService){
 
-            initView();
-            function initView() {
+            $scope.initView = function() {
                 // da se definira list predi da sepolzwa wse pak
                 $scope.ingredientsList = [{}];
                 $scope.confirmDeleting = 0;
 
                 var viewUrl = $location.path().split('/');
                 var currentRecipe = cbSingleViewService.findRecipe($stateParams.recipeID, $scope.recipeList);
-                
+
                 //ако се опита да се зареди url на изтрита рецепта да не се зарежа view с грешки
                 if(currentRecipe === null && viewUrl[1] != 'addRecipe' ){
                     $location.path('/404');
@@ -35,7 +34,8 @@
                     //reset ingredients object
                     $scope.ingredientsList = [{}];
                 }
-            }
+            };
+            $scope.initView();
 
             $scope.saveRecipe = function () {
 

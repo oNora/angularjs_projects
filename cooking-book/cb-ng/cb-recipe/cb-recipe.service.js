@@ -8,34 +8,39 @@
 
         var $this = this;
 
+        $this.indexRecipe = null;
+        $this.valuesForSave = {};
+
         $this.returnRecipeIndex = function (allRecipe, currentRecipeId) {
+
             for(var i = 0; i < allRecipe.length; i++){
                 if(allRecipe[i].id === currentRecipeId){
-                    return i;
+                    $this.indexRecipe = i;
                 }
             }
+
+            return $this.indexRecipe;
         };
 
         $this.saveRecipe = function(recipeValues, recipeList, recipeID){
 
-            var valuesForSave = {
+            $this.valuesForSave = {
                 recipeIndex: null,
                 recipeValues: {}
             };
-
             if(recipeID){
                 var currentId = parseInt(recipeID);
                 recipeValues.id = currentId;
 
-                valuesForSave.recipeIndex = $this.returnRecipeIndex(recipeList, currentId);
-                valuesForSave.recipeValues = recipeValues;
+                $this.valuesForSave.recipeIndex = $this.returnRecipeIndex(recipeList, currentId);
+                $this.valuesForSave.recipeValues = recipeValues;
 
             } else {
                 recipeValues.id = recipeList[recipeList.length -1].id + 1;
-                valuesForSave.recipeValues = recipeValues;
+                $this.valuesForSave.recipeValues = recipeValues;
             }
 
-            return valuesForSave;
+            return $this.valuesForSave;
 
         };
 
