@@ -9,7 +9,9 @@
         var $this = this;
 
         $this.foundRecipesId = []; // списък с рецепти, вкоито има поне една от търсените съставки
-
+        $this.allFoundRecipes = []; // function $this.returnFoundRecipes
+        $this.allRecipeIn = []; // function $this.ingredientsList
+        $this.allUniqueIntegrates = []; // function $this.availableUniqueIntegrates
 
         $this.checkRecipe = function (entryValue, allRecipes) {
 
@@ -40,8 +42,9 @@
 
         };
 
-        $this.returnFoundRecipes = function(recipeList) {
-            // var all = [];
+        $this.returnFoundRecipes = function(input, recipeList) {
+            $this.search(input, recipeList);
+            
             $this.allFoundRecipes = [];
 
             for (var i = 0; i < recipeList.length; i++) {
@@ -55,12 +58,12 @@
         };
 
         $this.ingredientsList = function(recipeIntegrates) {
-            this.allRecipeIn = [];
+            $this.allRecipeIn = [];
             for( var item in (recipeIntegrates)){
-                this.allRecipeIn.push((recipeIntegrates)[item].ingredientName);
+                $this.allRecipeIn.push((recipeIntegrates)[item].ingredientName);
             }
 
-            return this.allRecipeIn;
+            return $this.allRecipeIn;
 
         };
 

@@ -19,13 +19,9 @@
         $scope.searchRecipe = function (ingredientsInput) {
 
             // reset list of found recipes
-            if($scope.foundList.length > 0){
-                $scope.foundList = [];
-            }
+            $scope.foundList = [];
 
-            searchService.search(ingredientsInput, $scope.recipeList);
-
-            $scope.foundList = searchService.returnFoundRecipes($scope.recipeList);
+            $scope.foundList = searchService.returnFoundRecipes(ingredientsInput, $scope.recipeList);
             $scope.isFoundListEmpty = $scope.foundList.length === 0;
         };
 

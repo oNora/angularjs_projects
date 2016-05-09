@@ -7,7 +7,8 @@ describe('Service: cbSearchService', function() {
     var cbSearchService,
         $rootScope,
         mockAllRecipesList,
-        mockIngredienObj;
+        mockIngredienObj,
+        mockInputSearck;
 
     // Initialize factory
     beforeEach(inject(function(_cbSearchService_, _$rootScope_) {
@@ -60,7 +61,10 @@ describe('Service: cbSearchService', function() {
     });
 
     describe('Get search call', function() {
-        var allIngredients = 'suggar';
+
+        beforeEach(function() {
+            mockInputSearck =  'suggar';
+        });
 
         it('Should have a search', function () {
             expect(cbSearchService.checkRecipe).toBeDefined();
@@ -70,10 +74,10 @@ describe('Service: cbSearchService', function() {
         it('Should have call search and check related functions', function(){
 
             spyOn(cbSearchService, 'search').and.callThrough();
-            cbSearchService.search(allIngredients, mockAllRecipesList);
+            cbSearchService.search(mockInputSearck, mockAllRecipesList);
 
             expect(cbSearchService.search).toHaveBeenCalled();
-            expect(cbSearchService.search).toHaveBeenCalledWith(allIngredients, mockAllRecipesList);
+            expect(cbSearchService.search).toHaveBeenCalledWith(mockInputSearck, mockAllRecipesList);
 
             expect(cbSearchService.foundRecipesId).toBeDefined();
             expect(cbSearchService.foundRecipesId instanceof Array).toBeTruthy();
@@ -85,8 +89,10 @@ describe('Service: cbSearchService', function() {
     });
 
     describe('Get returnFoundRecipes call', function() {
+
         beforeEach(function() {
             cbSearchService.foundRecipesId = [1, 3];
+            mockInputSearck =  'suggar';
         });
 
         it('Should have a returnFoundRecipes', function () {
@@ -96,12 +102,16 @@ describe('Service: cbSearchService', function() {
 
         it('Should have call returnFoundRecipes', function(){
             spyOn(cbSearchService, 'returnFoundRecipes').and.callThrough();
-            cbSearchService.returnFoundRecipes(mockAllRecipesList);
+            spyOn(cbSearchService, 'search').and.callThrough();
+            cbSearchService.returnFoundRecipes(mockInputSearck, mockAllRecipesList);
 
             expect(cbSearchService.returnFoundRecipes).toHaveBeenCalled();
-            expect(cbSearchService.returnFoundRecipes).toHaveBeenCalledWith(mockAllRecipesList);
+            expect(cbSearchService.returnFoundRecipes).toHaveBeenCalledWith(mockInputSearck, mockAllRecipesList);
 
             expect(cbSearchService.allFoundRecipes).toBeDefined();
+
+            expect(cbSearchService.search).toHaveBeenCalled();
+
             expect(cbSearchService.allFoundRecipes instanceof Array).toBeTruthy();
             expect(typeof cbSearchService.allFoundRecipes[0]).toBe('object');
             expect(cbSearchService.allFoundRecipes[0].id).toBeDefined();
