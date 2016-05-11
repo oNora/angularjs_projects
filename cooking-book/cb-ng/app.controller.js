@@ -16,12 +16,11 @@
             $scope.recipeList = storages;
         }
 
-        // $scope.showMobileMenu = true;
-        var isMobileMenu = false;
+        $scope.isMobileMenu = false;
         $scope.showMobileMenu = 'hideMobile';
         $scope.toggle = function() {
-            isMobileMenu = !isMobileMenu;
-            $scope.showMobileMenu = isMobileMenu ? 'showMobile' : 'hideMobile';
+            $scope.isMobileMenu = !$scope.isMobileMenu;
+            $scope.showMobileMenu = $scope.isMobileMenu ? 'showMobile' : 'hideMobile';
         };
 
 
