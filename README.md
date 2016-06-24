@@ -40,3 +40,8 @@ Features:
 - search for recipes based on the available ingredients. The search returns the list of recipes that can be prepared using the available ingredients.
 
 Unit Testing - Karma with Jasmine. 
+
+###I. `learning-angular2`
+
+A collection of task that I am using to learn Angular2. <br />
+Some of this tasks are created during [Angular 2 From The Ground Up](https://www.udemy.com/angular-2-from-the-ground-up/) course.
