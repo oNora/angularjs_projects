@@ -1,0 +1,35 @@
+{
+  "name": "angular2-starter",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "webpack --progress",
+    "build:prod": "cross-env APP_ENVIRONMENT=production webpack -p --progress",
+    "serve": "webpack-dev-server --inline --progress"
+  },
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.3",
+    "@angular/compiler": "2.0.0-rc.3",
+    "@angular/core": "2.0.0-rc.3",
+    "@angular/http": "2.0.0-rc.3",
+    "@angular/platform-browser": "2.0.0-rc.3",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.3",
+    "@angular/router": "2.0.0-rc.1",
+    "core-js": "2.4.0",
+    "reflect-metadata": "0.1.3",
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "0.6.12"
+  },
+  "devDependencies": {
+    "babel-core": "6.9.1",
+    "babel-loader": "6.2.4",
+    "babel-plugin-angular2-annotations": "5.1.0",
+    "babel-plugin-transform-class-properties": "6.9.1",
+    "babel-plugin-transform-decorators-legacy": "1.3.4",
+    "babel-preset-es2015": "6.9.0",
+    "cross-env": "^1.0.8",
+    "html-webpack-plugin": "^2.21.0",
+    "raw-loader": "^0.5.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
