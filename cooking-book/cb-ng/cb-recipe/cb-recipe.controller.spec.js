@@ -11,8 +11,15 @@ describe('Controller: CookingBookRecipeController', function() {
         mockLocalStorageService,
         mockInitData,
         mockCurrentRecipe,
-        location;
+        location,
+        stateParams;
         //recipeID = 3;
+        var recipeValues = {
+                id:          5,
+                name:        'new one',
+                ingredients: [{"ingredientName":"eggs", "amount":"2", "amountUnits":"" }],
+                description: 'some description'
+            };
 
     beforeEach(function() {
 
@@ -26,15 +33,7 @@ describe('Controller: CookingBookRecipeController', function() {
 
 
         mockedRecipeService = {
-            valuesForSave : {
-                recipeIndex: null,
-                recipeValues: {
-                    id:          5,
-                    name:        'new one',
-                    ingredients: [{"ingredientName":"eggs", "amount":"2", "amountUnits":"" }],
-                    description: 'some description'
-                }
-            },
+
             returnRecipeIndex: function (allRecipe, currentRecipeId) { return (currentRecipeId -1) },
             getRecipe: function() {
                 return mockInitData;
@@ -70,103 +69,212 @@ describe('Controller: CookingBookRecipeController', function() {
 
     });
 
-    beforeEach(inject(function($controller, _$rootScope_,  _$location_){
-        $rootScope =  _$rootScope_;
-        scope = $rootScope.$new();
-        location = _$location_;
+     describe('Empty stateParams', function() {
 
-        scope.recipeList = mockInitData;
+        beforeEach(inject(function($controller, _$rootScope_,  _$location_){
+            $rootScope =  _$rootScope_;
+            scope = $rootScope.$new();
+            location = _$location_;
+            stateParams = {};
 
-        ctrl = $controller('CookingBookRecipeController', {
-            $scope: scope,
-            'cbRecipeService': mockedRecipeService,
-            'cbSingleViewService': mockedSingleViewService
+            scope.recipeList = mockInitData;
+
+            ctrl = $controller('CookingBookRecipeController', {
+                $scope: scope,
+                $stateParams: stateParams,
+                'cbRecipeService': mockedRecipeService,
+                'cbSingleViewService': mockedSingleViewService
+            });
+            $rootScope.$apply();
+
+        }));
+
+
+        it('ctrl should be defined', function() {
+            expect(ctrl).toBeDefined();
         });
-        $rootScope.$apply();
 
-    }));
+        describe('Get initView call', function() {
 
+            it('Should have call initView and check variables', function(){
 
-    it('ctrl should be defined', function() {
-        expect(ctrl).toBeDefined();
-    });
+                spyOn(scope, 'initView').and.callThrough();
+                scope.initView();
+                expect(scope.initView).toHaveBeenCalled();
 
-    describe('Get initView call', function() {
+                expect(scope.ingredientsList).toBeDefined();
+                expect(scope.ingredientsList instanceof Array).toBeTruthy();
+                expect(typeof scope.ingredientsList[0]).toBe('object');
+                expect(scope.ingredientsList.length).toBe(1);
 
-        it('Should have call initView and check variables', function(){
-
-            spyOn(scope, 'initView').and.callThrough();
-            scope.initView();
-            expect(scope.initView).toHaveBeenCalled();
-
-            expect(scope.ingredientsList).toBeDefined();
-            expect(scope.ingredientsList instanceof Array).toBeTruthy();
-            expect(typeof scope.ingredientsList[0]).toBe('object');
-            expect(scope.ingredientsList.length).toBe(1);
-
-            expect(scope.confirmDeleting).toBeDefined();
-            expect(scope.confirmDeleting).toEqual(0);
+                expect(scope.confirmDeleting).toBeDefined();
+                expect(scope.confirmDeleting).toEqual(0);
+            });
         });
-    });
 
-    describe('Get addIngredient call', function() {
+        describe('Get saveRecipe call', function() {
 
-        it('Should have call addIngredient and check related functions', function(){
+            var recipeID,
+                intialRecipeLength;
+
+            it('Should saveRecipe be defined', function(){
+                expect(scope.saveRecipe).toBeDefined();
+            });
+
+            it('Should have call removeRecipe and check related functions - updatedRecipeList', function(){
+                recipeID = 3;
+                intialRecipeLength = mockInitData.length;
+
+                spyOn( scope, 'saveRecipe').and.callThrough();
+                spyOn( mockedRecipeService, 'updateRecipe').and.callThrough();
+                spyOn( mockedRecipeService, 'addRecipe').and.callThrough();
+
+                scope.saveRecipe();
+
+                expect(stateParams.recipeID).not.toBeDefined();
+                expect(mockedRecipeService.updateRecipe).not.toHaveBeenCalled();
+                expect(mockedRecipeService.addRecipe).toHaveBeenCalled();
+
+                expect(scope.recipeList instanceof Array).toBeTruthy();
+                expect(scope.recipeList.length > intialRecipeLength).toBeTruthy();
+
+            });
+        });
+
+        describe('Get addIngredient call', function() {
+
+            it('Should have call addIngredient and check related functions', function(){
+                var initialIngredientsNumber = scope.ingredientsList.length;
+
+                spyOn(scope, 'addIngredient').and.callThrough();
+
+                scope.addIngredient();
+
+                expect(scope.addIngredient).toHaveBeenCalled();
+                expect(scope.ingredientsList.length > initialIngredientsNumber).toBeTruthy();
+            });
+        });
+
+        describe('Get removeIngredient call', function() {
+
+
+            it('Should have call removeIngredient and check related functions', function(){
             var initialIngredientsNumber = scope.ingredientsList.length;
 
-            spyOn(scope, 'addIngredient').and.callThrough();
+                spyOn(scope, 'removeIngredient').and.callThrough();
+                spyOn(scope.ingredientsList, 'splice').and.callThrough();
 
-            scope.addIngredient();
+                scope.removeIngredient(0);
 
-            expect(scope.addIngredient).toHaveBeenCalled();
-            expect(scope.ingredientsList.length > initialIngredientsNumber).toBeTruthy();
+                expect(scope.removeIngredient).toHaveBeenCalled();
+                expect(scope.ingredientsList.splice).toHaveBeenCalled();
+                expect(scope.ingredientsList.length < initialIngredientsNumber).toBeTruthy();
+
+            });
+        });
+
+
+        describe('Get removeRecipe call', function() {
+
+            var recipeIndex ,
+                initialResipiesNumber,
+                recipeID = 3,
+                recipeList;
+
+            it('Should have call removeRecipe and check related functions', function(){
+                    spyOn( scope, 'removeRecipe').and.callThrough();
+                    spyOn( mockedRecipeService, 'deleteRecipe').and.callThrough();
+
+                    var initialRecipeLenght = mockInitData.length;
+                    scope.removeRecipe();
+
+                    var deletingData = mockedRecipeService.deleteRecipe(recipeID);
+                    expect(mockedRecipeService.deleteRecipe).toHaveBeenCalledWith(recipeID);
+
+                    expect(deletingData.updateRecipeList).toBeDefined();
+                    expect(deletingData.updateRecipeList instanceof Array).toBeTruthy();
+                    expect(deletingData.updateRecipeList.length < initialRecipeLenght).toBeTruthy();
+
+                    expect(deletingData.confirmDeleting).toBeDefined();
+                    expect(deletingData.confirmDeleting).toEqual(1);
+
+            });
         });
     });
 
-    describe('Get removeIngredient call', function() {
+    describe('With stateParams', function() {
 
+        beforeEach(inject(function($controller, _$rootScope_,  _$location_){
+            $rootScope =  _$rootScope_;
+            scope = $rootScope.$new();
+            location = _$location_;
+            stateParams = {recipeID: 4};
 
-        it('Should have call removeIngredient and check related functions', function(){
-           var initialIngredientsNumber = scope.ingredientsList.length;
+            scope.recipeList = mockInitData;
 
-            spyOn(scope, 'removeIngredient').and.callThrough();
-            spyOn(scope.ingredientsList, 'splice').and.callThrough();
+            ctrl = $controller('CookingBookRecipeController', {
+                $scope: scope,
+                $stateParams: stateParams,
+                'cbRecipeService': mockedRecipeService,
+                'cbSingleViewService': mockedSingleViewService
+            });
+            $rootScope.$apply();
 
-            scope.removeIngredient(0);
+        }));
 
-            expect(scope.removeIngredient).toHaveBeenCalled();
-            expect(scope.ingredientsList.splice).toHaveBeenCalled();
-            expect(scope.ingredientsList.length < initialIngredientsNumber).toBeTruthy();
+        describe('Get saveRecipe call', function() {
 
+            var recipeID,
+                intialRecipeLength;
+
+            it('Should saveRecipe be defined', function(){
+                expect(scope.saveRecipe).toBeDefined();
+            });
+
+            it('Should have call removeRecipe and check related functions - updatedRecipeList', function(){
+                recipeID = 3;
+                intialRecipeLength = mockInitData.length;
+
+                spyOn( scope, 'saveRecipe').and.callThrough();
+                spyOn( mockedRecipeService, 'updateRecipe').and.callThrough();
+                spyOn( mockedRecipeService, 'addRecipe').and.callThrough();
+
+                scope.saveRecipe();
+
+                expect(stateParams.recipeID).toBeDefined();
+                expect(mockedRecipeService.updateRecipe).toHaveBeenCalled();
+                expect(mockedRecipeService.addRecipe).not.toHaveBeenCalled();
+
+                expect(scope.recipeList instanceof Array).toBeTruthy();
+
+            });
         });
-    });
 
-
-    describe('Get removeRecipe call', function() {
-
-        var recipeIndex ,
-            initialResipiesNumber,
-            recipeID = 3,
-            recipeList;
-
-        it('Should have call removeRecipe and check related functions', function(){
-                spyOn( scope, 'removeRecipe').and.callThrough();
-                spyOn( mockedRecipeService, 'deleteRecipe').and.callThrough();
-
-                var initialRecipeLenght = mockInitData.length;
-                scope.removeRecipe();
-
-                var deletingData = mockedRecipeService.deleteRecipe(recipeID);
-                expect(mockedRecipeService.deleteRecipe).toHaveBeenCalledWith(recipeID);
-                
-                expect(deletingData.updateRecipeList).toBeDefined();
-                expect(deletingData.updateRecipeList instanceof Array).toBeTruthy();
-                expect(deletingData.updateRecipeList.length < initialRecipeLenght).toBeTruthy();
-
-                expect(deletingData.confirmDeleting).toBeDefined();
-                expect(deletingData.confirmDeleting).toEqual(1);
-
-        });
     });
 
 });
+
+
+
+    //     describe('Get saveRecipe call', function() {
+
+    //     var recipeID;
+
+    //     it('Should saveRecipe be defined', function(){
+    //         expect(scope.saveRecipe).toBeDefined();
+    //     });
+
+    //     fit('Should have call removeRecipe and check related functions - updatedRecipeList', function(){
+    //         recipeID = 3;
+
+    //         spyOn( scope, 'saveRecipe').and.callThrough();
+    //         spyOn( mockedRecipeService, 'updateRecipe').and.callThrough();
+    //         spyOn( mockedRecipeService, 'addRecipe').and.callThrough();
+
+
+    //         scope.addIngredient();
+
+    //         console.log('stateParam', stateParam.recipeID)
+
+    //     });
+    // });
