@@ -6,9 +6,8 @@ describe('Controller: CookingBookController', function() {
     var $scope,
         ctrl,
         $rootScope,
-        mockCookingBooAppService,
-        mockAllRecipesList,
-        mockLocalStorageService;
+        mockCbRecipeService,
+        mockAllRecipesList;
 
     beforeEach(function() {
         mockAllRecipesList = [
@@ -18,24 +17,12 @@ describe('Controller: CookingBookController', function() {
             {id: 4, name: "Cupcake", description: "Combine sour cream and sugar; mix well. Stir in coconut. Fold in whipped topping. Spread top and sides of two 9-inch cake layers.", ingredients: [{"ingredientName":"cream", "amount":"2", "amountUnits":"cups" }]}
         ];
 
-        mockCookingBooAppService = {
-            init: function () { return mockAllRecipesList }
+        mockCbRecipeService = {
+            getRecipe: function () { return mockAllRecipesList }
         };
     });
 
     describe('storages is NOT empty', function(){
-
-        beforeEach(function() {
-
-            mockLocalStorageService = {
-                get: function ()  {
-                    return [];
-                },
-                set: function ()  {},
-                remove: function ()  {}
-            };
-
-        });
 
         beforeEach(inject(function($controller, _$rootScope_){
             $rootScope = _$rootScope_;
@@ -43,8 +30,8 @@ describe('Controller: CookingBookController', function() {
 
             ctrl = $controller('CookingBookController', {
                 $scope: $scope,
-                'cookingBooAppService': mockCookingBooAppService,
-                localStorageService: mockLocalStorageService
+                $rootScope: $rootScope,
+                'cookingBooAppService': mockCbRecipeService,
             });
 
             $rootScope.$apply();
@@ -56,44 +43,17 @@ describe('Controller: CookingBookController', function() {
         });
 
         describe('Should set up initial data', function(){
-            var getInitData,
-                storages;
 
                it('Service calls', function () {
-                   spyOn( mockCookingBooAppService, 'init').and.callThrough();
-                   spyOn( mockLocalStorageService, 'get').and.callThrough();
+                   spyOn( mockCbRecipeService, 'getRecipe').and.callThrough();
+                    $scope.recipeList =  mockCbRecipeService.getRecipe();
 
-                   getInitData =  mockCookingBooAppService.init();
-                   storages =  mockLocalStorageService.get();
-
-                   expect(mockCookingBooAppService.init).toHaveBeenCalled();
-                   expect(mockLocalStorageService.get).toHaveBeenCalled();
-                   expect(getInitData instanceof Array).toBeTruthy();
-                   expect(storages instanceof Array).toBeTruthy();
-
-                   expect($scope.recipeList).toEqual(storages);
+                    expect(mockCbRecipeService.getRecipe).toHaveBeenCalled();
+                    expect($scope.recipeList instanceof Array).toBeTruthy();
+      
                });
         });
 
-        describe('Should set up initial data', function(){
-            var getInitData,
-                storages;
-
-            it('Service calls - else statement', function () {
-                spyOn( mockCookingBooAppService, 'init').and.callThrough();
-                spyOn( mockLocalStorageService, 'get').and.callThrough();
-
-                getInitData =  mockCookingBooAppService.init();
-                storages =  mockLocalStorageService.get();
-
-                expect(mockCookingBooAppService.init).toHaveBeenCalled();
-                expect(mockLocalStorageService.get).toHaveBeenCalled();
-                expect(getInitData instanceof Array).toBeTruthy();
-                expect(storages instanceof Array).toBeTruthy();
-
-                expect($scope.recipeList).toEqual(storages);
-            });
-        });
 
         describe('Should has call toggle and correct defined variables - mobile menu ', function(){
 
@@ -132,54 +92,5 @@ describe('Controller: CookingBookController', function() {
 
     });
 
-    describe('storages is EMPTY', function(){
-
-        beforeEach(function() {
-
-            mockLocalStorageService = {
-                get: function ()  {
-                    return null;
-                },
-                set: function ()  {},
-                remove: function ()  {}
-            };
-
-        });
-
-        beforeEach(inject(function($controller, _$rootScope_){
-            $rootScope = _$rootScope_;
-            $scope = $rootScope.$new();
-
-            ctrl = $controller('CookingBookController', {
-                $scope: $scope,
-                'cookingBooAppService': mockCookingBooAppService,
-                localStorageService: mockLocalStorageService
-            });
-
-            $rootScope.$apply();
-        }));
-
-        describe('Should set up initial data', function(){
-            var getInitData,
-                storages;
-
-            it('Service calls - if statement', function () {
-                spyOn( mockCookingBooAppService, 'init').and.callThrough();
-                spyOn( mockLocalStorageService, 'get').and.callThrough();
-                spyOn( mockLocalStorageService, 'set').and.callThrough();
-
-                getInitData =  mockCookingBooAppService.init();
-                storages =  mockLocalStorageService.get();
-
-                expect(mockCookingBooAppService.init).toHaveBeenCalled();
-                expect(mockLocalStorageService.get).toHaveBeenCalled();
-
-                expect($scope.recipeList).toEqual(getInitData);
-
-                mockLocalStorageService.set();
-                expect(mockLocalStorageService.set).toHaveBeenCalled();
-            });
-        });
-    });
 
 });

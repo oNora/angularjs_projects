@@ -23,6 +23,8 @@ describe('Controller: CookingBookRecipeController', function() {
             {id: 4, name: "Cupcake", description: "Combine sour cream and sugar; mix well. Stir in coconut. Fold in whipped topping. Spread top and sides of two 9-inch cake layers.", ingredients: [{"ingredientName":"cream", "amount":"2", "amountUnits":"cups" }]}
         ];
 
+
+
         mockedRecipeService = {
             valuesForSave : {
                 recipeIndex: null,
@@ -34,7 +36,25 @@ describe('Controller: CookingBookRecipeController', function() {
                 }
             },
             returnRecipeIndex: function (allRecipe, currentRecipeId) { return (currentRecipeId -1) },
-            saveRecipe: function (recipeValues, recipeList, recipeID) { return this.valuesForSave}
+            getRecipe: function() {
+                return mockInitData;
+            },
+            addRecipe: function (recipeName, ingredientsList, recipeDescriptionField) {
+                var newData = mockInitData.push(recipeValues);
+                return newData;
+            },
+            updateRecipe: function (recipeName, ingredientsList, recipeDescription, recipeID) {
+                var newData = mockInitData[4] = recipeValues;
+                return newData;
+            },
+            deleteRecipe: function (recipeID) {
+                mockInitData.splice(recipeID, 1);
+                var confirmDate = {
+                    confirmDeleting: 1,
+                    updateRecipeList: mockInitData
+                };
+                return confirmDate;
+            },
 
         };
 
@@ -48,15 +68,6 @@ describe('Controller: CookingBookRecipeController', function() {
             findRecipe: function () { return mockCurrentRecipe }
         };
 
-        mockLocalStorageService = {
-            get: function ()  {
-                return [];
-            },
-            set: function ()  {},
-            remove: function ()  {}
-        };
-
-
     });
 
     beforeEach(inject(function($controller, _$rootScope_,  _$location_){
@@ -69,8 +80,7 @@ describe('Controller: CookingBookRecipeController', function() {
         ctrl = $controller('CookingBookRecipeController', {
             $scope: scope,
             'cbRecipeService': mockedRecipeService,
-            'cbSingleViewService': mockedSingleViewService,
-            localStorageService: mockLocalStorageService
+            'cbSingleViewService': mockedSingleViewService
         });
         $rootScope.$apply();
 
@@ -136,33 +146,25 @@ describe('Controller: CookingBookRecipeController', function() {
 
         var recipeIndex ,
             initialResipiesNumber,
-            recipeID = 3;
+            recipeID = 3,
+            recipeList;
 
         it('Should have call removeRecipe and check related functions', function(){
-            initialResipiesNumber = scope.recipeList.length;
+                spyOn( scope, 'removeRecipe').and.callThrough();
+                spyOn( mockedRecipeService, 'deleteRecipe').and.callThrough();
 
-            spyOn(scope, 'removeRecipe').and.callThrough();
-            spyOn(scope.recipeList, 'splice').and.callThrough();
-            spyOn(mockedRecipeService, 'returnRecipeIndex').and.callThrough();
-            spyOn(mockLocalStorageService, 'set').and.callThrough();
+                var initialRecipeLenght = mockInitData.length;
+                scope.removeRecipe();
 
-            scope.removeRecipe(recipeID);
+                var deletingData = mockedRecipeService.deleteRecipe(recipeID);
+                expect(mockedRecipeService.deleteRecipe).toHaveBeenCalledWith(recipeID);
+                
+                expect(deletingData.updateRecipeList).toBeDefined();
+                expect(deletingData.updateRecipeList instanceof Array).toBeTruthy();
+                expect(deletingData.updateRecipeList.length < initialRecipeLenght).toBeTruthy();
 
-            recipeIndex = mockedRecipeService.returnRecipeIndex(scope.recipeList, recipeID);
-
-            expect(scope.removeRecipe).toHaveBeenCalled();
-            expect(scope.recipeList.splice).toHaveBeenCalled();
-            expect(scope.recipeList.length < initialResipiesNumber).toBeTruthy();
-
-            expect(mockedRecipeService.returnRecipeIndex).toHaveBeenCalled();
-
-            expect(mockLocalStorageService.set).toHaveBeenCalled();
-
-            expect(scope.confirmDeleting).toBeDefined();
-            expect(scope.confirmDeleting).toEqual(1);
-
-            expect(scope.confirmMsg).toBeDefined();
-            expect(scope.confirmMsg).toEqual('The recipe has been deleted');
+                expect(deletingData.confirmDeleting).toBeDefined();
+                expect(deletingData.confirmDeleting).toEqual(1);
 
         });
     });

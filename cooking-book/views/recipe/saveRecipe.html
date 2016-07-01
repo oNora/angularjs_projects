@@ -3,7 +3,7 @@
 
     <form name="recipeForm" ng-submit="saveRecipe()">
         <label for="title_field">Write a title: </label>
-        <input type="text"  ng-model="recipeName" class="recipe-info" required id="title_field" >
+        <input type="text"  ng-model="recipeName" class="recipe-info" required id="title_field" autocomplete="off">
 
         <label for="description_field">Write a description: </label>
         <textarea rows="4" cols="50"  ng-model="recipeDescriptionField" class="recipe-info" id="description_field"></textarea>
@@ -13,9 +13,9 @@
             <div class="controls">
                 <ul >
                     <li ng-repeat="ingre in ingredientsList">
-                            <input name="amount"  type="text" id="amount" ng-model="ingre.amount" class="recipe-info" placeholder="Amount"/>
-                            <input name="amountUnits"  type="text" id="amountUnits"ng-model="ingre.amountUnits" class="recipe-info" placeholder="Amount units"/>
-                            <input name="ingredientName"  type="text" id="ingredientName" ng-model="ingre.ingredientName" class="recipe-info" placeholder="Ingredient name"/>
+                            <input name="amount"  type="text" id="amount" ng-model="ingre.amount" class="recipe-info" placeholder="Amount" autocomplete="off"/>
+                            <input name="amountUnits"  type="text" id="amountUnits"ng-model="ingre.amountUnits" class="recipe-info" placeholder="Amount units" autocomplete="off"/>
+                            <input name="ingredientName"  type="text" id="ingredientName" ng-model="ingre.ingredientName" class="recipe-info" placeholder="Ingredient name" autocomplete="off"/>
                         <button type="button" class="btn" ng-click="removeIngredient($index)"><i class="icon-clipboard-remove2"></i> Delete </button>
                     </li>
                     <button type="button" class="btn" ng-click="addIngredient()">

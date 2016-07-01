@@ -8,7 +8,7 @@
                 <a ui-sref="singleView({recipeID: currentID})" class="btn">No </a>
             </div>
         </div>
-        <p >{{confirmMsg}}</p>
+        <p ng-show="confirmDeleting == 1">The recipe has been deleted</p>
     </div>
 
 </div>

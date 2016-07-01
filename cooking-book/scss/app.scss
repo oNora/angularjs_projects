@@ -138,6 +138,12 @@ input[type=text], textarea{
     transition: .25s linear all;
 }
 
+.list-wrap ng-enter,
+.list-wrap .ng-leave {
+    -webkit-transition: none;
+    transition: none;
+}
+
 .ng-enter {
     opacity: 0;
 }

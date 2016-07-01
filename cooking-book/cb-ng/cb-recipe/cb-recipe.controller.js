@@ -4,8 +4,8 @@
 
     var app = angular.module("cookingBook.recipe");
     app.controller("CookingBookRecipeController",
-        [ "$scope", '$stateParams', '$location', 'cbRecipeService', 'cbSingleViewService', 'localStorageService',
-        function($scope, $stateParams, $location, cbRecipeService, cbSingleViewService, localStorageService){
+        [ "$scope", '$rootScope', '$stateParams', '$location', 'cbRecipeService', 'cbSingleViewService',
+        function($scope, $rootScope, $stateParams, $location, cbRecipeService, cbSingleViewService){
 
             $scope.initView = function() {
                 // da se definira list predi da sepolzwa wse pak
@@ -39,26 +39,20 @@
 
             $scope.saveRecipe = function () {
 
-                var recipeValues = {
-                    id:          null,
-                    name:        $scope.recipeName,
-                    ingredients: $scope.ingredientsList,
-                    description: $scope.recipeDescriptionField
-                };
-
-                var savedValue = cbRecipeService.saveRecipe(recipeValues, $scope.recipeList, $stateParams.recipeID );
-
-                if(savedValue.recipeIndex === null){
-                    $scope.recipeList.push(savedValue.recipeValues);
-                }else{
-                    $scope.recipeList[savedValue.recipeIndex] = savedValue.recipeValues;
+                var updatedRecipeList;
+                if($stateParams.recipeID){
+                    updatedRecipeList = cbRecipeService.updateRecipe($scope.recipeName, $scope.ingredientsList,  $scope.recipeDescriptionField, $stateParams.recipeID );
                     $location.path('/addRecipe');
+                } else {
+                    updatedRecipeList = cbRecipeService.addRecipe($scope.recipeName, $scope.ingredientsList,  $scope.recipeDescriptionField );
                 }
-                localStorageService.set( "recipeList", $scope.recipeList);
+
+                $rootScope.recipeList = updatedRecipeList;
 
                 $scope.recipeName = null;
                 $scope.recipeDescriptionField = null;
                 $scope.ingredientsList = [ {} ];
+
             };
 
             $scope.addIngredient = function() {
@@ -72,13 +66,11 @@
 
             $scope.removeRecipe = function(recipeID) {
 
-                var recipeIndex = cbRecipeService.returnRecipeIndex($scope.recipeList, recipeID);
+                var deletingData = cbRecipeService.deleteRecipe(recipeID);
+                
+                $scope.confirmDeleting = deletingData.confirmDeleting;
+                $rootScope.recipeList = deletingData.updateRecipeList;
 
-                $scope.recipeList.splice(recipeIndex, 1);
-                $scope.confirmDeleting = 1;
-                $scope.confirmMsg = 'The recipe has been deleted';
-
-                localStorageService.set( "recipeList", $scope.recipeList);
             };
 
     }]);
