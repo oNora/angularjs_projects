@@ -8,11 +8,32 @@
 
         var $this = this;
 
+        /**
+         * reset value
+         * object returned from function $this.returnRecipeIndex
+         * @type {Number} - index of current recipe in allRecipes array
+         */
         $this.indexRecipe = null;
-        $this.valuesForSave = {};
+
+        /**
+         * reset value
+         * variable used  in $this.addRecipe and $this.updateRecipe
+         * @type {[type]}
+         */
         $this.recipeValues = {};
+
+        /**
+         * reset value
+         * @type {Object} - confirm deletion data of current recipe
+         */
         $this.confirmDate = {};
 
+        /**
+         * Get recipe index in allRecipes array
+         * @param  {Array} allRecipe        - all available recipe
+         * @param  {Number} currentRecipeId - recipe ID
+         * @return {Number}                 - index of current recipe in allRecipes array
+         */
         $this.returnRecipeIndex = function (allRecipe, currentRecipeId) {
 
             for(var i = 0; i < allRecipe.length; i++){
@@ -24,6 +45,11 @@
             return $this.indexRecipe;
         };
 
+
+        /**
+         * Get all available/saved recipes
+         * @return {Array}    - all available/saved recipes
+         */
         $this.getRecipe = function (){
             //DB simulation
             var initData = [
@@ -45,7 +71,14 @@
 
         };
 
-        // $this.saveRecipe = function(recipeValues, recipeList, recipeID){
+
+        /**
+         * add new resipe
+         * @param {String} recipeName        - name of current recipe
+         * @param {Array} ingredientsList    - list with all ingredient objects of current recipe
+         * @param {string} recipeDescription - description/instruction for current recipe
+         * @return {Array}                   - alist of all available recipe with the new one
+         */
         $this.addRecipe = function(recipeName, ingredientsList, recipeDescription){
 
             var recipeList = $this.getRecipe();
@@ -64,7 +97,15 @@
             return recipeList;
 
         };
-        
+
+        /**
+         * update recipe
+         * @param {String} recipeName        - name of current recipe
+         * @param {Array} ingredientsList    - list with all ingredient objects of current recipe
+         * @param {string} recipeDescription - description/instruction for current recipe
+         * @param {String} recipeID          - current recipe id
+         * @return {Array}                   - list of all available recipe with the updated one
+         */
         $this.updateRecipe = function(recipeName, ingredientsList, recipeDescription, recipeID){
 
             var recipeList = $this.getRecipe();
@@ -85,6 +126,12 @@
 
         };
 
+
+        /**
+         * delete recipe
+         * @param  {Number} recipeID - current recipe id
+         * @return {Object}          - confirm deletion data of current recipe
+         */
         $this.deleteRecipe = function (recipeID){
 
             var recipeList = $this.getRecipe();

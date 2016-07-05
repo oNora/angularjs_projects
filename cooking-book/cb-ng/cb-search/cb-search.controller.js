@@ -8,7 +8,9 @@
         ['$scope', 'cbSearchService',
         function($scope, cbSearchService){
 
-        // reference to search service:
+        /**
+         * @type {Object} -  reference to search service
+         */
          var searchService = cbSearchService;
 
         $scope.searchMsg = $scope.recipeList.length > 0 ? 'Choose from available  ingredients:' : 'There are not available ingredients. First enter recipes.';
@@ -16,6 +18,11 @@
         $scope.isRecipeListEmpty = $scope.recipeList.length === 0;
         $scope.isFoundListEmpty = $scope.foundList.length === 0;
 
+
+        /**
+         * searchRecipe - search for recipes
+         * @param  {String} ingredientsInput - search inputs - ingredients list
+         */
         $scope.searchRecipe = function (ingredientsInput) {
 
             // reset list of found recipes
@@ -25,7 +32,10 @@
             $scope.isFoundListEmpty = $scope.foundList.length === 0;
         };
 
-        // da iskara wsichki nalichni sustvki
+
+        /**
+         * @type {Array} - all available ingredients
+         */
         $scope.availableUniqueIntegrates = searchService.availableUniqueIntegrates($scope.recipeList);
 
     }]);

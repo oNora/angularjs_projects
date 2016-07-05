@@ -7,8 +7,14 @@
         ['$scope', '$stateParams', 'cbSingleViewService', '$location',
         function($scope, $stateParams, cbSingleViewService, $location){
 
-            // get the id
+            /**
+             * @type {String} - recipe ID form stateParams
+             */
             var currentRecipeId = $stateParams.recipeID;
+
+            /**
+             * @type {Object} - single recipe object
+             */
             var currentRecipe = cbSingleViewService.findRecipe(currentRecipeId, $scope.recipeList);
 
             if(currentRecipe === null ) {
@@ -19,6 +25,12 @@
                 $scope.description = currentRecipe.description;
                 $scope.id = currentRecipeId;
 
+                /**
+                 * Check if has any available ingredients
+                 * @param  {Object}  - ingredients object of single recipe
+                 * @return {Number}  - number of available recipe ingredients;
+                 *                     return 1 - no avalible ingredients (default Angular property $$hashKey )
+                 */
                 $scope.getLength = function(obj) {
                     return Object.keys(obj).length;
                 };

@@ -42,7 +42,6 @@ describe('Service: cbRecipeService', function() {
 
     it('Should have all variables', function () {
         expect(cbRecipeService.indexRecipe).toBeDefined();
-        expect(cbRecipeService.valuesForSave).toBeDefined();
         expect(cbRecipeService.recipeValues).toBeDefined();
         expect(cbRecipeService.confirmDate).toBeDefined();
     });

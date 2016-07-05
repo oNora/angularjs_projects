@@ -8,14 +8,14 @@
         function($scope, $rootScope, $stateParams, $location, cbRecipeService, cbSingleViewService){
 
             $scope.initView = function() {
-                // da se definira list predi da sepolzwa wse pak
+
                 $scope.ingredientsList = [{}];
                 $scope.confirmDeleting = 0;
 
                 var viewUrl = $location.path().split('/');
                 var currentRecipe = cbSingleViewService.findRecipe($stateParams.recipeID, $scope.recipeList);
 
-                //ако се опита да се зареди url на изтрита рецепта да не се зарежа view с грешки
+                //if recipe is already deleted
                 if(currentRecipe === null && viewUrl[1] != 'addRecipe' ){
                     $location.path('/404');
                 }else if (viewUrl[1] == 'delete') {
@@ -37,6 +37,9 @@
             };
             $scope.initView();
 
+            /**
+             * Save recipe on edit or add new
+             */
             $scope.saveRecipe = function () {
 
                 var updatedRecipeList;
@@ -55,19 +58,31 @@
 
             };
 
+            /**
+             * add new row for ingredient
+             */
             $scope.addIngredient = function() {
                 var ingredients = $scope.ingredientsList;
                 ingredients[ingredients.length] = {};
             };
 
+            /**
+             * remove row for ingredient
+             * @param  {Number} index   - index of row of ingredient
+             */
             $scope.removeIngredient = function(index) {
                 $scope.ingredientsList.splice(index, 1);
             };
 
+
+            /**
+             * delete recipe
+             * @param  {Number} recipeID  - id of recipe
+             */
             $scope.removeRecipe = function(recipeID) {
 
                 var deletingData = cbRecipeService.deleteRecipe(recipeID);
-                
+
                 $scope.confirmDeleting = deletingData.confirmDeleting;
                 $rootScope.recipeList = deletingData.updateRecipeList;
 
