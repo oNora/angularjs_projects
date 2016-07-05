@@ -1,5 +1,4 @@
-import { beforeEachProviders, describe, expect, fit, inject, it } from '@angular/core/testing';
-import { TestComponentBuilder } from '@angular/compiler/testing';
+import { beforeEachProviders, describe, expect, fit, inject, it, TestComponentBuilder } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { WordService } from './word.service';
 
@@ -24,8 +23,6 @@ class MockWordService extends WordService {
 
 //NO new instance of the component
 describe('AppComponent', () => {
-    
-    beforeEachProviders( () => [TestComponentBuilder] )
 
     it('should get the solution from the WordService',
         inject( [TestComponentBuilder], (tcb: TestComponentBuilder) => {

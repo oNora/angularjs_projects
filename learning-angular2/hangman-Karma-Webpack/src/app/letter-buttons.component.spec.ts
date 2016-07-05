@@ -1,5 +1,4 @@
-import { beforeEachProviders, describe, expect, fit, inject, it } from '@angular/core/testing';
-import { TestComponentBuilder } from '@angular/compiler/testing';
+import { beforeEachProviders, describe, expect, fit, inject, it, TestComponentBuilder } from '@angular/core/testing';
 import { LetterButtonsComponent } from './letter-buttons.component'
 
 
