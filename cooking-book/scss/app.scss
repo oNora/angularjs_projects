@@ -131,6 +131,36 @@ input[type=text], textarea{
     border-radius: 2px;
 }
 
+/* === gitHub btn === */
+.gitHub-btn{
+    position: static;
+    display: block;
+    height: 50px;
+    background: #000;
+    text-align: center;
+    overflow: hidden;
+    
+    svg {
+        transform: rotate(-45deg);
+        color: #fff;
+    }
+}
+
+@media (min-width: 430px) {
+    .gitHub-btn{
+        position: absolute;
+        right: 0;
+        top: 9px;
+        display: inline-block;
+        background: transparent;
+
+         svg {
+        transform: rotate(-45deg);
+            color: #000;
+        }
+    }
+}
+
 /* === ng animation === */
 .ng-enter,
 .ng-leave {
