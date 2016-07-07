@@ -1,5 +1,5 @@
 'use strict';
-describe('Controller: CookingBookSearchController', function() {
+describe('Controller: SearchController', function() {
 
     beforeEach(module('cookingBook.search'));
 
@@ -41,7 +41,7 @@ describe('Controller: CookingBookSearchController', function() {
 
         scope.recipeList = mockInitData;
 
-        ctrl = $controller('CookingBookSearchController', {
+        ctrl = $controller('SearchController', {
             $scope: scope,
             'cbSearchService': mockedSearchService
         });
@@ -112,7 +112,7 @@ describe('Controller: CookingBookSearchController', function() {
 
             scope.recipeList = [];
 
-            ctrl = $controller('CookingBookSearchController', {
+            ctrl = $controller('SearchController', {
                 $scope: scope,
                 'cbSearchService': mockedSearchService
             });

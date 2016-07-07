@@ -4,31 +4,61 @@
 
     var app = angular.module("cookingBook.recipe");
 
+
+    /**
+     * @ngdoc service
+     * @name cookingBook.recipe.service:cbRecipeService
+     * @module cookingBook.recipe
+     * @description
+
+     * Manage loading data for a single recipe
+     *
+     */
     app.service("cbRecipeService", ['localStorageService', function (localStorageService) {
 
         var $this = this;
 
+        //reset value
+
         /**
-         * reset value
-         * object returned from function $this.returnRecipeIndex
-         * @type {Number} - index of current recipe in allRecipes array
+         * @ngdoc property
+         * @name indexRecipe
+         * @propertyOf cookingBook.recipe.service:cbRecipeService
+
+         * @description
+         * Variable returned from function **$this.returnRecipeIndex** method.
+         * Type of variable **Number** - index of current recipe in allRecipes array
          */
         $this.indexRecipe = null;
 
+
         /**
-         * reset value
-         * variable used  in $this.addRecipe and $this.updateRecipe
-         * @type {[type]}
+         * @ngdoc property
+         * @name recipeValues
+         * @propertyOf cookingBook.recipe.service:cbRecipeService
+
+         * @description
+         * Object used in **$this.addRecipe** and **$this.updateRecipe** methods.
          */
         $this.recipeValues = {};
 
+
         /**
-         * reset value
-         * @type {Object} - confirm deletion data of current recipe
+         * @ngdoc property
+         * @name confirmDate
+         * @propertyOf cookingBook.recipe.service:cbRecipeService
+
+         * @description
+         * Type of variable **Object** - confirm deletion data of current recipe.
          */
         $this.confirmDate = {};
 
         /**
+         * @ngdoc method
+         * @name returnRecipeIndex
+         * @methodOf cookingBook.recipe.service:cbRecipeService
+         * @description
+
          * Get recipe index in allRecipes array
          * @param  {Array} allRecipe        - all available recipe
          * @param  {Number} currentRecipeId - recipe ID
@@ -45,8 +75,12 @@
             return $this.indexRecipe;
         };
 
-
         /**
+         * @ngdoc method
+         * @name getRecipe
+         * @methodOf cookingBook.recipe.service:cbRecipeService
+         * @description
+
          * Get all available/saved recipes
          * @return {Array}    - all available/saved recipes
          */
@@ -71,13 +105,17 @@
 
         };
 
-
         /**
+         * @ngdoc method
+         * @name addRecipe
+         * @methodOf cookingBook.recipe.service:cbRecipeService
+         * @description
+
          * add new resipe
-         * @param {String} recipeName        - name of current recipe
-         * @param {Array} ingredientsList    - list with all ingredient objects of current recipe
-         * @param {string} recipeDescription - description/instruction for current recipe
-         * @return {Array}                   - alist of all available recipe with the new one
+         * @param  {String} recipeName        - name of current recipe
+         * @param  {Array}  ingredientsList   - list with all ingredient objects of current recipe
+         * @param  {string} recipeDescription - description/instruction for current recipe
+         * @return {Array}                    - alist of all available recipe with the new one
          */
         $this.addRecipe = function(recipeName, ingredientsList, recipeDescription){
 
@@ -99,12 +137,17 @@
         };
 
         /**
+         * @ngdoc method
+         * @name addRecipe
+         * @methodOf cookingBook.recipe.service:cbRecipeService
+         * @description
+
          * update recipe
-         * @param {String} recipeName        - name of current recipe
-         * @param {Array} ingredientsList    - list with all ingredient objects of current recipe
-         * @param {string} recipeDescription - description/instruction for current recipe
-         * @param {String} recipeID          - current recipe id
-         * @return {Array}                   - list of all available recipe with the updated one
+         * @param  {String} recipeName         - name of current recipe
+         * @param  {Array}  ingredientsList    - list with all ingredient objects of current recipe
+         * @param  {string} recipeDescription  - description/instruction for current recipe
+         * @param  {String} recipeID           - current recipe id
+         * @return {Array}                     - list of all available recipe with the updated one
          */
         $this.updateRecipe = function(recipeName, ingredientsList, recipeDescription, recipeID){
 
@@ -126,8 +169,12 @@
 
         };
 
-
         /**
+         * @ngdoc method
+         * @name addRecipe
+         * @methodOf cookingBook.recipe.service:cbRecipeService
+         * @description
+
          * delete recipe
          * @param  {Number} recipeID - current recipe id
          * @return {Object}          - confirm deletion data of current recipe

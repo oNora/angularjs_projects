@@ -1,5 +1,5 @@
 'use strict';
-describe('Controller: CookingBookSingleViewController', function() {
+describe('Controller: SingleViewController', function() {
 
     beforeEach(module('cookingBook.singleView'));
 
@@ -31,7 +31,7 @@ describe('Controller: CookingBookSingleViewController', function() {
             $scope = $rootScope.$new();
             location = $location;
 
-            ctrl = $controller('CookingBookSingleViewController', {
+            ctrl = $controller('SingleViewController', {
                 $scope: $scope,
                 $stateParams: stateParams,
                 $location: location,
@@ -104,7 +104,7 @@ describe('Controller: CookingBookSingleViewController', function() {
             $scope = $rootScope.$new();
             location = _$location_;
 
-            ctrl = $controller('CookingBookSingleViewController', {
+            ctrl = $controller('SingleViewController', {
                 $scope: $scope,
                 $stateParams: stateParams,
                 $location: location,

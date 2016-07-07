@@ -3,17 +3,37 @@
 
     var app = angular.module("cookingBook.singleView");
 
-    app.controller("CookingBookSingleViewController",
+
+    /**
+     * @ngdoc controller
+     * @name cookingBook.singleView.controller:SingleViewController
+     * @module cookingBook.singleView
+     * @description
+
+     * Manage single view of recipe.
+     *
+     */
+    app.controller("SingleViewController",
         ['$scope', '$stateParams', 'cbSingleViewService', '$location',
         function($scope, $stateParams, cbSingleViewService, $location){
 
             /**
-             * @type {String} - recipe ID form stateParams
+             * @ngdoc property
+             * @name currentRecipeId
+             * @propertyOf cookingBook.singleView.controller:SingleViewController
+
+             * @description
+             * recipe ID form stateParams (String)
              */
             var currentRecipeId = $stateParams.recipeID;
 
             /**
-             * @type {Object} - single recipe object
+             * @ngdoc property
+             * @name currentRecipe
+             * @propertyOf cookingBook.singleView.controller:SingleViewController
+
+             * @description
+             * Single recipe object
              */
             var currentRecipe = cbSingleViewService.findRecipe(currentRecipeId, $scope.recipeList);
 
@@ -26,10 +46,15 @@
                 $scope.id = currentRecipeId;
 
                 /**
+                 * @ngdoc method
+                 * @name getLength
+                 * @methodOf cookingBook.singleView.controller:SingleViewController
+                 * @description
+
                  * Check if has any available ingredients
-                 * @param  {Object}  - ingredients object of single recipe
-                 * @return {Number}  - number of available recipe ingredients;
-                 *                     return 1 - no avalible ingredients (default Angular property $$hashKey )
+                 * @param  {Object} obj - ingredients object of single recipe
+                 * @return {Number}     - number of available recipe ingredients;
+                 *                      if return 1 - no avalible ingredients (default Angular property $$hashKey )
                  */
                 $scope.getLength = function(obj) {
                     return Object.keys(obj).length;

@@ -4,7 +4,17 @@
 
     var app = angular.module("cookingBook.search");
 
-    app.controller("CookingBookSearchController",
+
+    /**
+     * @ngdoc controller
+     * @name cookingBook.search.controller:SearchController
+     * @module cookingBook.search
+     * @description
+
+     * Manage search of recipes.
+     *
+     */
+    app.controller("SearchController",
         ['$scope', 'cbSearchService',
         function($scope, cbSearchService){
 
@@ -18,9 +28,13 @@
         $scope.isRecipeListEmpty = $scope.recipeList.length === 0;
         $scope.isFoundListEmpty = $scope.foundList.length === 0;
 
-
         /**
-         * searchRecipe - search for recipes
+         * @ngdoc method
+         * @name searchRecipe
+         * @methodOf cookingBook.search.controller:SearchController
+         * @description
+
+         * search for recipes
          * @param  {String} ingredientsInput - search inputs - ingredients list
          */
         $scope.searchRecipe = function (ingredientsInput) {
@@ -34,7 +48,12 @@
 
 
         /**
-         * @type {Array} - all available ingredients
+         * @ngdoc property
+         * @name availableUniqueIntegrates
+         * @propertyOf cookingBook.search.controller:SearchController
+
+         * @description
+         *  Array of objects - all available ingredients
          */
         $scope.availableUniqueIntegrates = searchService.availableUniqueIntegrates($scope.recipeList);
 

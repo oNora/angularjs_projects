@@ -4,43 +4,73 @@
 
     var app = angular.module("cookingBook.search");
 
+
+    /**
+     * @ngdoc service
+     * @name cookingBook.search.service:cbSearchService
+     * @module cookingBook.search
+     * @description
+
+     * Manage search recipes of the cookingBook app
+     *
+     */
     app.service("cbSearchService", [function() {
 
         var $this = this;
 
+        // reset values
+
         /**
-         * reset value
-         * object used in from function $this.checkRecipe
-         * @type {Array} - list of ID recipes in which there is at least one of the sought ingredients
+         * @ngdoc property
+         * @name foundRecipesId
+         * @propertyOf cookingBook.search.service:cbSearchService
+
+         * @description
+         *  Array of list of ID recipes in which there is at least one of the sought ingredients. Initial value - empty array.
          */
         $this.foundRecipesId = [];
 
         /**
-         * reset value
-         * object returned from function $this.returnFoundRecipes
-         * @type {Array} - all recipe that includes current ingredients
+         * @ngdoc property
+         * @name allFoundRecipes
+         * @propertyOf cookingBook.search.service:cbSearchService
+
+         * @description
+         *  Array of  all recipe that includes current ingredients. Initial value - empty array.
          */
         $this.allFoundRecipes = [];
 
         /**
-         * reset value
-         * object returned from function $this.ingredientsList
-         * @type {Array} - list of all names of ingredients for a single recipe
+         * @ngdoc property
+         * @name allRecipeIn
+         * @propertyOf cookingBook.search.service:cbSearchService
+
+         * @description
+         *  Array of list of all names of ingredients for a single recipe. Initial value - empty array.
          */
         $this.allRecipeIn = [];
 
+
         /**
-         * reset value
-         * object returned from function $this.availableUniqueIntegrates
-         * @type {Array} - list of all unique ingredients
+         * @ngdoc property
+         * @name allUniqueIntegrates
+         * @propertyOf cookingBook.search.service:cbSearchService
+
+         * @description
+         *  Array of list of all unique ingredients. Initial value - empty array.
          */
         $this.allUniqueIntegrates = [];
 
 
         /**
+         * @ngdoc method
+         * @name checkRecipe
+         * @methodOf cookingBook.search.service:cbSearchService
+         * @description
+
          * check if any recipe includes the ingredient
          * @param  {String} entryValue - single input value, single ingredients
-         * @param  {Object} allRecipes - all available recipe
+         * @param  {Array} allRecipes - all available recipe
          */
         $this.checkRecipe = function (entryValue, allRecipes) {
 
@@ -56,8 +86,12 @@
 
         };
 
-
         /**
+         * @ngdoc method
+         * @name search
+         * @methodOf cookingBook.search.service:cbSearchService
+         * @description
+
          * search recipe
          * @param  {String} allIngredients    - search input - ingredient list
          * @param  {Array} availableRecipes   - all available recipe
@@ -78,9 +112,14 @@
         };
 
         /**
+         * @ngdoc method
+         * @name search
+         * @methodOf cookingBook.search.service:cbSearchService
+         * @description
+
          * Find all recipe that includes current ingredients
          * @param  {String} input      - search input - ingredient list
-         * @param  {Array} recipeList - all available recipe
+         * @param  {Array} recipeList  - all available recipe
          * @return {Array}             - all recipe that includes current ingredients
          */
         $this.returnFoundRecipes = function(input, recipeList) {
@@ -100,7 +139,12 @@
         };
 
         /**
-         * get ingredients name for a single recipe
+         * @ngdoc method
+         * @name search
+         * @methodOf cookingBook.search.service:cbSearchService
+         * @description
+
+         * get names of ingredients for a single recipe
          * @param  {Array} recipeIntegrates - all ingredients for a single recipe
          * @return {Array}                  - list of all names of ingredients for a single recipe
          */
@@ -118,6 +162,11 @@
 
 
         /**
+         * @ngdoc method
+         * @name search
+         * @methodOf cookingBook.search.service:cbSearchService
+         * @description
+
          * Get all unique ingredients
          * @param  {Array} allRecipesList - all available recipe
          * @return {Array}                - list of all unique ingredients

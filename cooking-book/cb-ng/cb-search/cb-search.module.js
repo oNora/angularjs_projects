@@ -1,8 +1,16 @@
 (function  () {
 
     'use strict';
-    // TODO#: fix the name of the files in this folder - Recepi -> Recipe
 
+
+    /**
+     * @ngdoc overview 
+     * @module cookingBook.search
+     * @name cookingBook.search
+     *
+     * @description
+     * Module for search recipes of the cookingBook app.
+     */
     angular.module('cookingBook.search', [
         // 'ui.router',
     ]);

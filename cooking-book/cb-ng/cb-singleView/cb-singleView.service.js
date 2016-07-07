@@ -4,21 +4,39 @@
 
     var app = angular.module("cookingBook.singleView");
 
+
+    /**
+     * @ngdoc service
+     * @name cookingBook.singleView.service:cbSingleViewService
+     * @module cookingBook.singleView
+     * @description
+
+     * Manage loading data for a single recipe
+     *
+     */
     app.service("cbSingleViewService", [function() {
 
         var $this = this;
 
-
         /**
-         * Reset object
-         * @type {Object} - current recipe object
+         * @ngdoc property
+         * @name foundRecipe
+         * @propertyOf cookingBook.singleView.service:cbSingleViewService
+
+         * @description
+         * current recipe object. Initial value is null.
          */
-        $this.receiptFound = null;
+        $this.foundRecipe = null;
 
         /**
-         * findRecipe - Current recipe object
+         * @ngdoc method
+         * @name findRecipe
+         * @methodOf cookingBook.singleView.service:cbSingleViewService
+         * @description
+
+         * Find a recipe. Current recipe object
          * @param  {String} recipeID   - current recipe ID
-         * @param  {Object} allRecipes - all available recipes
+         * @param  {Array} allRecipes - all available recipes
          * @return {Object}            - current recipe object
          */
         $this.findRecipe = function(recipeID, allRecipes) {
@@ -26,15 +44,15 @@
             for (var i = 0; i <  allRecipes.length; i++) {
 
                 if( allRecipes[i].id ==  recipeID){
-                    $this.receiptFound =  allRecipes[i];
+                    $this.foundRecipe =  allRecipes[i];
                     break;
                 }
 
-                $this.receiptFound = null;
+                $this.foundRecipe = null;
 
             }
 
-            return $this.receiptFound;
+            return $this.foundRecipe;
         };
 
     }]);

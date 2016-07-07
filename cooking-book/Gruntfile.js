@@ -47,7 +47,7 @@ module.exports = function(grunt) {
         watch: {
             js: {
                 files: ['cb-ng/*.js', 'cb-ng/**/*.js', '!cb-ng/*.spec.js', '!cb-ng/**/*.spec.js'],
-                tasks: ['jshint:beforeconcat', 'concat:dist']
+                tasks: ['jshint:beforeconcat', 'concat:dist', 'ngdocs']
             },
             scss: {
                 files: ['scss/*.scss'],
@@ -91,6 +91,9 @@ module.exports = function(grunt) {
             },
             beforeconcat: ['cb-ng/*.js', 'cb-ng/**/*.js', '!cb-ng/*.spec.js', '!cb-ng/**/*.spec.js'],
             afterconcat:  ['build/js/<%= pkg.name %>.js']
+        },
+        ngdocs: {
+            all: ['cb-ng/*.js','cb-ng/**/*.js', '!cb-ng/*.spec.js', '!cb-ng/**/*.spec.js']
         }
     });
 
@@ -99,8 +102,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-ngdocs');
 
-    grunt.registerTask('build', ['jshint:beforeconcat', 'concat', 'jshint:afterconcat', 'uglify', 'sass']);
+    grunt.registerTask('build', ['jshint:beforeconcat', 'concat', 'jshint:afterconcat', 'uglify', 'sass', 'ngdocs']);
     grunt.registerTask('dev',   ['build', 'watch']);
     grunt.registerTask('js',    ['jshint:beforeconcat']);
 

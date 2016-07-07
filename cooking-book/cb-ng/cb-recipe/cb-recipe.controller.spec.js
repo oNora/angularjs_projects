@@ -1,5 +1,5 @@
 'use strict';
-describe('Controller: CookingBookRecipeController', function() {
+describe('Controller: RecipeController', function() {
 
     beforeEach(module('cookingBook.recipe'));
 
@@ -79,7 +79,7 @@ describe('Controller: CookingBookRecipeController', function() {
 
             scope.recipeList = mockInitData;
 
-            ctrl = $controller('CookingBookRecipeController', {
+            ctrl = $controller('RecipeController', {
                 $scope: scope,
                 $stateParams: stateParams,
                 'cbRecipeService': mockedRecipeService,
@@ -212,7 +212,7 @@ describe('Controller: CookingBookRecipeController', function() {
 
             scope.recipeList = mockInitData;
 
-            ctrl = $controller('CookingBookRecipeController', {
+            ctrl = $controller('RecipeController', {
                 $scope: scope,
                 $stateParams: stateParams,
                 'cbRecipeService': mockedRecipeService,

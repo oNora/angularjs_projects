@@ -3,7 +3,18 @@
     'use strict';
 
     var app = angular.module("cookingBook.recipe");
-    app.controller("CookingBookRecipeController",
+
+
+    /**
+     * @ngdoc controller
+     * @name cookingBook.recipe.controller:RecipeController
+     * @module cookingBook.recipe
+     * @description
+
+     * Manage recipe data manipulation.
+     *
+     */
+    app.controller("RecipeController",
         [ "$scope", '$rootScope', '$stateParams', '$location', 'cbRecipeService', 'cbSingleViewService',
         function($scope, $rootScope, $stateParams, $location, cbRecipeService, cbSingleViewService){
 
@@ -38,7 +49,12 @@
             $scope.initView();
 
             /**
-             * Save recipe on edit or add new
+             * @ngdoc method
+             * @name saveRecipe
+             * @methodOf cookingBook.recipe.controller:RecipeController
+             * @description
+
+             * Save recipe data on edit or add new
              */
             $scope.saveRecipe = function () {
 
@@ -59,6 +75,11 @@
             };
 
             /**
+             * @ngdoc method
+             * @name addIngredient
+             * @methodOf cookingBook.recipe.controller:RecipeController
+             * @description
+
              * add new row for ingredient
              */
             $scope.addIngredient = function() {
@@ -67,6 +88,11 @@
             };
 
             /**
+             * @ngdoc method
+             * @name removeIngredient
+             * @methodOf cookingBook.recipe.controller:RecipeController
+             * @description
+
              * remove row for ingredient
              * @param  {Number} index   - index of row of ingredient
              */
@@ -76,6 +102,11 @@
 
 
             /**
+             * @ngdoc method
+             * @name removeRecipe
+             * @methodOf cookingBook.recipe.controller:RecipeController
+             * @description
+
              * delete recipe
              * @param  {Number} recipeID  - id of recipe
              */

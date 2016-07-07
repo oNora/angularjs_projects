@@ -42,13 +42,13 @@ describe('Service: cbSingleViewService', function() {
 
             $rootScope.$apply();
 
-            expect(typeof cbSingleViewService.receiptFound).toBe('object');
+            expect(typeof cbSingleViewService.foundRecipe).toBe('object');
 
-            expect(cbSingleViewService.receiptFound.id).toBeDefined();
-            expect(cbSingleViewService.receiptFound.id).toEqual(repeiptId);
+            expect(cbSingleViewService.foundRecipe.id).toBeDefined();
+            expect(cbSingleViewService.foundRecipe.id).toEqual(repeiptId);
 
-            expect(cbSingleViewService.receiptFound.name).toBeDefined();
-            expect(cbSingleViewService.receiptFound.name).toEqual("Galette");
+            expect(cbSingleViewService.foundRecipe.name).toBeDefined();
+            expect(cbSingleViewService.foundRecipe.name).toEqual("Galette");
 
         });
 
@@ -60,7 +60,7 @@ describe('Service: cbSingleViewService', function() {
 
             $rootScope.$apply();
 
-            expect(cbSingleViewService.receiptFound).toBeNull();
+            expect(cbSingleViewService.foundRecipe).toBeNull();
         });
     });
 });
