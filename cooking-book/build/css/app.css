@@ -1,0 +1,131 @@
+/* === resets and command styles === */
+html, body, div, nav, input, textarea, p, h1, h2, h3, h4, ul, li, table, tr, th, td { margin: 0; padding: 0; }
+
+li { list-style-type: none; }
+
+a { text-decoration: none; }
+
+img { outline: none; }
+
+body { font-family: Tahoma, Geneva, sans-serif; font-size: 16px; overflow-x: hidden; }
+
+i { display: inline-block; font-size: 28px; }
+
+h1 { margin-bottom: 55px; padding: 5px; background: #34495e; border-radius: 2px; color: #fff; font-weight: normal; }
+h1::first-letter { text-transform: capitalize; }
+
+h3 { margin-bottom: 10px; }
+
+.clearfix:after { display: table; clear: both; content: ""; }
+
+.btn-wrap { margin-top: 30px; text-align: right; }
+
+.btn { display: block; width: 160px; margin: 5px auto; padding: 5px 40px; background: #1abc9c; border: 0; border-radius: 2px; box-sizing: border-box; color: #fff; line-height: 30px; text-align: left; cursor: pointer; }
+.btn i { float: left; margin-right: 4px; }
+.btn:hover { background: #34495e; color: #1abc9c; }
+
+@media (min-width: 600px) { .btn-wrap { margin-top: 0; }
+  .btn { display: inline-block; width: 100px; padding: 5px 10px; margin: auto; } }
+label { display: block; margin: 15px 0 5px; padding: 5px 0; line-height: 30px; }
+
+input[type=text], textarea { width: 100%; padding: 8px 5px; border: 2px solid #bdc3c7; border-radius: 2px; box-shadow: none; font-family: Lato,Helvetica,Arial,sans-serif; font-size: 15px; line-height: 1.467; color: #000; -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear; transition: border .25s linear,color .25s linear,background-color .25s linear; }
+input[type=text]:focus, textarea:focus { border-color: #1abc9c; outline: 0; box-shadow: none; }
+
+.gray-wrapper { margin-bottom: 20px; padding: 10px; background: #eff0f1; border-radius: 2px; }
+
+/* === gitHub btn === */
+.gitHub-btn { position: static; display: block; height: 50px; background: #000; text-align: center; overflow: hidden; }
+.gitHub-btn svg { transform: rotate(-45deg); color: #fff; }
+
+@media (min-width: 430px) { .gitHub-btn { position: absolute; right: 0; top: 9px; display: inline-block; background: transparent; }
+  .gitHub-btn svg { transform: rotate(-45deg); color: #000; } }
+/* === ng animation === */
+.ng-enter, .ng-leave { -webkit-transition: .25s linear all; transition: .25s linear all; }
+
+.list-wrap ng-enter, .list-wrap .ng-leave { -webkit-transition: none; transition: none; }
+
+.ng-enter { opacity: 0; }
+
+.ng-enter.ng-enter-active { opacity: 1; }
+
+.ng-leave { opacity: 1; }
+
+.ng-leave.ng-leave-active { opacity: 0; }
+
+/* === header === */
+header { margin-bottom: 20px; padding: 10px 0; background: #eff0f1; }
+header div { margin: 0 auto; }
+header p { width: 80%; font-size: 2em; font-weight: bold; }
+header button { padding: 9px 10px; margin: 8px 15px; background-color: transparent; background-image: none; border: 1px solid #bdc3c7; border-radius: 4px; cursor: pointer; }
+header button .icon-bar { display: block; width: 22px; height: 2px; margin-top: 5px; border-radius: 1px; background-color: #bdc3c7; }
+header button .icon-bar:first-child { margin-top: 0; }
+
+@media (min-width: 900px) { header button { display: none; } }
+/* === container and columns styles === */
+.main-wrap { display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-flex-wrap: wrap; -ms-flex-wrap: wrap; flex-wrap: wrap; justify-content: space-between; }
+
+.container { width: 96%; margin: 0 auto; padding: 0 2%; transition: width .5s ease; }
+
+.col { position: relative; width: 100%; transition: width .9s ease; }
+.col:first-of-type { width: 0; overflow: hidden; transition: width .5s ease; }
+.col > div.view { position: absolute; top: 0; left: 0; width: 100%; }
+
+li a { display: block; color: #fff; }
+li i { float: left; margin: 0 5px 0 0; }
+
+/* === toggle left side on small devices  === */
+.showMobile .container { width: 900px; }
+.showMobile .col { width: 75%; transition: width .5s; }
+.showMobile .col:first-child { width: 200px; transition: width .9s ease; }
+
+.left-col-nav { width: 200px; }
+
+nav li { margin-bottom: 5px; padding: 5px; background: #1abc9c; border-radius: 2px; line-height: 30px; color: #fff; }
+nav li.active { background: #34495e; color: #1abc9c; }
+nav li.active a { color: #1abc9c; }
+
+.list-wrap { margin-top: 20px; }
+.list-wrap p { border-radius: 2px 2px 0 0; color: #fff; line-height: 30px; }
+.list-wrap ul { border-radius: 3px; background: #2b3c4e; }
+.list-wrap li { margin-bottom: 2px; padding: 0 15px; background: #34495e; color: #fff; }
+.list-wrap li:first-of-type { margin-bottom: 0; padding: 5px; border-radius: 2px 2px 0 0; background: #1abc9c; }
+.list-wrap li:last-of-type { margin-bottom: 0; border-radius: 0 0 2px 2px; }
+.list-wrap li.active { background: 0 0; }
+.list-wrap li a { padding: 10px 0; }
+.list-wrap li a:before { margin-right: 12px; content: '\2022'; }
+.list-wrap li.active a { color: #1abc9c; }
+
+@media (min-width: 900px) { .main-wrap { width: 900px; }
+  .col { width: 650px; }
+  .col:first-of-type { display: block; width: 200px; }
+  nav li { width: auto; } }
+/* === recipes view styles === */
+table { width: 100%; margin-bottom: 30px; border-collapse: collapse; border-radius: 2px; }
+table thead { color: #fff; font-weight: normal; }
+table th, table td { padding: 5px 0; border-right: 1px solid #fff; background: #1abc9c; line-height: 30px; font-weight: normal; }
+table th:first-of-type, table td:first-of-type { border-radius: 2px 0 0 0; }
+table th:last-of-type, table td:last-of-type { border-right: 0; border-radius: 0 2px 0 0; }
+table tr { background: #eff0f1; border-right: 0; }
+table tr:nth-child(odd) { background: #e6e9ea; }
+table tr td { padding: 5px 10px; background: none; border-right: 0; }
+
+/* === add recipes view styles === */
+.ingredients-inputs input[name=amount], .ingredients-inputs input[name=amountUnits], .ingredients-inputs input[name=ingredientName] { width: 100%; margin: 5px 0; }
+.ingredients-inputs li { margin-bottom: 10px; }
+.ingredients-inputs li:first-child { margin-bottom: 2px; }
+.ingredients-inputs .input-title { display: inline-block; margin: 0; padding: 0; line-height: 15px; }
+.ingredients-inputs .input-title.amount { width: 15%; }
+.ingredients-inputs .input-title.amountUnits { width: 16%; }
+.ingredients-inputs p { margin: 20px 0 10px; }
+
+@media (min-width: 600px) { .ingredients-inputs input[name=amount], .ingredients-inputs input[name=amountUnits] { width: 15.33%; }
+  .ingredients-inputs input[name=ingredientName] { width: 51%; } }
+/* === search view styles === */
+.search-form input[type=text] { width: 83%; }
+.search-form p { padding: 5px 0 10px; }
+.search-form .list-wrap p { padding: 0; }
+
+/* === deletedRecipe view styles === */
+.deletedRecipe .btn { font-size: 16px; text-align: center; }
+.deletedRecipe > div { padding-top: 5px; }
+.deletedRecipe p { padding-top: 5px; line-height: 30px; }
