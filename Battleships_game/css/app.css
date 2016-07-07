@@ -60,6 +60,7 @@ table td.hitShip{
   background: #4590f6;
   border-bottom:  1px solid #efefef;
   color: #fff;
+  cursor: pointer;
 }
 .menu ul{
   padding: 0 5px;
