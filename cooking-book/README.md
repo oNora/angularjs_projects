@@ -2,7 +2,7 @@ cooking-book
 ============
 
 Angular application that allows user to manage cooking recipes. <br />
--**Note:**  *it's still in progress ...*
+-**Note:**  *it's still in progress ...* <br />
 [Demo](http://onora.github.io/angularjs_projects/cooking-book/)
 
 Features:
