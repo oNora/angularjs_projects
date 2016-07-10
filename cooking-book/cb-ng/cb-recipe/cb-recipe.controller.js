@@ -61,7 +61,7 @@
                 var updatedRecipeList;
                 if($stateParams.recipeID){
                     updatedRecipeList = cbRecipeService.updateRecipe($scope.recipeName, $scope.ingredientsList,  $scope.recipeDescriptionField, $stateParams.recipeID );
-                    $location.path('/addRecipe');
+                    $location.path('/singleView/' + $stateParams.recipeID);
                 } else {
                     updatedRecipeList = cbRecipeService.addRecipe($scope.recipeName, $scope.ingredientsList,  $scope.recipeDescriptionField );
                 }
