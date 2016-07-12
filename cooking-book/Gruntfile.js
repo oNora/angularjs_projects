@@ -8,7 +8,8 @@ module.exports = function(grunt) {
                 process: function(src, filepath) {
                     return '/*! Source: ' + filepath + ' */' + '\n' +
                         src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
-                }
+                },
+                sourceMap: true
             },
             dist: {
                 src: [
@@ -57,7 +58,7 @@ module.exports = function(grunt) {
         uglify: {
             my_target: {
                 options: {
-                    sourceMap: false,
+                    sourceMap: true,
                     preserveComments: 'some'
                 },
                 files: {
