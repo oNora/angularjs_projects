@@ -22,8 +22,8 @@ module.exports = function(config) {
 
       'node_modules/angular-mocks/angular-mocks.js',
 
-      'cb-ng/**/*.module.js',
-      'cb-ng/**/*.js',
+      'src/**/*.module.js',
+      'src/**/*.js',
       'views/**/*.html',
       'views/*.html'
     ],
@@ -37,7 +37,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'cb-ng/**/*.js': ['coverage']
+      'src/**/*.js': ['coverage']
     },
 
 
