@@ -14,13 +14,13 @@ module.exports = function(grunt) {
             dist: {
                 src: [
                     //concat modules first
-                    'cb-ng/*.module.js', 'cb-ng/**/*.module.js',
+                    'src/*.module.js', 'src/**/*.module.js',
                     //then the routes
-                    'cb-ng/*.routes.js', 'cb-ng/**/*.routes.js',
+                    'src/*.routes.js', 'src/**/*.routes.js',
                     //now everything else
-                    'cb-ng/*.js', 'cb-ng/**/*.js',
+                    'src/*.js', 'src/**/*.js',
                     //exclude test files
-                    '!cb-ng/*.spec.js', '!cb-ng/**/*.spec.js'
+                    '!src/*.spec.js', '!src/**/*.spec.js'
                 ],
                 dest: 'build/js/<%= pkg.name %>.js'
             },
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
         },
         watch: {
             js: {
-                files: ['cb-ng/*.js', 'cb-ng/**/*.js', '!cb-ng/*.spec.js', '!cb-ng/**/*.spec.js'],
+                files: ['src/*.js', 'src/**/*.js', '!src/*.spec.js', '!src/**/*.spec.js'],
                 tasks: ['jshint:beforeconcat', 'concat:dist', 'ngdocs']
             },
             scss: {
@@ -90,11 +90,11 @@ module.exports = function(grunt) {
                 //     jQuery: true
                 // }
             },
-            beforeconcat: ['cb-ng/*.js', 'cb-ng/**/*.js', '!cb-ng/*.spec.js', '!cb-ng/**/*.spec.js'],
+            beforeconcat: ['src/*.js', 'src/**/*.js', '!src/*.spec.js', '!src/**/*.spec.js'],
             afterconcat:  ['build/js/<%= pkg.name %>.js']
         },
         ngdocs: {
-            all: ['cb-ng/*.js','cb-ng/**/*.js', '!cb-ng/*.spec.js', '!cb-ng/**/*.spec.js']
+            all: ['src/*.js','src/**/*.js', '!src/*.spec.js', '!src/**/*.spec.js']
         }
     });
 
