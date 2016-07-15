@@ -30,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <p> Cooking Book APP </p>
+                <p> Книга с рецепти </p>
             </div>
         </header>
 
@@ -43,11 +43,11 @@
                         <ul class="nav">
                             <li ui-sref-active="active">
                                 <i class="icon-document-search2"></i>
-                                <a ui-sref="search">Search</a>
+                                <a ui-sref="search">Търси</a>
                             </li>
                             <li ui-sref-active="active">
                                 <i class="icon-clipboard-add2"></i>
-                                <a ui-sref="addRecipe">Add a new Recipe</a>
+                                <a ui-sref="addRecipe">Добави рецепта</a>
                             </li>
                         </ul>
                     </nav>
@@ -56,7 +56,7 @@
                         <ul>
                             <li>
                                 <i class="icon-clipboard-list2"></i>
-                                <p>Available recipes</p>
+                                <p>Налични рецепти</p>
                             </li>
                             <li ng-repeat="recipe in recipeList" ui-sref-active="active">
                                 <a ui-sref="singleView({recipeID: recipe.id})"> {{recipe.name}}</a>

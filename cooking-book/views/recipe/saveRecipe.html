@@ -2,24 +2,24 @@
     <h1 class="title_right">{{templateTitle}}</h1>
 
     <form name="recipeForm" ng-submit="saveRecipe()">
-        <label for="title_field">Write a title: </label>
+        <label for="title_field">Попълни име: </label>
         <input type="text"  ng-model="recipeName" class="recipe-info" required id="title_field" autocomplete="off">
 
-        <label for="description_field">Write a description: </label>
+        <label for="description_field">Попълни описание: </label>
         <textarea rows="4" cols="50"  ng-model="recipeDescriptionField" class="recipe-info" id="description_field"></textarea>
 
         <div class="ingredients-inputs">
-            <p>Add ingredients</p>
+            <p>Добави продукти</p>
             <div class="controls">
                 <ul >
                     <li ng-repeat="ingre in ingredientsList">
-                            <input name="amount"  type="text" id="amount" ng-model="ingre.amount" class="recipe-info" placeholder="Amount" autocomplete="off"/>
-                            <input name="amountUnits"  type="text" id="amountUnits"ng-model="ingre.amountUnits" class="recipe-info" placeholder="Amount units" autocomplete="off"/>
-                            <input name="ingredientName"  type="text" id="ingredientName" ng-model="ingre.ingredientName" class="recipe-info" placeholder="Ingredient name" autocomplete="off"/>
-                        <button type="button" class="btn" ng-click="removeIngredient($index)"><i class="icon-clipboard-remove2"></i> Delete </button>
+                            <input name="amount"  type="text" id="amount" ng-model="ingre.amount" class="recipe-info" placeholder="Количество" autocomplete="off"/>
+                            <input name="amountUnits"  type="text" id="amountUnits"ng-model="ingre.amountUnits" class="recipe-info" placeholder="Мерна единица" autocomplete="off"/>
+                            <input name="ingredientName"  type="text" id="ingredientName" ng-model="ingre.ingredientName" class="recipe-info" placeholder="Продукт" autocomplete="off"/>
+                        <button type="button" class="btn" ng-click="removeIngredient($index)"><i class="icon-clipboard-remove2"></i> Изтрий </button>
                     </li>
                     <button type="button" class="btn" ng-click="addIngredient()">
-                        <i class="icon-clipboard-add2"></i> Add
+                        <i class="icon-clipboard-add2"></i> Добави
                     </button>
                 </ul>
             </div>
@@ -27,7 +27,7 @@
 
         <div class="btn-wrap">
             <button type="submit" class="btn">
-                <i class="icon-clipboard-checked2"></i> Save
+                <i class="icon-clipboard-checked2"></i> Запази
             </button>
         </div>
     </form>

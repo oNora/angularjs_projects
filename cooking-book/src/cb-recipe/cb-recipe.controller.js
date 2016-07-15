@@ -30,10 +30,10 @@
                 if(currentRecipe === null && viewUrl[1] != 'addRecipe' ){
                     $location.path('/404');
                 }else if (viewUrl[1] == 'delete') {
-                    $scope.templateTitle = "Deleting";
+                    $scope.templateTitle = "Изтриване";
                 }
                 else {
-                    $scope.templateTitle = $stateParams.recipeID ? 'Edit Recipe' : 'Add a new Recipe';
+                    $scope.templateTitle = $stateParams.recipeID ? 'Редактирай рецепта' : 'Добави рецепта';
                 }
 
                 if ($stateParams.recipeID && currentRecipe !== null) {

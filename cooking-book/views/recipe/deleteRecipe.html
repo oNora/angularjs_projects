@@ -2,13 +2,13 @@
     <h1 class="title_right">{{templateTitle}}</h1>
     <div>
         <div ng-hide="confirmDeleting == 1" class="deletedRecipe">
-            <p>Are you sure u wont to delete this recipe: {{recipeName}} </p>
+            <p>Сигурен ли си че искаш да изтриеш рецептата: {{recipeName}} </p>
             <div>
-                <button type="button" class="btn" ng-click="removeRecipe(currentID)">Yes </button>
-                <a ui-sref="singleView({recipeID: currentID})" class="btn">No </a>
+                <button type="button" class="btn" ng-click="removeRecipe(currentID)">Да </button>
+                <a ui-sref="singleView({recipeID: currentID})" class="btn">Не </a>
             </div>
         </div>
-        <p ng-show="confirmDeleting == 1">The recipe has been deleted</p>
+        <p ng-show="confirmDeleting == 1">Рецептата е изтрита</p>
     </div>
 
 </div>

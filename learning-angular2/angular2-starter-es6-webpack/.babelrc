@@ -1,8 +1,0 @@
-{
-  "presets": ["es2015"],
-  "plugins": [
-    "angular2-annotations",
-    "transform-class-properties",
-    "transform-decorators-legacy"
-  ]
-}

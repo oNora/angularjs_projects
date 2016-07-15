@@ -23,7 +23,7 @@
          */
          var searchService = cbSearchService;
 
-        $scope.searchMsg = $scope.recipeList.length > 0 ? 'Choose from available  ingredients:' : 'There are not available ingredients. First enter recipes.';
+        $scope.searchMsg = $scope.recipeList.length > 0 ? 'Избери от вече добавените продукти:' : 'Няма налични продукти. Първо въведи рецепта.';
         $scope.foundList = [];
         $scope.isRecipeListEmpty = $scope.recipeList.length === 0;
         $scope.isFoundListEmpty = $scope.foundList.length === 0;

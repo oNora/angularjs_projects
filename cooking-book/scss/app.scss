@@ -62,7 +62,7 @@ h3{
 
 .btn{
     display: block;
-    width: 160px;
+    width: 184px;
     margin: 5px auto;
     padding: 5px 40px;
     background: $green-color;
@@ -73,6 +73,7 @@ h3{
     line-height: 30px;
     text-align: left;
     cursor: pointer;
+    font-size: 13.33px;
 
     i{
         float: left;
@@ -92,7 +93,7 @@ h3{
 
     .btn{
         display: inline-block;
-        width: 100px;
+        width: 124px;
         padding: 5px 10px;
         margin: auto;
     }
@@ -495,11 +496,11 @@ table{
 
         input[name=amount],
         input[name=amountUnits]{
-            width: 15.33%;
+            width: 19%;
         }
 
         input[name=ingredientName] {
-            width: 51%;
+            width: 40%;
         }
     }
 }
@@ -509,7 +510,7 @@ table{
 .search-form {
 
     input[type=text]{
-        width: 83%;
+        width: 80%;
     }
 
     p{

@@ -1,15 +1,15 @@
 <div id="right_wrapper">
 
-    <h1 class="title_right">Search for recipe by ingredients</h1>
+    <h1 class="title_right">Търси рецепта по продукти</h1>
 
     <div class="search-form">
 
         <form ng-submit="searchRecipe(ingredientsInput)">
 
-            <label for="search_field">Write the ingredients, separated by ", ": </label>
+            <label for="search_field">Пиши продуктите разделени с ", ": </label>
             <input type="text" id="search_field" ng-model="ingredientsInput" required>
             <button type="submit" class="btn">
-                <i class="icon-document-search2"></i> Search
+                <i class="icon-document-search2"></i> Търси
             </button>
         </form>
 
@@ -22,7 +22,7 @@
         <div class="list-wrap" ng-hide="isFoundListEmpty">
             <ul>
                 <li>
-                    <i class="icon-clipboard-list2"></i><p>Found recipes</p>
+                    <i class="icon-clipboard-list2"></i><p>Намерени рецепти</p>
                 </li>
                 <li ng-repeat="recipe in foundList">
                     <a ui-sref="singleView({recipeID: recipe.id})"> {{recipe.name}}</a>
