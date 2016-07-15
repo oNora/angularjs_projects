@@ -1,4 +1,4 @@
-/*! Source: cb-ng/app.module.js */
+/*! Source: src/app.module.js */
 (function  () {
 
 /**
@@ -19,7 +19,7 @@
     ]);
 
 })();
-/*! Source: cb-ng/cb-recipe/cb-recipe.module.js */
+/*! Source: src/cb-recipe/cb-recipe.module.js */
 (function  () {
 
 /**
@@ -36,7 +36,7 @@
     ]);
 
 })();
-/*! Source: cb-ng/cb-search/cb-search.module.js */
+/*! Source: src/cb-search/cb-search.module.js */
 (function  () {
 
 /**
@@ -52,7 +52,7 @@
     ]);
 
 })();
-/*! Source: cb-ng/cb-singleView/cb-singleView.module.js */
+/*! Source: src/cb-singleView/cb-singleView.module.js */
 (function  () {
 
 /**
@@ -68,7 +68,7 @@
     ]);
 
 })();
-/*! Source: cb-ng/app.routes.js */
+/*! Source: src/app.routes.js */
 (function() {
 
 var app = angular.module('cookingBook');
@@ -125,7 +125,7 @@ var app = angular.module('cookingBook');
         ]);
 
 })();
-/*! Source: cb-ng/app.controller.js */
+/*! Source: src/app.controller.js */
 (function  () {
 
 var app = angular.module("cookingBook");
@@ -189,7 +189,7 @@ var app = angular.module("cookingBook");
 
     }]);
 })();
-/*! Source: cb-ng/cb-recipe/cb-recipe.controller.js */
+/*! Source: src/cb-recipe/cb-recipe.controller.js */
 (function  () {
 
 var app = angular.module("cookingBook.recipe");
@@ -311,7 +311,7 @@ var app = angular.module("cookingBook.recipe");
 
     }]);
 })();
-/*! Source: cb-ng/cb-recipe/cb-recipe.service.js */
+/*! Source: src/cb-recipe/cb-recipe.service.js */
 (function  () {
 
 var app = angular.module("cookingBook.recipe");
@@ -510,7 +510,7 @@ var app = angular.module("cookingBook.recipe");
 
     }]);
 })();
-/*! Source: cb-ng/cb-search/cb-search.controller.js */
+/*! Source: src/cb-search/cb-search.controller.js */
 (function  () {
 
 var app = angular.module("cookingBook.search");
@@ -570,7 +570,7 @@ var app = angular.module("cookingBook.search");
 
     }]);
 })();
-/*! Source: cb-ng/cb-search/cb-search.service.js */
+/*! Source: src/cb-search/cb-search.service.js */
 (function  () {
 
 var app = angular.module("cookingBook.search");
@@ -762,7 +762,7 @@ var app = angular.module("cookingBook.search");
 
     }]);
 })();
-/*! Source: cb-ng/cb-singleView/cb-singleView.controller.js */
+/*! Source: src/cb-singleView/cb-singleView.controller.js */
 (function  () {
 var app = angular.module("cookingBook.singleView");
 
@@ -826,7 +826,7 @@ var app = angular.module("cookingBook.singleView");
 
     }]);
 })();
-/*! Source: cb-ng/cb-singleView/cb-singleView.service.js */
+/*! Source: src/cb-singleView/cb-singleView.service.js */
 (function  () {
 
 var app = angular.module("cookingBook.singleView");
@@ -884,3 +884,4 @@ var app = angular.module("cookingBook.singleView");
 
     }]);
 })();
+//# sourceMappingURL=cooking-book.js.map
