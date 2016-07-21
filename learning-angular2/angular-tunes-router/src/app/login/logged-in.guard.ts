@@ -11,7 +11,12 @@ export class LoggedInGuard implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
         
         if(!this.loginService.loggedIn){
-            this.router.navigate(['./login'])
+            this.router.navigate(['./login'],
+            {
+                queryParams: {
+                    destination: state.url
+                }
+            })
             return false;
         }
         return true;

@@ -27,6 +27,12 @@ module.exports = {
         environment: JSON.stringify(process.env.APP_ENVIRONMENT || 'development')
       }
     })
-  ]
+  ],
+  //* HTML5 History API
+  //for using HTML5 History API and has urls without # comment this section
+  // History API needs a server configuration
+  // devServer: {
+  //   historyApiFallback: true
+  // }
   
 };

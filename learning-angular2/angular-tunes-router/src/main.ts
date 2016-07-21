@@ -1,4 +1,6 @@
 import { enableProdMode } from '@angular/core';
+//* HTML5 History API
+//for using HTML5 History API and has urls without # comment this import
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { AppComponent } from './app/app.component';
@@ -10,5 +12,7 @@ if (app.environment === 'production') {
 }
 bootstrap(AppComponent, [
   APP_ROUTER_PROVIDER,
+  //* HTML5 History API
+  //for using HTML5 History API and has urls without # comment this provide
   {provide: LocationStrategy, useClass: HashLocationStrategy}
 ]);

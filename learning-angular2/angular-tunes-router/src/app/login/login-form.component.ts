@@ -22,7 +22,9 @@ export class LoginFormComponent {
 
     login(){
         if (this.loginService.login(this.user, this.password) ) {
-            this.router.navigate(['/']);
+            // this.router.navigate(['/']);
+            const destination = this.router.routerState.snapshot.queryParams['destination'] || '/';
+            this.router.navigateByUrl(destination);
         }
     }
 }
