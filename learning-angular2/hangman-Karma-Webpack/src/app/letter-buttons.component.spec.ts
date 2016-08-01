@@ -1,4 +1,10 @@
-import { beforeEachProviders, describe, expect, fit, inject, it, TestComponentBuilder } from '@angular/core/testing';
+/**
+ * not needed if you use:
+ * typings install --save --global dt~jasmine
+ * (look typings.json file)
+ */
+//import { beforeEachProviders, describe, expect, fit, inject, it, TestComponentBuilder } from '@angular/core/testing';
+import { inject, TestComponentBuilder } from '@angular/core/testing';
 import { LetterButtonsComponent } from './letter-buttons.component'
 
 
@@ -18,9 +24,9 @@ describe('LetterButtonsComponent', () => {
     
     const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-    beforeEachProviders( () => [TestComponentBuilder]);
+    // no longer needed
+    // beforeEachProviders( () => [TestComponentBuilder]);
 
-    //fit
     it('should display a button for each letter of the alphabet', 
         inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
             tcb.createAsync(LetterButtonsComponent).then( (fixture) => {

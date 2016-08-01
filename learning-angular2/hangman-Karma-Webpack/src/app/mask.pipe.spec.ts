@@ -1,4 +1,9 @@
-import { describe, expect, it } from '@angular/core/testing';
+/**
+ * not needed if you use:
+ * typings install --save --global dt~jasmine
+ * (look typings.json file)
+ */
+// import { describe, expect, it } from '@angular/core/testing';
 import { MaskPipe } from './mask.pipe';
 
 describe('MaskPipe', () => {
