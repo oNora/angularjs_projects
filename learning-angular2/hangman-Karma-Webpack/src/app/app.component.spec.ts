@@ -1,4 +1,10 @@
-import { beforeEachProviders, describe, expect, fit, inject, it, TestComponentBuilder } from '@angular/core/testing';
+/**
+ * not needed if you use:
+ * typings install --save --global dt~jasmine
+ * (look typings.json file)
+ */
+//import { beforeEachProviders, describe, expect, fit, inject, it, TestComponentBuilder } from '@angular/core/testing';
+import { inject, TestComponentBuilder } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { WordService } from './word.service';
 
