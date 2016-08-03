@@ -27,20 +27,20 @@ module.exports = function(grunt) {
             thirdparty: {
                 src: [
                     //include libraries
-                    'bower_components/angular/angular.js',
-                    'bower_components/angular-ui-router/release/angular-ui-router.js',
-                    'bower_components/angular-local-storage/dist/angular-local-storage.js',
-                    'bower_components/angular-animate/angular-animate.js'
+                    'node_modules/angular/angular.js',
+                    'node_modules/angular-ui-router/release/angular-ui-router.js',
+                    'node_modules/angular-local-storage/dist/angular-local-storage.js',
+                    'node_modules/angular-animate/angular-animate.js'
                 ],
                 dest: 'build/js/thirdparty.js'
             },
             thirdpartyMin: {
                 src: [
                     //include libraries
-                    'bower_components/angular/angular.min.js',
-                    'bower_components/angular-ui-router/release/angular-ui-router.min.js',
-                    'bower_components/angular-local-storage/dist/angular-local-storage.js',
-                    'bower_components/angular-animate/angular-animate.js'
+                    'node_modules/angular/angular.min.js',
+                    'node_modules/angular-ui-router/release/angular-ui-router.min.js',
+                    'node_modules/angular-local-storage/dist/angular-local-storage.js',
+                    'node_modules/angular-animate/angular-animate.js'
                 ],
                 dest: 'build/js/thirdparty.min.js'
             }
