@@ -7,7 +7,7 @@ export class ExchangeService {
 
     supportedCurrencies = ['EUR', 'GBP', "USD"];
 
-    private exchangeRates = new Map<string, string>();
+    private exchangeRates = new Map<string, number>();
 
     constructor(private http: Http){
         for (const baseCurrency of this.supportedCurrencies) {
@@ -15,8 +15,7 @@ export class ExchangeService {
         }
     }
 
-    getExchangeRate(baseCurrency: string, targetCurrency: string) : string | number{
-
+    getExchangeRate(baseCurrency: string, targetCurrency: string) :number {
         if(baseCurrency === targetCurrency){
             return 1;
         }

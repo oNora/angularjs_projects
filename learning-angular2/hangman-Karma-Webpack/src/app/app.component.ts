@@ -5,8 +5,8 @@ import { WordService } from './word.service';
 
 @Component({
     selector: 'my-app',
-    providers: [WordService],
-    directives: [LetterButtonsComponent],
+    // providers: [WordService],
+    // directives: [LetterButtonsComponent],
     pipes: [MaskPipe],
     template: `
         <h1>Guess The Word</h1>
