@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { HTTP_PROVIDERS } from '@angular/http';
+// import { HTTP_PROVIDERS } from '@angular/http';
 import {ExchangeService} from './exchange.service';
-import {CurrencySelectComponent} from './currency-select.component';
-import { FixedPipe } from './fixed.pipe'
+// import {CurrencySelectComponent} from './currency-select.component';
+// import { FixedPipe } from './fixed.pipe'
 
 @Component({
   selector: 'currency-converter',
-  providers: [HTTP_PROVIDERS, ExchangeService],
-  directives: [CurrencySelectComponent],
-  pipes: [FixedPipe],
+  // providers: [HTTP_PROVIDERS, ExchangeService],
+  // directives: [CurrencySelectComponent],
+  // pipes: [FixedPipe],
   template: `
     Convert: <input type="number" [(ngModel)]="baseAmount" [class.error]="isInvalid(baseAmount)">
       <p>

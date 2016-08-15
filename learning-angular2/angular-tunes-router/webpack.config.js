@@ -29,10 +29,10 @@ module.exports = {
     })
   ],
   //* HTML5 History API
-  //for using HTML5 History API and has urls without # comment this section
+  //for using HTML5 History API and has urls without # uncomment this section
   // History API needs a server configuration
-  // devServer: {
-  //   historyApiFallback: true
-  // }
+  devServer: {
+    historyApiFallback: true
+  }
   
 };
