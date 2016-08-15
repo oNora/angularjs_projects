@@ -5,14 +5,13 @@ describe('Service: cbSearchService', function() {
     beforeEach(module('cookingBook.search'));
 
     var cbSearchService,
-        $rootScope,
         mockAllRecipesList,
         mockIngredienObj,
         mockInputSearck;
 
     // Initialize factory
-    beforeEach(inject(function(_cbSearchService_, _$rootScope_) {
-        $rootScope = _$rootScope_;
+    beforeEach(inject(function(_cbSearchService_) {
+
         cbSearchService = _cbSearchService_;
         mockAllRecipesList = [
             {id: 1, name: "Galette", description: "some description", ingredients: [{"ingredientName":"butter", "amount":"100", "amountUnits":"g" }, {"ingredientName":"suggar", "amount":"100", "amountUnits":"g"}]},

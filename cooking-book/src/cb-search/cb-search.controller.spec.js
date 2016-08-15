@@ -58,7 +58,7 @@ describe('Controller: SearchController', function() {
         it('$scope.searchMsg when have recipes', function() {
             expect(scope.searchMsg).toBeDefined();
             expect(typeof scope.searchMsg).toBe('string');
-            expect(scope.searchMsg).toEqual('Choose from available  ingredients:');
+            expect(scope.searchMsg).toEqual('Избери от вече добавените продукти:');
         });
 
         it('$scope.foundList', function() {
@@ -123,7 +123,7 @@ describe('Controller: SearchController', function() {
         it('$scope.searchMsg when have recipes', function() {
             expect(scope.searchMsg).toBeDefined();
             expect(typeof scope.searchMsg).toBe('string');
-            expect(scope.searchMsg).toEqual('There are not available ingredients. First enter recipes.');
+            expect(scope.searchMsg).toEqual('Няма налични продукти. Първо въведи рецепта.');
         });
     });
 

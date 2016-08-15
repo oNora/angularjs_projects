@@ -5,12 +5,10 @@ describe('Service: cbSingleViewService', function() {
     beforeEach(module('cookingBook.singleView'));
 
     var cbSingleViewService,
-        $rootScope,
         mockInitData;
 
     // Initialize factory
-    beforeEach(inject(function(_cbSingleViewService_, _$rootScope_) {
-        $rootScope = _$rootScope_;
+    beforeEach(inject(function(_cbSingleViewService_) {
         cbSingleViewService = _cbSingleViewService_;
     }));
 
@@ -40,7 +38,7 @@ describe('Service: cbSingleViewService', function() {
             cbSingleViewService.findRecipe(repeiptId, mockInitData);
             expect(cbSingleViewService.findRecipe).toHaveBeenCalledWith(repeiptId, mockInitData);
 
-            $rootScope.$apply();
+            // $rootScope.$apply();
 
             expect(typeof cbSingleViewService.foundRecipe).toBe('object');
 
@@ -58,7 +56,7 @@ describe('Service: cbSingleViewService', function() {
             cbSingleViewService.findRecipe(repeiptId, mockInitData);
             expect(cbSingleViewService.findRecipe).toHaveBeenCalledWith(repeiptId, mockInitData);
 
-            $rootScope.$apply();
+            // $rootScope.$apply();
 
             expect(cbSingleViewService.foundRecipe).toBeNull();
         });
