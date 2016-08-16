@@ -11,7 +11,7 @@
      * @module cookingBook.recipe
      * @description
 
-     * Manage loading data for a single recipe
+     * Manage recipe data manipulation
      *
      */
     app.service("cbRecipeService", ['localStorageService', function (localStorageService) {
