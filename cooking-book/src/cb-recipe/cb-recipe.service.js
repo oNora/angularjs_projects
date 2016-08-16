@@ -11,7 +11,7 @@
      * @module cookingBook.recipe
      * @description
 
-     * Manage loading data for a single recipe
+     * Управление на зараждането на данните за рецептите, добавяне, изтриване и редактиране
      *
      */
     app.service("cbRecipeService", ['localStorageService', function (localStorageService) {
@@ -26,8 +26,8 @@
          * @propertyOf cookingBook.recipe.service:cbRecipeService
 
          * @description
-         * Variable returned from function **$this.returnRecipeIndex** method.
-         * Type of variable **Number** - index of current recipe in allRecipes array
+         * Променлива/връщана стойност от метод **$this.returnRecipeIndex**.
+         * Тип на променлива **Number** - индех на текуща рецепта в масива allRecipes
          */
         $this.indexRecipe = null;
 
@@ -38,7 +38,7 @@
          * @propertyOf cookingBook.recipe.service:cbRecipeService
 
          * @description
-         * Object used in **$this.addRecipe** and **$this.updateRecipe** methods.
+         * Обект ползван в **$this.addRecipe** и **$this.updateRecipe** методи.
          */
         $this.recipeValues = {};
 
@@ -49,7 +49,7 @@
          * @propertyOf cookingBook.recipe.service:cbRecipeService
 
          * @description
-         * Type of variable **Object** - confirm deletion data of current recipe.
+         * Тип на променлива **Object** - обект с данни за потвърждаване на изтриването.
          */
         $this.confirmDate = {};
 
@@ -59,10 +59,10 @@
          * @methodOf cookingBook.recipe.service:cbRecipeService
          * @description
 
-         * Get recipe index in allRecipes array
-         * @param  {Array} allRecipe        - all available recipe
-         * @param  {Number} currentRecipeId - recipe ID
-         * @return {Number}                 - index of current recipe in allRecipes array
+         * Намиране на индекс на рецепта от масива allRecipes
+         * @param  {Array} allRecipe        - всички налични рецепти
+         * @param  {Number} currentRecipeId - уникален номер ID на рецепта 
+         * @return {Number}                 - индех на текуща рецепта в масива allRecipes
          */
         $this.returnRecipeIndex = function (allRecipe, currentRecipeId) {
 
@@ -81,8 +81,8 @@
          * @methodOf cookingBook.recipe.service:cbRecipeService
          * @description
 
-         * Get all available/saved recipes
-         * @return {Array}    - all available/saved recipes
+         * Намиране на всички налични/запазени рецепти
+         * @return {Array}    - всички налични/запазени рецепти
          */
         $this.getRecipe = function (){
             //DB simulation
@@ -112,10 +112,10 @@
          * @description
 
          * add new resipe
-         * @param  {String} recipeName        - name of current recipe
-         * @param  {Array}  ingredientsList   - list with all ingredient objects of current recipe
-         * @param  {string} recipeDescription - description/instruction for current recipe
-         * @return {Array}                    - alist of all available recipe with the new one
+         * @param  {String} recipeName        - име на текущата рецепта
+         * @param  {Array}  ingredientsList   - списък със всички продукти за текущата рецепта
+         * @param  {string} recipeDescription - описание на текуща рецепта
+         * @return {Array}                    - списък със всички налични рецепти плюс добавената
          */
         $this.addRecipe = function(recipeName, ingredientsList, recipeDescription){
 
@@ -131,7 +131,7 @@
 
             localStorageService.set( "recipeList", recipeList);
 
-            //update $scope.recipeList
+            //обновяване на $scope.recipeList
             return recipeList;
 
         };
@@ -143,11 +143,11 @@
          * @description
 
          * update recipe
-         * @param  {String} recipeName         - name of current recipe
-         * @param  {Array}  ingredientsList    - list with all ingredient objects of current recipe
-         * @param  {string} recipeDescription  - description/instruction for current recipe
-         * @param  {String} recipeID           - current recipe id
-         * @return {Array}                     - list of all available recipe with the updated one
+         * @param  {String} recipeName         - име на текущата рецепта
+         * @param  {Array}  ingredientsList    - списък със всички продукти за текущата рецепта
+         * @param  {string} recipeDescription  - описание на текуща рецепта
+         * @param  {String} recipeID           - конретен уникален номер ID на текуща рецепта
+         * @return {Array}                     - списък на всички налични рецепти с обновяване на стойнощ на редактираната рецепта
          */
         $this.updateRecipe = function(recipeName, ingredientsList, recipeDescription, recipeID){
 
@@ -164,7 +164,7 @@
 
             localStorageService.set( "recipeList", recipeList);
 
-            //update $scope.recipeList
+            //обновяване на $scope.recipeList
             return recipeList;
 
         };
@@ -175,9 +175,9 @@
          * @methodOf cookingBook.recipe.service:cbRecipeService
          * @description
 
-         * delete recipe
-         * @param  {Number} recipeID - current recipe id
-         * @return {Object}          - confirm deletion data of current recipe
+         * Изтриване на рецепта
+         * @param  {Number} recipeID - текущ уникален номер на рецепта ID
+         * @return {Object}          - обект с потвърждаващи данни за изтриването на рецепта
          */
         $this.deleteRecipe = function (recipeID){
 
@@ -187,7 +187,7 @@
             recipeList.splice(recipeIndex, 1);
             localStorageService.set( "recipeList", recipeList);
 
-            //update $scope.recipeList
+            //обновяване на $scope.recipeList
             $this.confirmDate = {
                 confirmDeleting: 1,
                 updateRecipeList: recipeList

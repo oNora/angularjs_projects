@@ -11,7 +11,7 @@
      * @module cookingBook.recipe
      * @description
 
-     * Manage recipe data manipulation.
+     * Управление на работата с данни на рецепта
      *
      */
     app.controller("RecipeController",
@@ -26,7 +26,7 @@
                 var viewUrl = $location.path().split('/');
                 var currentRecipe = cbSingleViewService.findRecipe($stateParams.recipeID, $scope.recipeList);
 
-                //if recipe is already deleted
+                //ако рецептата е вече изтрита
                 if(currentRecipe === null && viewUrl[1] != 'addRecipe' ){
                     $location.path('/404');
                 }else if (viewUrl[1] == 'delete') {
@@ -42,7 +42,7 @@
                     $scope.recipeDescriptionField = currentRecipe.description;
                     $scope.ingredientsList = currentRecipe.ingredients;
                 } else {
-                    //reset ingredients object
+                    //нулиране на стойност на  ingredients обект
                     $scope.ingredientsList = [{}];
                 }
             };
@@ -54,7 +54,7 @@
              * @methodOf cookingBook.recipe.controller:RecipeController
              * @description
 
-             * Save recipe data on edit or add new
+             * Запазване на данните на рецепти при добавяне или редактиране на такава
              */
             $scope.saveRecipe = function () {
 
@@ -80,7 +80,7 @@
              * @methodOf cookingBook.recipe.controller:RecipeController
              * @description
 
-             * add new row for ingredient
+             * добавяне на нов ред на продукт
              */
             $scope.addIngredient = function() {
                 var ingredients = $scope.ingredientsList;
@@ -93,8 +93,8 @@
              * @methodOf cookingBook.recipe.controller:RecipeController
              * @description
 
-             * remove row for ingredient
-             * @param  {Number} index   - index of row of ingredient
+             * премахване на ред на продукт
+             * @param  {Number} index   - индех на ред на продукт
              */
             $scope.removeIngredient = function(index) {
                 $scope.ingredientsList.splice(index, 1);
@@ -107,8 +107,8 @@
              * @methodOf cookingBook.recipe.controller:RecipeController
              * @description
 
-             * delete recipe
-             * @param  {Number} recipeID  - id of recipe
+             * изтриване на рецепта
+             * @param  {Number} recipeID  - иникален номер id на рецепта
              */
             $scope.removeRecipe = function(recipeID) {
 

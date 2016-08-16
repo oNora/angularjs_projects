@@ -11,35 +11,35 @@
 
                 $stateProvider
 
-                    // search recipe
+                    // търсене на рецепта
                     .state('search', {
                         url: '/search',
                         templateUrl: 'views/search.html',
                         controller: 'SearchController'
                     })
 
-                    // add new recipe
+                    // добавяне на нова рецепта
                     .state('addRecipe', {
                         url: '/addRecipe',
                         templateUrl: 'views/recipe/saveRecipe.html',
                         controller: 'RecipeController'
                     })
 
-                    // edit recipe
+                    // редактиране на рецепта
                     .state('editRecipe', {
                         url: '/editRecipe/:recipeID',
                         templateUrl: 'views/recipe/saveRecipe.html',
                         controller: 'RecipeController'
                     })
 
-                    // view a recipe
+                    // преглед на единична рецепта
                     .state('singleView', {
                         url: '/singleView/:recipeID',
                         templateUrl: 'views/singleView.html',
                         controller: 'SingleViewController'
                     })
 
-                    // view a recipe
+                    // изтриване на рецепта
                     .state('deleteRecipe', {
                         url: '/delete/:recipeID',
                         templateUrl: 'views/recipe/deleteRecipe.html',

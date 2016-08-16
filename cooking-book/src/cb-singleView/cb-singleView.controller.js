@@ -10,7 +10,7 @@
      * @module cookingBook.singleView
      * @description
 
-     * Manage single view of recipe.
+     * Управление за view за единична рецепта
      *
      */
     app.controller("SingleViewController",
@@ -23,7 +23,7 @@
              * @propertyOf cookingBook.singleView.controller:SingleViewController
 
              * @description
-             * recipe ID form stateParams (String)
+             * уникален номер на рецепта ID от stateParams(String)
              */
             var currentRecipeId = $stateParams.recipeID;
 
@@ -33,7 +33,7 @@
              * @propertyOf cookingBook.singleView.controller:SingleViewController
 
              * @description
-             * Single recipe object
+             * Обект с данни за единична рецепта
              */
             var currentRecipe = cbSingleViewService.findRecipe(currentRecipeId, $scope.recipeList);
 
@@ -51,10 +51,10 @@
                  * @methodOf cookingBook.singleView.controller:SingleViewController
                  * @description
 
-                 * Check if has any available ingredients
-                 * @param  {Object} obj - ingredients object of single recipe
-                 * @return {Number}     - number of available recipe ingredients;
-                 *                      if return 1 - no avalible ingredients (default Angular property $$hashKey )
+                 * Проверяв дали има въведен продукти
+                 * @param  {Object} obj - Обект със съдържание на пордукти за конкретна рецепта 
+                 * @return {Number}     - число за общия брой на въведените породукти за една рецепта;
+                 *                      ако върне 1 - няма въведени продукти (по подразбиране в Angular винъги съдържа парамерът $$hashKey )
                  */
                 $scope.getLength = function(obj) {
                     return Object.keys(obj).length;

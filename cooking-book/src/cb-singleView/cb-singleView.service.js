@@ -11,7 +11,7 @@
      * @module cookingBook.singleView
      * @description
 
-     * Manage loading data for a single recipe
+     * Управление на зареждането на данните за конкретна рецепта
      *
      */
     app.service("cbSingleViewService", [function() {
@@ -24,7 +24,7 @@
          * @propertyOf cookingBook.singleView.service:cbSingleViewService
 
          * @description
-         * current recipe object. Initial value is null.
+         * Обект за стойности на конкретна рецепта. Първоначална стойност null.
          */
         $this.foundRecipe = null;
 
@@ -34,10 +34,10 @@
          * @methodOf cookingBook.singleView.service:cbSingleViewService
          * @description
 
-         * Find a recipe. Current recipe object
-         * @param  {String} recipeID   - current recipe ID
-         * @param  {Array} allRecipes - all available recipes
-         * @return {Object}            - current recipe object
+         * Намиране конкретна рецепта
+         * @param  {String} recipeID   - уникален номер на конкретна рецепта
+         * @param  {Array} allRecipes - всички налични рецепти
+         * @return {Object}            - конкретна рецепта
          */
         $this.findRecipe = function(recipeID, allRecipes) {
 

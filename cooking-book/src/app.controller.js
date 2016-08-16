@@ -10,7 +10,7 @@
      * @module cookingBook
      * @description
 
-     * General controller for cookingBook app. Manage mobile menu state and right sidebar with recipes.
+     * Главен контролер за прилжението cookingBook. Управлява състоянето на мобилнот меню и съдържаниерто в дясната колона
      *
      */
     app.controller("CookingBookController",
@@ -23,8 +23,8 @@
          * @propertyOf cookingBook.controller:CookingBookController
 
          * @description
-         * Get available recipes.
-         * Calling cbRecipeService method getRecipe and receives an object with all avalible recipes
+         * Взимане на наличните рецепти.
+         * Извиква метода getRecipe от сървиса cbRecipeService и получава обект със всички налични рецепти
          */
 
         $rootScope.recipeList = cbRecipeService.getRecipe();
@@ -34,7 +34,7 @@
          * @name isMobileMenu
          * @propertyOf cookingBook.controller:CookingBookController
 
-         * @description state for mobile menu. Initial value is false
+         * @description Състояние на мобилното меню. Първоначална стойност - false
          */
         $scope.isMobileMenu = false;
 
@@ -44,7 +44,7 @@
          * @propertyOf cookingBook.controller:CookingBookController
          * @description
 
-         * css class for mobile menu. Initial state is 'hideMobile'
+         * css клас за мобилното меню. Първоначална стойност - 'hideMobile'
          */
         $scope.showMobileMenu = 'hideMobile';
 
@@ -54,7 +54,7 @@
          * @methodOf cookingBook.controller:CookingBookController
          * @description
 
-         * toggle menu status - show and hide on mobile
+         * превключване на състоянието на мобилното меню - показване и скриване на менюто
          */
         $scope.toggle = function() {
             $scope.isMobileMenu = !$scope.isMobileMenu;

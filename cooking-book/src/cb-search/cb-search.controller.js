@@ -11,7 +11,7 @@
      * @module cookingBook.search
      * @description
 
-     * Manage search of recipes.
+     * Управление на търсенето на рецепти
      *
      */
     app.controller("SearchController",
@@ -19,7 +19,7 @@
         function($scope, cbSearchService){
 
         /**
-         * @type {Object} -  reference to search service
+         * @type {Object} -  референция към сървис cbSearchService
          */
          var searchService = cbSearchService;
 
@@ -34,12 +34,12 @@
          * @methodOf cookingBook.search.controller:SearchController
          * @description
 
-         * search for recipes
-         * @param  {String} ingredientsInput - search inputs - ingredients list
+         * търсене на рецепти
+         * @param  {String} ingredientsInput - входящ текст от полето за търсене - списък с продукти
          */
         $scope.searchRecipe = function (ingredientsInput) {
 
-            // reset list of found recipes
+            // занулване на спусъка с намерене рецепти
             $scope.foundList = [];
 
             $scope.foundList = searchService.returnFoundRecipes(ingredientsInput, $scope.recipeList);
@@ -53,7 +53,7 @@
          * @propertyOf cookingBook.search.controller:SearchController
 
          * @description
-         *  Array of objects - all available ingredients
+         * Масив от обекти - всички налични продукти
          */
         $scope.availableUniqueIntegrates = searchService.availableUniqueIntegrates($scope.recipeList);
 

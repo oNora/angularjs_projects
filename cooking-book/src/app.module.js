@@ -9,7 +9,7 @@
      *
      * @description
 
-     * General module for cookingBook app
+     * Главен модул за приложението cookingBook
      */
     angular.module('cookingBook', [
         'ui.router',

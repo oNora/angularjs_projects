@@ -11,14 +11,14 @@
      * @module cookingBook.search
      * @description
 
-     * Manage search recipes of the cookingBook app
+     * Управление на търсенето на рецепти в приложението cookingBook
      *
      */
     app.service("cbSearchService", [function() {
 
         var $this = this;
 
-        // reset values
+        // зануляване на стойности
 
         /**
          * @ngdoc property
@@ -26,7 +26,8 @@
          * @propertyOf cookingBook.search.service:cbSearchService
 
          * @description
-         *  Array of list of ID recipes in which there is at least one of the sought ingredients. Initial value - empty array.
+         * Array of list of ID recipes in which there is at least one of the sought ingredients. Initial value - empty array.
+         * Масив с уникалните номера ID на рецепти, които съдържат търсените продукти. Първоначална стойност - празен масив.
          */
         $this.foundRecipesId = [];
 
@@ -36,7 +37,7 @@
          * @propertyOf cookingBook.search.service:cbSearchService
 
          * @description
-         *  Array of  all recipe that includes current ingredients. Initial value - empty array.
+         * Масив от рецепти, който съдържат конкретен продукт. Първоначална стойност - празен масив.
          */
         $this.allFoundRecipes = [];
 
@@ -46,7 +47,7 @@
          * @propertyOf cookingBook.search.service:cbSearchService
 
          * @description
-         *  Array of list of all names of ingredients for a single recipe. Initial value - empty array.
+         * Масив със всички имена на продукти за една рецепта. Първоначална стойност - празен масив.
          */
         $this.allRecipeIn = [];
 
@@ -57,7 +58,7 @@
          * @propertyOf cookingBook.search.service:cbSearchService
 
          * @description
-         *  Array of list of all unique ingredients. Initial value - empty array.
+         * Масив със всички използвани продукти. Първоначална стойност - празен масив.
          */
         $this.allUniqueIntegrates = [];
 
@@ -68,9 +69,9 @@
          * @methodOf cookingBook.search.service:cbSearchService
          * @description
 
-         * check if any recipe includes the ingredient
-         * @param  {String} entryValue - single input value, single ingredients
-         * @param  {Array} allRecipes - all available recipe
+         * Търсене дали някоя рецепта съдържа конкретния продукт/и
+         * @param  {String} entryValue - единичен продукт от списъка с продукти въведен в полето за търсене
+         * @param  {Array} allRecipes  - всички налични рецепти
          */
         $this.checkRecipe = function (entryValue, allRecipes) {
 
@@ -92,9 +93,9 @@
          * @methodOf cookingBook.search.service:cbSearchService
          * @description
 
-         * search recipe
-         * @param  {String} allIngredients    - search input - ingredient list
-         * @param  {Array} availableRecipes   - all available recipe
+         * търсене на рецепта
+         * @param  {String} allIngredients    - входящ текст от полето за търсене - списък с продукти
+         * @param  {Array} availableRecipes   - всички налични рецепти
          */
         $this.search = function(allIngredients, availableRecipes) {
 
@@ -117,10 +118,10 @@
          * @methodOf cookingBook.search.service:cbSearchService
          * @description
 
-         * Find all recipe that includes current ingredients
-         * @param  {String} input      - search input - ingredient list
-         * @param  {Array} recipeList  - all available recipe
-         * @return {Array}             - all recipe that includes current ingredients
+         * Намиране на всички рецепти, който съдържат конкретни продукти
+         * @param  {String} input      - входящ текст от полето за търсене - списък с продукти
+         * @param  {Array} recipeList  - всички налични рецепти
+         * @return {Array}             - всички рецепти в които има конкретен продукт
          */
         $this.returnFoundRecipes = function(input, recipeList) {
 
@@ -144,9 +145,9 @@
          * @methodOf cookingBook.search.service:cbSearchService
          * @description
 
-         * get names of ingredients for a single recipe
-         * @param  {Array} recipeIntegrates - all ingredients for a single recipe
-         * @return {Array}                  - list of all names of ingredients for a single recipe
+         * Намиране на имената на продуктите за една рецепта
+         * @param  {Array} recipeIntegrates - списък с всички продукти за една рецепта
+         * @return {Array}                  - списък с всички имена на продукти за една рецепта
          */
         $this.ingredientsList = function(recipeIntegrates) {
 
@@ -168,8 +169,9 @@
          * @description
 
          * Get all unique ingredients
-         * @param  {Array} allRecipesList - all available recipe
-         * @return {Array}                - list of all unique ingredients
+         * Намиране на всички въведени продукти (уникални)
+         * @param  {Array} allRecipesList - всички налични рецепти
+         * @return {Array}                - списък с всички уникални продукти
          */
         $this.availableUniqueIntegrates = function (allRecipesList) {
 

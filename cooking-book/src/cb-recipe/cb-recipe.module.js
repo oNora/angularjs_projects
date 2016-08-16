@@ -8,7 +8,7 @@
      * @name cookingBook.recipe
      *
      * @description
-     * Module for recipe data manipulation.
+     * Модул за управление на работата с данни на рецепта.
      */
     angular.module('cookingBook.recipe', [
         'LocalStorageModule',

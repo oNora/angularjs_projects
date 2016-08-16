@@ -8,7 +8,7 @@
      * @name cookingBook.singleView
      *
      * @description
-     * Module for the recipe pages of the cookingBook app.
+     * Модул за управление на view за единична рецепта в приложението cookingBook.
      */
     angular.module('cookingBook.singleView', [
         'ui.router'

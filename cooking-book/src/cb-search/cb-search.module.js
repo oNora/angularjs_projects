@@ -9,7 +9,7 @@
      * @name cookingBook.search
      *
      * @description
-     * Module for search recipes of the cookingBook app.
+     * Модул за управление на търсенето на рецепти приложението cookingBook.
      */
     angular.module('cookingBook.search', [
         // 'ui.router',
