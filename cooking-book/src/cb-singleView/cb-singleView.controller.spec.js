@@ -16,9 +16,9 @@ describe('Controller: SingleViewController', function() {
         beforeEach(function() {
             mockCurrentRecipe = {
                 id: 1,
-                name: "Galette",
-                description: "some description",
-                ingredients: [{"ingredientName":"butter", "amount":"100", "amountUnits":"g" }, {"ingredientName":"suggar", "amount":"100", "amountUnits":"g"}]
+                name:        "Кекс",
+                ingredients: [{"ingredientName":"масло", "amount":"100", "amountUnits":"гр" }, {"ingredientName":"захар", "amount":"100", "amountUnits":"гр"}],
+                description: "някакво описание"
             };
 
             mockedSingleViewService = {

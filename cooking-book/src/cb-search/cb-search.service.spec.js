@@ -14,12 +14,12 @@ describe('Service: cbSearchService', function() {
 
         cbSearchService = _cbSearchService_;
         mockAllRecipesList = [
-            {id: 1, name: "Galette", description: "some description", ingredients: [{"ingredientName":"butter", "amount":"100", "amountUnits":"g" }, {"ingredientName":"suggar", "amount":"100", "amountUnits":"g"}]},
-            {id: 2, name: "Cheddar Chicken", description: "Preheat oven to 350 degrees F (175 degrees C).", ingredients: [{"ingredientName":"crushed cornflakes cereal", "amount":"1", "amountUnits":"cup" },{"ingredientName":"parmesan", "amount":"3/4", "amountUnits":"cup" }]},
-            {id: 3, name: "Cheesecake", description: "Preheat oven to 350 degrees F (175 degrees C).", ingredients: [{"ingredientName":"eggs", "amount":"2", "amountUnits":"" },{"ingredientName":"suggar", "amount":"1/2", "amountUnits":"cup" }]},
-            {id: 4, name: "Cupcake", description: "Combine sour cream and sugar; mix well. Stir in coconut. Fold in whipped topping. Spread top and sides of two 9-inch cake layers.", ingredients: [{"ingredientName":"cream", "amount":"2", "amountUnits":"cups" }]}
-        ];
-        mockIngredienObj = [{"ingredientName":"butter", "amount":"100", "amountUnits":"g" }, {"ingredientName":"suggar", "amount":"100", "amountUnits":"g"}];
+                {id: 1, name: "Кекс", description: "някакво описание", ingredients: [{"ingredientName":"масло", "amount":"100", "amountUnits":"гр" }, {"ingredientName":"захар", "amount":"100", "amountUnits":"гр"}]},
+                {id: 2, name: "Хрупкаво пиле", description: "Пече се на фирна на 175 градуса.", ingredients: [{"ingredientName":"корнфелкс", "amount":"1", "amountUnits":"чаша" },{"ingredientName":"пармезам", "amount":"3/4", "amountUnits":"чаша" }]},
+                {id: 3, name: "Чийзкейк", description: "Пече се на фирна на 175 градуса.", ingredients: [{"ingredientName":"яйца", "amount":"2", "amountUnits":"бр" },{"ingredientName":"захар", "amount":"1/2", "amountUnits":"чаша" }]},
+                {id: 4, name: "Мъфини", description: "Комбинирайте заквасена сметана и захар; Смесете добре. Добавете кокос и разбъркайта.", ingredients: [{"ingredientName":"заквасена сметана", "amount":"2", "amountUnits":"чаша" }]}
+            ];
+        mockIngredienObj = [{"ingredientName":"масло", "amount":"100", "amountUnits":"гр" }, {"ingredientName":"захар", "amount":"100", "amountUnits":"гр"}];
     }));
 
     it('Should have a service', function () {
@@ -33,7 +33,7 @@ describe('Service: cbSearchService', function() {
     });
 
     describe('Get checkRecipe call', function() {
-        var entryValue = 'suggar';
+        var entryValue = 'захар';
 
         it('Should have a checkRecipe', function () {
             expect(cbSearchService.checkRecipe).toBeDefined();
@@ -62,7 +62,7 @@ describe('Service: cbSearchService', function() {
     describe('Get search call', function() {
 
         beforeEach(function() {
-            mockInputSearck =  'suggar';
+            mockInputSearck =  'захар';
         });
 
         it('Should have a search', function () {
@@ -91,7 +91,7 @@ describe('Service: cbSearchService', function() {
 
         beforeEach(function() {
             cbSearchService.foundRecipesId = [1, 3];
-            mockInputSearck =  'suggar';
+            mockInputSearck =  'захар';
         });
 
         it('Should have a returnFoundRecipes', function () {
