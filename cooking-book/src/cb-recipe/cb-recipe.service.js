@@ -11,7 +11,7 @@
      * @module cookingBook.recipe
      * @description
 
-     * Manage loading data for a single recipe
+     * Manage recipe data manipulation
      *
      */
     app.service("cbRecipeService", ['localStorageService', function (localStorageService) {
@@ -45,13 +45,13 @@
 
         /**
          * @ngdoc property
-         * @name confirmDate
+         * @name confirmData
          * @propertyOf cookingBook.recipe.service:cbRecipeService
 
          * @description
          * Type of variable **Object** - confirm deletion data of current recipe.
          */
-        $this.confirmDate = {};
+        $this.confirmData = {};
 
         /**
          * @ngdoc method
@@ -188,11 +188,11 @@
             localStorageService.set( "recipeList", recipeList);
 
             //update $scope.recipeList
-            $this.confirmDate = {
+            $this.confirmData = {
                 confirmDeleting: 1,
                 updateRecipeList: recipeList
             };
-            return $this.confirmDate;
+            return $this.confirmData;
 
         };
 
