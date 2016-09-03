@@ -43,7 +43,7 @@ describe('Service: cbRecipeService', function() {
     it('Should have all variables', function () {
         expect(cbRecipeService.indexRecipe).toBeDefined();
         expect(cbRecipeService.recipeValues).toBeDefined();
-        expect(cbRecipeService.confirmDate).toBeDefined();
+        expect(cbRecipeService.confirmData).toBeDefined();
     });
 
     describe('Get returnRecipeIndex call', function() {
@@ -265,10 +265,10 @@ describe('Service: cbRecipeService', function() {
             expect(typeof recipeIndex).toBe('number');
             expect(recipeList instanceof Array).toBeTruthy();
             
-            expect(cbRecipeService.confirmDate.confirmDeleting).toBeDefined()
-            expect(cbRecipeService.confirmDate.confirmDeleting).toEqual(1)
-            expect(cbRecipeService.confirmDate.updateRecipeList).toBeDefined()
-            expect(cbRecipeService.confirmDate.updateRecipeList instanceof Array).toBeTruthy();
+            expect(cbRecipeService.confirmData.confirmDeleting).toBeDefined()
+            expect(cbRecipeService.confirmData.confirmDeleting).toEqual(1)
+            expect(cbRecipeService.confirmData.updateRecipeList).toBeDefined()
+            expect(cbRecipeService.confirmData.updateRecipeList instanceof Array).toBeTruthy();
 
 
         });
