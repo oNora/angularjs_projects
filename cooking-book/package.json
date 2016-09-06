@@ -1,10 +1,8 @@
 {
   "name": "cooking-book",
   "description": "angular cooking book",
-  "version": "0.0.1",
-  "author": {
-    "name": "oNora"
-  },
+  "version": "1.0.0",
+  "author": "oNora",
   "privet": true,
   "dependencies": {
     "angular": "^1.5.2",
