@@ -13,3 +13,23 @@ Features:
 
 Unit Testing - Karma with Jasmine. 
 
+Quick start
+============
+
+```bash
+# clone the repo
+$ git clone https://github.com/oNora/angularjs_projects.git
+
+# change directory to the project
+$ cd cooking-book
+
+# install the dependencies with npm
+$ npm install
+
+# build the project
+$ grunt build
+
+# build the project in "watch mode"
+$ grunt dev
+```
+
