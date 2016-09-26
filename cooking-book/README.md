@@ -31,5 +31,8 @@ $ grunt build
 
 # build the project in "watch mode"
 $ grunt dev
+
+# run unit tests
+$ karma start
 ```
 
