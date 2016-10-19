@@ -36,3 +36,4 @@ $ grunt dev
 $ karma start
 ```
 
+Run the project under **locahost**. A quick way to achieve this is through [XAMPP](https://www.apachefriends.org/index.html), [WAMP] (http://www.wampserver.com/en/) or [http-server] (https://www.npmjs.com/package/http-server).
