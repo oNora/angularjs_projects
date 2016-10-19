@@ -2,7 +2,7 @@ cooking-book
 ============
 
 Angular application that allows user to manage cooking recipes. <br />
--**Note:**  *it's still in progress ...* <br />
+**Note:**  *This project was created for my [Master's thesis](https://github.com/oNora/university-tasks/tree/master/Master's-thesis).* <br />
 [Demo](http://onora.github.io/angularjs_projects/cooking-book/)
 
 Features:
@@ -13,3 +13,27 @@ Features:
 
 Unit Testing - Karma with Jasmine. 
 
+Quick start
+============
+
+```bash
+# clone the repo
+$ git clone https://github.com/oNora/angularjs_projects.git
+
+# change directory to the project
+$ cd cooking-book
+
+# install the dependencies with npm
+$ npm install
+
+# build the project
+$ grunt build
+
+# build the project in "watch mode"
+$ grunt dev
+
+# run unit tests
+$ karma start
+```
+
+Run the project under **locahost**. A quick way to achieve this is through [XAMPP](https://www.apachefriends.org/index.html), [WAMP] (http://www.wampserver.com/en/) or [http-server] (https://www.npmjs.com/package/http-server).

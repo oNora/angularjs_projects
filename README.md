@@ -14,7 +14,6 @@ For more details [here](https://github.com/oNora/angularjs_projects/tree/master/
 ###II. `cooking-book`
 
 Angular application that allows user to manage cooking recipes. <br />
--**Note:**  *it's still in progress ...* <br />
 For more details [here](https://github.com/oNora/angularjs_projects/tree/master/cooking-book) <br />
 [Demo](http://onora.github.io/angularjs_projects/cooking-book)
  
